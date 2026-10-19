@@ -7,34 +7,39 @@ export default function FloatingWhatsApp() {
     <div
       style={{
         position: 'fixed',
-        bottom: '28px',
-        right: '28px',
+        bottom: '24px',
+        right: '24px',
         zIndex: 9999,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-end',
-        gap: '12px',
+        gap: '10px',
       }}
     >
-      {/* TOOLTIP / BANNER FLOTANTE DE CONSULTA RÁPIDA */}
+      {/* CUADRO DE DIÁLOGO CAD 100% CUADRADO */}
       {isOpen && (
         <div
           style={{
-            backgroundColor: '#0E1B2E',
-            border: '1px solid #25D366',
-            borderRadius: '20px',
-            padding: '16px 20px',
-            maxWidth: '300px',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(37, 211, 102, 0.3)',
-            animation: 'fadeInUp 0.3s ease-out',
+            backgroundColor: '#000000',
+            border: '1px solid #00FF66',
+            padding: '16px 18px',
+            maxWidth: '320px',
+            position: 'relative',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.95)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+          {/* ESQUINAS CRUZ CAD (+) */}
+          <span style={{ position: 'absolute', top: '-8px', left: '-8px', color: '#00FF66', fontFamily: 'monospace', fontSize: '14px' }}>+</span>
+          <span style={{ position: 'absolute', top: '-8px', right: '-8px', color: '#00FF66', fontFamily: 'monospace', fontSize: '14px' }}>+</span>
+          <span style={{ position: 'absolute', bottom: '-8px', left: '-8px', color: '#00FF66', fontFamily: 'monospace', fontSize: '14px' }}>+</span>
+          <span style={{ position: 'absolute', bottom: '-8px', right: '-8px', color: '#00FF66', fontFamily: 'monospace', fontSize: '14px' }}>+</span>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', borderBottom: '1px solid #1A1A1A', paddingBottom: '6px' }}>
             <span
               style={{
-                fontFamily: 'var(--fuente-tecnica)',
+                fontFamily: 'monospace',
                 fontSize: '10px',
-                color: '#25D366',
+                color: '#00FF66',
                 fontWeight: 700,
                 letterSpacing: '1px',
                 display: 'flex',
@@ -44,57 +49,61 @@ export default function FloatingWhatsApp() {
             >
               <span
                 style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  backgroundColor: '#25D366',
-                  boxShadow: '0 0 8px #25D366',
+                  width: '6px',
+                  height: '6px',
+                  backgroundColor: '#00FF66',
+                  display: 'inline-block',
+                  animation: 'svgPulseSignal 1.2s infinite',
                 }}
               ></span>
-              KERLING NATALE • EN LÍNEA
+              [COMMS: KERLING NATALE // ON]
             </span>
             <button
               onClick={() => setIsOpen(false)}
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#94A3B8',
+                color: '#888888',
                 cursor: 'pointer',
-                fontSize: '14px',
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                padding: '2px 4px',
               }}
             >
-              ✕
+              [X]
             </button>
           </div>
+
           <p
             style={{
-              fontFamily: 'var(--fuente-cuerpo)',
-              fontSize: '13px',
-              color: '#FFFFFF',
+              fontFamily: 'system-ui, -apple-system, sans-serif',
+              fontSize: '12.5px',
+              color: '#CCCCCC',
               margin: '0 0 12px 0',
               lineHeight: '1.4',
             }}
           >
-            ¿Necesitas presupuesto para una instalación, boletín CIE o domótica Loxone?
+            ¿Necesitas presupuesto urgente o consulta técnica para instalación, boletín CIE o Loxone?
           </p>
+
           <a
-            href="https://wa.me/34682178499?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20vuestros%20servicios."
+            href="https://wa.me/34682178499?text=Hola%20Kerling,%20quisiera%20consultar%20por%20un%20proyecto%20eléctrico%20en%20DEN."
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'inline-block',
+              display: 'block',
               width: '100%',
               textAlign: 'center',
-              backgroundColor: '#25D366',
-              color: '#FFFFFF',
-              fontFamily: 'var(--fuente-tecnica)',
+              backgroundColor: '#00FF66',
+              color: '#000000',
+              fontFamily: 'monospace',
               fontSize: '11px',
               fontWeight: 800,
               padding: '10px 0',
-              borderRadius: '100px',
               textDecoration: 'none',
               letterSpacing: '1px',
-              boxShadow: '0 0 15px rgba(37, 211, 102, 0.4)',
+              border: '1px solid #00FF66',
+              boxSizing: 'border-box',
             }}
           >
             ABRIR WHATSAPP DIRECTO →
@@ -102,36 +111,45 @@ export default function FloatingWhatsApp() {
         </div>
       )}
 
-      {/* BOTÓN INSIGNIA CIRCULAR FLOTANTE */}
+      {/* BOTÓN FLOTANTE 100% CUADRADO */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         style={{
-          width: '60px',
-          height: '60px',
-          borderRadius: '50%',
-          backgroundColor: '#25D366',
-          border: 'none',
-          color: '#FFFFFF',
-          fontSize: '28px',
+          height: '46px',
+          padding: '0 16px',
+          backgroundColor: '#000000',
+          border: '1px solid #00FF66',
+          color: '#00FF66',
+          fontFamily: 'monospace',
+          fontSize: '11px',
+          fontWeight: 800,
+          letterSpacing: '1.5px',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.6), 0 0 25px rgba(37, 211, 102, 0.5)',
-          transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          gap: '8px',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.8)',
+          transition: 'all 0.2s ease',
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = '#00FF66';
+          e.currentTarget.style.color = '#000000';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = '#000000';
+          e.currentTarget.style.color = '#00FF66';
+        }}
       >
-        💬
+        <span
+          style={{
+            width: '6px',
+            height: '6px',
+            backgroundColor: '#00FF66',
+            display: 'inline-block',
+          }}
+        ></span>
+        [⚡ COMMS WA]
       </button>
-
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </div>
   );
 }

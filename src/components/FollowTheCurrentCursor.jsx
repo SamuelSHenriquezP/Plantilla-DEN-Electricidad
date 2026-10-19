@@ -14,12 +14,11 @@ export default function FollowTheCurrentCursor() {
     setIsVisible(true);
 
     const cursor = document.getElementById('cursor-particula-electrica');
-    const label = document.getElementById('cursor-etiqueta-contextual');
 
     if (!cursor) return;
 
-    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.25, ease: 'power3.out' });
-    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.25, ease: 'power3.out' });
+    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.15, ease: 'power2.out' });
+    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.15, ease: 'power2.out' });
 
     const handleMouseMove = (e) => {
       xTo(e.clientX);
@@ -51,43 +50,53 @@ export default function FollowTheCurrentCursor() {
         top: 0,
         left: 0,
         pointerEvents: 'none',
-        zIndex: 9999,
+        zIndex: 99999,
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
         transform: 'translate(-50%, -50%)',
       }}
     >
-      {/* PUNTO DE CORRIENTE AZUL ELÉCTRICO */}
+      {/* RETÍCULA CAD CUADRADA 100% */}
       <div
         style={{
-          width: '8px',
-          height: '8px',
-          borderRadius: '50%',
-          backgroundColor: 'var(--color-electrico)',
-          boxShadow: '0 0 16px var(--color-electrico), 0 0 30px var(--color-electrico)',
+          width: '10px',
+          height: '10px',
+          border: '1px solid #00F0FF',
+          backgroundColor: 'transparent',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      ></div>
+      >
+        <span
+          style={{
+            width: '2px',
+            height: '2px',
+            backgroundColor: '#00F0FF',
+            display: 'block',
+          }}
+        ></span>
+      </div>
 
-      {/* ETIQUETA CONTEXTUAL (VIEW, EXPLORE, OPEN) */}
+      {/* ETIQUETA CONTEXTUAL CAD CUADRADA */}
       {cursorText && (
         <span
           id="cursor-etiqueta-contextual"
           style={{
-            background: 'rgba(3, 5, 8, 0.9)',
-            border: '1px solid var(--color-electrico)',
-            color: 'var(--color-electrico)',
-            fontFamily: 'var(--fuente-tecnica)',
+            background: '#000000',
+            border: '1px solid #00F0FF',
+            color: '#00F0FF',
+            fontFamily: 'monospace',
             fontSize: '9px',
             fontWeight: 800,
-            letterSpacing: '1.5px',
-            padding: '4px 10px',
-            borderRadius: '100px',
+            letterSpacing: '1px',
+            padding: '2px 6px',
             whiteSpace: 'nowrap',
-            backdropFilter: 'blur(8px)',
           }}
         >
-          {cursorText}
+          [{cursorText}]
         </span>
       )}
     </div>

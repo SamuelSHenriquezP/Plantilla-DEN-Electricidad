@@ -56,7 +56,7 @@ export default function App() {
   return (
     <div
       style={{
-        background: '#030712',
+        background: '#000000',
         color: '#FFFFFF',
         width: '100%',
         minHeight: '100vh',
@@ -64,18 +64,22 @@ export default function App() {
         position: 'relative',
       }}
     >
+      {/* CAPAS DE CUADRÍCULA TÉCNICA GLOBAL CAD (BLUEPRINT GRID) */}
+      <div className="blueprint-grid-background" />
+      <div className="blueprint-grid-sub" />
+
       {/* CURSOR ELÉCTRICO DESKTOP */}
       <FollowTheCurrentCursor />
 
-      {/* DOCK NAV SUPERIOR CON NAVEGACIÓN SUAVE */}
+      {/* DOCK NAV SUPERIOR 100% CUADRADO */}
       <DockNav
         activeIndex={activeSectionIdx}
         onNavigate={handleNavigate}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* CONTENEDOR MAESTRO CON SCROLL SUAVE Y ANIMACIONES DE ENTRADA */}
-      <main style={{ width: '100%' }}>
+      {/* CONTENEDOR MAESTRO DE CUADRÍCULA CONTINUA */}
+      <main style={{ width: '100%', position: 'relative', zIndex: 2 }}>
         {/* SECCIÓN 0: HERO (POWER ON) */}
         <div id="inicio">
           <SystemActivationHero
@@ -108,25 +112,28 @@ export default function App() {
           <FinalCircuitContact onOpenQuote={() => setIsQuoteOpen(true)} />
           <footer
             style={{
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-              padding: '32px 4vw',
-              backgroundColor: '#030712',
+              borderTop: '1px solid #1A1A1A',
+              padding: '28px 4vw',
+              backgroundColor: '#050505',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
               flexWrap: 'wrap',
               gap: '16px',
-              fontFamily: 'var(--fuente-cuerpo)',
-              fontSize: '13px',
-              color: 'rgba(255, 255, 255, 0.5)',
+              fontFamily: 'var(--fuente-tecnica)',
+              fontSize: '11px',
+              color: 'var(--texto-secundario)',
+              position: 'relative',
+              zIndex: 10,
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <img src="/Logo DEN.png" alt="Dynamic Electric Natale" style={{ height: '32px', width: 'auto' }} />
+              <img src="/Logo DEN.png" alt="Dynamic Electric Natale" style={{ height: '30px', width: 'auto' }} />
+              <span style={{ color: 'var(--color-electrico)', letterSpacing: '0.15em' }}>[SYS_STATUS: ONLINE 230V]</span>
             </div>
 
-            <span style={{ textAlign: 'center', maxWidth: '600px' }}>
-              © {new Date().getFullYear()} Dynamic Electric Natale — Kerling Abraham Natale Hidalgo. Electricista Especialista · Guadarrama, Madrid.
+            <span style={{ textAlign: 'center', maxWidth: '600px', letterSpacing: '0.05em' }}>
+              © {new Date().getFullYear()} DYNAMIC ELECTRIC NATALE — ING. KERLING A. NATALE H. // GUADARRAMA, MADRID.
             </span>
 
             <div style={{ display: 'flex', gap: '16px' }}>
@@ -134,61 +141,59 @@ export default function App() {
                 href="https://www.instagram.com/dynamic_electric_natale"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', transition: 'color 0.3s' }}
+                style={{ color: '#AAAAAA', textDecoration: 'none', transition: 'color 0.2s', letterSpacing: '0.1em' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-electrico)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#AAAAAA')}
               >
-                Instagram
+                [INSTAGRAM]
               </a>
               <a
                 href="https://www.tiktok.com/@dynamic.electric.natale"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', transition: 'color 0.3s' }}
+                style={{ color: '#AAAAAA', textDecoration: 'none', transition: 'color 0.2s', letterSpacing: '0.1em' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-electrico)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#AAAAAA')}
               >
-                TikTok
+                [TIKTOK]
               </a>
             </div>
           </footer>
         </div>
       </main>
 
-      {/* INDICADOR LATERAL DE NAVEGACIÓN */}
+      {/* INDICADOR LATERAL TÉCNICO CUADRADO */}
       <div
         style={{
           position: 'fixed',
-          right: '24px',
+          right: '18px',
           top: '50%',
           transform: 'translateY(-50%)',
           zIndex: 1000,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '12px',
-          backgroundColor: 'rgba(3, 7, 18, 0.85)',
-          border: '1px solid rgba(255, 255, 255, 0.12)',
-          backdropFilter: 'blur(12px)',
-          padding: '16px 10px',
-          borderRadius: '100px',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.8)',
+          gap: '8px',
+          backgroundColor: '#080808',
+          border: '1px solid #222222',
+          padding: '10px 6px',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.9)',
         }}
       >
+        <span style={{ fontFamily: 'var(--fuente-tecnica)', fontSize: '8px', color: '#555555', marginBottom: '2px' }}>SYS</span>
         {SECTION_IDS.map((id, idx) => (
           <button
             key={idx}
             onClick={() => handleNavigate(idx)}
-            title={`Sección ${idx + 1}`}
+            title={`Nodo 0${idx + 1}`}
             style={{
-              width: activeSectionIdx === idx ? '10px' : '8px',
-              height: activeSectionIdx === idx ? '26px' : '8px',
-              borderRadius: '100px',
-              backgroundColor: activeSectionIdx === idx ? 'var(--color-electrico)' : 'rgba(255, 255, 255, 0.25)',
-              boxShadow: activeSectionIdx === idx ? '0 0 14px var(--color-electrico)' : 'none',
-              border: 'none',
+              width: '8px',
+              height: activeSectionIdx === idx ? '22px' : '8px',
+              backgroundColor: activeSectionIdx === idx ? 'var(--color-electrico)' : '#1A1A1A',
+              boxShadow: activeSectionIdx === idx ? '0 0 10px var(--color-electrico)' : 'none',
+              border: activeSectionIdx === idx ? '1px solid #FFFFFF' : '1px solid #333333',
               cursor: 'pointer',
-              transition: 'all 0.4s ease',
+              transition: 'all 0.25s ease',
             }}
           />
         ))}

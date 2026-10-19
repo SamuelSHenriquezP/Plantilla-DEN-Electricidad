@@ -9,10 +9,10 @@ export default function AboutKerling({ onOpenQuote }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.lado-imagen-perfil', {
-        x: -40,
+      gsap.from('.cad-perfil-img', {
+        x: -30,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -20,10 +20,10 @@ export default function AboutKerling({ onOpenQuote }) {
         },
       });
 
-      gsap.from('.lado-texto-perfil', {
-        x: 40,
+      gsap.from('.cad-perfil-info', {
+        x: 30,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -41,266 +41,368 @@ export default function AboutKerling({ onOpenQuote }) {
       ref={sectionRef}
       style={{
         width: '100%',
-        minHeight: '100vh',
-        backgroundColor: '#030712',
+        backgroundColor: '#000000',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        borderBottom: '1px solid #1A1A1A',
       }}
     >
-      {/* GLOW AMBIENTAL EN ESQUINA */}
       <div
         style={{
-          position: 'absolute',
-          top: '-100px',
-          left: '-100px',
-          width: '500px',
-          height: '500px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, var(--color-electrico-glow) 0%, transparent 70%)',
-          pointerEvents: 'none',
-          opacity: 0.6,
-        }}
-      ></div>
-
-      <div
-        style={{
-          maxWidth: '1280px',
+          maxWidth: '1360px',
           margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '60px',
-          alignItems: 'center',
           position: 'relative',
-          zIndex: 2,
         }}
       >
-        {/* FOTO E IDENTIDAD DE KERLING NATALE */}
+        {/* ENCABEZADO TÉCNICO CAD */}
         <div
-          className="lado-imagen-perfil"
           style={{
-            position: 'relative',
-            borderRadius: '28px',
-            overflow: 'hidden',
-            border: '1px solid var(--color-electrico-borde)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--color-electrico-glow)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            flexWrap: 'wrap',
+            gap: '16px',
+            marginBottom: '36px',
+            borderBottom: '1px solid #1A1A1A',
+            paddingBottom: '20px',
           }}
         >
-          <img
-            src="/images/kerling_portrait.png"
-            alt="Kerling Abraham Natale Hidalgo — Dirección Técnica DEN"
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '340px',
-              objectFit: 'cover',
-              display: 'block',
-            }}
-          />
+          <div>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: '#050505',
+                border: '1px solid #222222',
+                padding: '4px 12px',
+                marginBottom: '10px',
+              }}
+            >
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  backgroundColor: '#00F0FF',
+                  display: 'inline-block',
+                }}
+              ></span>
+              <span
+                style={{
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  color: '#00F0FF',
+                  letterSpacing: '2px',
+                  fontWeight: 700,
+                }}
+              >
+                [MODULE 04 // LEAD TECHNICAL DIRECTION]
+              </span>
+            </div>
+
+            <h2
+              style={{
+                fontFamily: 'system-ui, -apple-system, sans-serif',
+                fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
+                fontWeight: 900,
+                color: '#FFFFFF',
+                letterSpacing: '-0.02em',
+                lineHeight: 1,
+                margin: 0,
+                textTransform: 'uppercase',
+              }}
+            >
+              DIRECCIÓN TÉCNICA <span style={{ color: '#00F0FF' }}>& PERFIL PROFESIONAL</span>
+            </h2>
+          </div>
 
           <div
             style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              padding: '16px',
-              background: 'linear-gradient(180deg, transparent 0%, rgba(3, 5, 8, 0.95) 100%)',
-              display: 'flex',
-              flexDirection: 'column',
+              fontFamily: 'monospace',
+              fontSize: '11px',
+              color: '#666666',
+              textAlign: 'right',
             }}
           >
-            <span
-              style={{
-                fontFamily: 'var(--fuente-titulos)',
-                fontSize: '1rem',
-                fontWeight: 800,
-                color: '#FFFFFF',
-                letterSpacing: '1px',
-              }}
-            >
-              KERLING ABRAHAM NATALE HIDALGO
-            </span>
-            <span
-              style={{
-                fontFamily: 'var(--fuente-tecnica)',
-                fontSize: '10px',
-                color: '#FFEE00',
-                letterSpacing: '1.5px',
-                marginTop: '2px',
-                fontWeight: 700,
-              }}
-            >
-              DIRECTOR TÉCNICO & ELECTRICISTA ESPECIALISTA
-            </span>
+            <div>REGISTRATION: [CAM//DGI-ESPECIALISTA]</div>
+            <div style={{ color: '#FFE600' }}>HQ: GUADARRAMA, MADRID</div>
           </div>
         </div>
 
-        {/* TEXTO EDITORIAL NOSOTROS SOMOS */}
-        <div className="lado-texto-perfil" style={{ display: 'flex', flexDirection: 'column' }}>
-          <span
-            style={{
-              fontFamily: 'var(--fuente-tecnica)',
-              fontSize: '10px',
-              color: 'var(--color-electrico)',
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              marginBottom: '8px',
-              display: 'block',
-            }}
-          >
-            01 // NOSOTROS SOMOS • DIRECCIÓN TÉCNICA
-          </span>
-
-          <h2
-            style={{
-              fontFamily: 'var(--fuente-titulos)',
-              fontSize: 'clamp(1.6rem, 2.8vw, 2.5rem)',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              lineHeight: 1.0,
-              letterSpacing: '-0.02em',
-              textTransform: 'uppercase',
-              marginBottom: '12px',
-            }}
-          >
-            KERLING ABRAHAM <br />
-            <span style={{ color: 'var(--color-electrico)' }}>NATALE HIDALGO</span>
-          </h2>
-
-          <p
-            style={{
-              fontFamily: 'var(--fuente-cuerpo)',
-              fontSize: '13px',
-              color: '#CBD5E1',
-              lineHeight: 1.5,
-              marginBottom: '10px',
-            }}
-          >
-            Como <strong>electricista especialista en Guadarrama, Madrid</strong>, no solo realizo el trabajo: garantizo su legalidad, seguridad y correcto funcionamiento. Cada proyecto viene respaldado por certificaciones oficiales.
-          </p>
-
-          {/* CUADRÍCULA DE QUALIFICACIONES TÉCNICAS AUTÉNTICAS */}
+        {/* CONTENEDOR PRINCIPAL CAD EN 2 COLUMNAS */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: window.innerWidth > 992 ? '420px 1fr' : '1fr',
+            gap: '36px',
+            alignItems: 'start',
+          }}
+        >
+          {/* COLUMNA IZQUIERDA: RETRATO CAD CON OVERLAY DE DIMENSIONES TÉCNICAS */}
           <div
+            className="cad-perfil-img"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '10px',
-              marginBottom: '20px',
+              position: 'relative',
+              backgroundColor: '#050505',
+              border: '1px solid #222222',
+              padding: '16px',
             }}
           >
-            {[
-              {
-                title: 'ELECTRICISTA CATEGORÍA ESPECIALISTA',
-                sub: 'Comunidad de Madrid',
-                icon: (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFEE00" strokeWidth="2">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                  </svg>
-                ),
-              },
-              {
-                title: 'CERTIFICACIÓN DE INSTALACIONES',
-                sub: 'Legalización y Seguridad REBT',
-                icon: (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-electrico)" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  </svg>
-                ),
-              },
-              {
-                title: 'CERTIFICACIÓN FOTOVOLTAICA',
-                sub: 'Sistemas Solares y Baterías',
-                icon: (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFEE00" strokeWidth="2">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                  </svg>
-                ),
-              },
-              {
-                title: 'PARTNER LOXONE DOMÓTICA',
-                sub: 'Instalación y Programación Smart',
-                icon: (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-electrico)" strokeWidth="2">
-                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                    <rect x="9" y="9" width="6" height="6"></rect>
-                  </svg>
-                ),
-              },
-            ].map((cert, idx) => (
-              <div
-                key={idx}
+            <span style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+            <span style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+            <span style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+            <span style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+
+            {/* BARRA SUPERIOR DE CALIBRACIÓN */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontFamily: 'monospace',
+                fontSize: '9.5px',
+                color: '#666666',
+                paddingBottom: '8px',
+                borderBottom: '1px solid #1A1A1A',
+                marginBottom: '10px',
+              }}
+            >
+              <span>[DIM: 420x540mm]</span>
+              <span>[CALIB: ISO-9001]</span>
+              <span style={{ color: '#00FF66' }}>[VERIFIED]</span>
+            </div>
+
+            {/* IMAGEN DE KERLING */}
+            <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid #1F1F1F' }}>
+              <img
+                src="/images/kerling_portrait.png"
+                alt="Kerling Abraham Natale Hidalgo — Dirección Técnica DEN"
                 style={{
-                  background: '#0E1B2E',
-                  border: '1px solid var(--color-electrico-borde)',
-                  borderRadius: '12px',
-                  padding: '10px 12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
+                  width: '100%',
+                  height: '380px',
+                  objectFit: 'cover',
+                  display: 'block',
+                  filter: 'contrast(1.08) grayscale(20%)',
+                }}
+              />
+
+              {/* LÍNEA DE ESCANEO SVG ANIMADA */}
+              <svg
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  pointerEvents: 'none',
                 }}
               >
-                <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>{cert.icon}</span>
-                <div>
-                  <h4 style={{ fontFamily: 'var(--fuente-titulos)', fontSize: '10px', color: '#FFFFFF', margin: 0, fontWeight: 800 }}>
-                    {cert.title}
-                  </h4>
-                  <p style={{ fontFamily: 'var(--fuente-tecnica)', fontSize: '8.5px', color: '#94A3B8', margin: '2px 0 0 0' }}>
-                    {cert.sub}
-                  </p>
+                <line
+                  x1="0"
+                  y1="50%"
+                  x2="100%"
+                  y2="50%"
+                  stroke="#00F0FF"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 8"
+                  style={{ opacity: 0.6 }}
+                />
+              </svg>
+
+              {/* CAJÓN DE IDENTIFICACIÓN INFERIOR */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: 'rgba(0, 0, 0, 0.92)',
+                  borderTop: '1px solid #00F0FF',
+                  padding: '12px 14px',
+                }}
+              >
+                <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#00F0FF', fontWeight: 800 }}>
+                  KERLING ABRAHAM NATALE HIDALGO
+                </div>
+                <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#FFE600', letterSpacing: '1px', marginTop: '2px' }}>
+                  DIRECTOR TÉCNICO & ELECTRICISTA ESPECIALISTA
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* PIE TELEMÉTRICO DEL RETRATO */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontFamily: 'monospace',
+                fontSize: '9px',
+                color: '#555555',
+                paddingTop: '10px',
+              }}
+            >
+              <span>ID: DEN-AUTH-001</span>
+              <span>EXP: +12 AÑOS</span>
+              <span style={{ color: '#00F0FF' }}>AUTH: MADRID/REBT</span>
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            <button
-              onClick={onOpenQuote}
+          {/* COLUMNA DERECHA: TEXTO EDITORIAL BRUTALISTA Y MATRIZ DE CERTIFICACIONES */}
+          <div className="cad-perfil-info" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div>
+              <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#00F0FF', letterSpacing: '2px', fontWeight: 700, marginBottom: '6px' }}>
+                // DIRECCIÓN DE PROYECTO & AUTORIZACIÓN
+              </div>
+
+              <h3
+                style={{
+                  fontFamily: 'system-ui, -apple-system, sans-serif',
+                  fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)',
+                  fontWeight: 900,
+                  color: '#FFFFFF',
+                  lineHeight: 1.1,
+                  margin: '0 0 12px 0',
+                  textTransform: 'uppercase',
+                }}
+              >
+                RIGOR TÉCNICO, CERTIFICACIÓN OFICIAL Y ATENCIÓN DIRECTA
+              </h3>
+
+              <p
+                style={{
+                  fontFamily: 'system-ui, -apple-system, sans-serif',
+                  fontSize: '14px',
+                  color: '#A0A0A0',
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                En <strong>Dynamic Electric Natale (DEN)</strong> no delegamos la responsabilidad técnica en intermediarios comerciales. Como instalador especialista autorizado por la Comunidad de Madrid, evalúo y dirijo personalmente cada cuadro eléctrico, red domótica Loxone y proyecto fotovoltaico para garantizar máxima seguridad y cumplimiento reglamentario.
+              </p>
+            </div>
+
+            {/* MATRIZ DE QUALIFICACIONES TÉCNICAS (100% CUADRADAS) */}
+            <div
               style={{
-                background: 'var(--color-electrico)',
-                color: '#FFFFFF',
-                border: 'none',
-                padding: '16px 36px',
-                borderRadius: '100px',
-                fontFamily: 'var(--fuente-tecnica)',
-                fontSize: '12px',
-                fontWeight: 800,
-                letterSpacing: '1.5px',
-                cursor: 'pointer',
-                boxShadow: '0 0 25px var(--color-electrico-glow)',
-                transition: 'all 0.3s ease',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '10px',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
             >
-              AGENDAR CONSULTA TÉCNICA →
-            </button>
-            <a
-              href="https://wa.me/34682178499"
-              target="_blank"
-              rel="noopener noreferrer"
+              {[
+                {
+                  code: 'CERT//01',
+                  title: 'ELECTRICISTA ESPECIALISTA',
+                  sub: 'Comunidad de Madrid • DGI',
+                  color: '#00F0FF',
+                },
+                {
+                  code: 'CERT//02',
+                  title: 'CERTIFICACIÓN REBT & CIE',
+                  sub: 'Boletines Oficiales 24-48h',
+                  color: '#FFE600',
+                },
+                {
+                  code: 'CERT//03',
+                  title: 'INGENIERÍA FOTOVOLTAICA',
+                  sub: 'Autoconsumo, Inversores & LFP',
+                  color: '#00FF66',
+                },
+                {
+                  code: 'CERT//04',
+                  title: 'PARTNER OFICIAL LOXONE',
+                  sub: 'Domótica Local & Tree Bus',
+                  color: '#00F0FF',
+                },
+              ].map((c, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    backgroundColor: '#050505',
+                    border: '1px solid #1F1F1F',
+                    borderLeft: `2px solid ${c.color}`,
+                    padding: '12px 14px',
+                    position: 'relative',
+                  }}
+                >
+                  <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#666666', marginBottom: '2px' }}>
+                    [{c.code}]
+                  </div>
+                  <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', fontWeight: 800, color: '#FFFFFF', textTransform: 'uppercase' }}>
+                    {c.title}
+                  </div>
+                  <div style={{ fontFamily: 'monospace', fontSize: '10px', color: c.color, marginTop: '2px' }}>
+                    {c.sub}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* PROTOCOLO DE INTERVENCIÓN */}
+            <div
               style={{
-                background: 'rgba(37, 211, 102, 0.1)',
-                border: '1px solid #25D366',
-                color: '#25D366',
-                padding: '16px 28px',
-                borderRadius: '100px',
-                fontFamily: 'var(--fuente-tecnica)',
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '1.5px',
-                textDecoration: 'none',
+                backgroundColor: '#050505',
+                border: '1px solid #1F1F1F',
+                padding: '14px 18px',
               }}
             >
-              WHATSAPP DIRECTO →
-            </a>
+              <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#FFE600', fontWeight: 700, marginBottom: '6px', letterSpacing: '1px' }}>
+                [PROTOCOLO DE CONTROL DE CALIDAD DEN]
+              </div>
+              <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#888888', lineHeight: 1.5 }}>
+                Toda instalación finaliza con comprobación de disparo de diferenciales con analizador de redes calibrado, medición de aislamiento a 1000V e inspección infrarroja con cámara termográfica FLIR para asegurar ausencia total de sobrecalentamientos.
+              </div>
+            </div>
+
+            {/* BOTONES TERMINAL 100% CUADRADOS */}
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <button
+                onClick={onOpenQuote}
+                style={{
+                  backgroundColor: '#00F0FF',
+                  color: '#000000',
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  fontWeight: 800,
+                  letterSpacing: '1.5px',
+                  padding: '14px 28px',
+                  border: '1px solid #00F0FF',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#000000';
+                  e.currentTarget.style.color = '#00F0FF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#00F0FF';
+                  e.currentTarget.style.color = '#000000';
+                }}
+              >
+                AGENDAR CONSULTA TÉCNICA →
+              </button>
+
+              <a
+                href="https://wa.me/34682178499"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: '#000000',
+                  color: '#00FF66',
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '1.5px',
+                  padding: '14px 24px',
+                  border: '1px solid #222222',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                }}
+              >
+                WHATSAPP DIRECTO CON KERLING ⚡
+              </a>
+            </div>
           </div>
         </div>
       </div>

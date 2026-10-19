@@ -3,73 +3,77 @@ import React from 'react';
 export default function LoxoneDomoticaSection({ onOpenQuote }) {
   const pilares = [
     {
-      titulo: 'Automatización Integral de Viviendas',
-      desc: 'Una casa inteligente no es solo control remoto, es automatización real. El sistema aprende tus hábitos y optimiza cada función para mejorar el confort y reducir el consumo energético.',
+      nodo: '01',
+      bus: 'TREE BUS • 100kbps',
+      titulo: 'Automatización Integral',
+      desc: 'El Miniserver procesa de forma 100% local cada sensor, pulsador y actuador de la vivienda. Cero latencia de nube, privacidad total y respuesta instantánea.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-electrico)" strokeWidth="2">
-          <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-          <rect x="9" y="9" width="6" height="6"></rect>
-          <line x1="9" y1="1" x2="9" y2="4"></line>
-          <line x1="15" y1="1" x2="15" y2="4"></line>
-          <line x1="9" y1="20" x2="9" y2="23"></line>
-          <line x1="15" y1="20" x2="15" y2="23"></line>
-          <line x1="20" y1="9" x2="23" y2="9"></line>
-          <line x1="20" y1="15" x2="23" y2="15"></line>
-          <line x1="1" y1="9" x2="4" y2="9"></line>
-          <line x1="1" y1="15" x2="4" y2="15"></line>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00FF66" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18"></rect>
+          <line x1="8" y1="3" x2="8" y2="21"></line>
+          <line x1="16" y1="3" x2="16" y2="21"></line>
+          <line x1="3" y1="8" x2="21" y2="8"></line>
+          <line x1="3" y1="16" x2="21" y2="16"></line>
         </svg>
       ),
       caracteristicas: [
-        'Control total desde app o pulsadores inteligentes',
-        'Escenarios automáticos personalizados',
-        'Integración completa de todos los sistemas',
-        'Gestión centralizada y eficiente',
+        'Procesamiento local sin servidores externos',
+        'Topología Tree en estrella o bus flexible',
+        'Pulsadores táctiles hápticos Touch Pure',
+        'Lógica autónoma 365 días sin depender de Internet',
       ],
     },
     {
-      titulo: 'Eficiencia Energética Inteligente',
-      desc: 'Loxone permite gestionar el consumo energético de forma avanzada, priorizando autoconsumo solar, climatización eficiente y optimización automática de recursos.',
+      nodo: '02',
+      bus: 'MODBUS / SOL-INV',
+      titulo: 'Gestión Energética Solar',
+      desc: 'Orquestación inteligente entre la generación solar fotovoltaica, la batería de litio LFP, la climatización por aerotermia y el punto de recarga de vehículo.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFEE00" strokeWidth="2">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFE600" strokeWidth="2">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
         </svg>
       ),
       caracteristicas: [
-        'Control inteligente de climatización',
-        'Gestión automática de persianas según orientación solar',
-        'Integración con instalaciones fotovoltaicas',
-        'Monitorización energética en tiempo real',
+        'Priorización automática del autoconsumo',
+        'Carga de coche eléctrico solo con excedente solar',
+        'Derivación de energía térmica a bomba de calor',
+        'Monitorización de flujos energéticos segundo a segundo',
       ],
     },
     {
-      titulo: 'Seguridad y Control de Accesos',
-      desc: 'Mayor protección y tranquilidad gracias a sistemas integrados de control de acceso, alarmas técnicas y simulación de presencia.',
+      nodo: '03',
+      bus: 'DALI-2 / TREE LIGHT',
+      titulo: 'Iluminación & Clima Inteligente',
+      desc: 'Control de hasta 64 luminarias DALI-2 por rama, regulación de temperatura por estancia con micro-zonificación y control de estores según azimut solar.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-electrico)" strokeWidth="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
         </svg>
       ),
       caracteristicas: [
-        'Videoportero conectado',
-        'Control de accesos inteligente',
-        'Notificaciones en tiempo real',
-        'Automatización de escenarios de seguridad',
+        'Ajuste circadiano de luz biológica 2700K - 6500K',
+        'Termostatos discretos integrados en pulsador',
+        'Persianas que bajan automáticamente en sobrecalentamiento',
+        'Escenas de ambiente por estancia y pulsación triple',
       ],
     },
     {
-      titulo: 'Audio Multiroom y Experiencia Premium',
-      desc: 'Sistema de sonido integrado en toda la vivienda con control centralizado y sin instalaciones visibles, ofreciendo una experiencia moderna y elegante.',
+      nodo: '04',
+      bus: 'IP INTERCOM / AIR',
+      titulo: 'Seguridad & Acceso Biométrico',
+      desc: 'Intercomunicador de vídeo IP con NFC/Code Touch, simulación de presencia hiperrealista y corte de agua de emergencia ante fugas detectadas.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFEE00" strokeWidth="2">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="2">
+          <rect x="5" y="11" width="14" height="10"></rect>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
         </svg>
       ),
       caracteristicas: [
-        'Sonido en cada estancia',
-        'Control centralizado desde app',
-        'Integración con iluminación y escenas',
-        'Instalación limpia y profesional',
+        'Control de acceso con código temporal o NFC',
+        'Cierre automático perimetral en modo noche',
+        'Notificaciones push inmediatas sin cuotas mensuales',
+        'Sensores de fuga de agua con electroválvula de corte',
       ],
     },
   ];
@@ -79,229 +83,376 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
       id="domotica-loxone"
       style={{
         width: '100%',
-        minHeight: '100vh',
-        backgroundColor: '#030712',
+        backgroundColor: '#000000',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        borderBottom: '1px solid #1A1A1A',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        {/* ENCABEZADO DE SECCIÓN CON BADGE LOXONE */}
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: 'rgba(16, 185, 129, 0.1)',
-              border: '1px solid #10B981',
-              padding: '4px 14px',
-              borderRadius: '100px',
-              marginBottom: '10px',
-            }}
-          >
-            <span
+      <div style={{ maxWidth: '1360px', margin: '0 auto', width: '100%', position: 'relative' }}>
+        {/* ENCABEZADO TÉCNICO CAD */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            flexWrap: 'wrap',
+            gap: '16px',
+            marginBottom: '32px',
+            borderBottom: '1px solid #1A1A1A',
+            paddingBottom: '20px',
+          }}
+        >
+          <div>
+            <div
               style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                backgroundColor: '#10B981',
-                boxShadow: '0 0 8px #10B981',
-              }}
-            ></span>
-            <span
-              style={{
-                fontFamily: 'var(--fuente-tecnica)',
-                fontSize: '10px',
-                color: '#10B981',
-                fontWeight: 800,
-                letterSpacing: '2px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: '#050505',
+                border: '1px solid #222222',
+                padding: '4px 12px',
+                marginBottom: '10px',
               }}
             >
-              PARTNER OFFICIAL LOXONE
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  backgroundColor: '#00FF66',
+                  display: 'inline-block',
+                }}
+              ></span>
+              <span
+                style={{
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  color: '#00FF66',
+                  letterSpacing: '2px',
+                  fontWeight: 700,
+                }}
+              >
+                [PARTNER OFFICIAL LOXONE // CERTIFIED ARCHITECTURE]
+              </span>
+            </div>
+
+            <h2
+              style={{
+                fontFamily: 'system-ui, -apple-system, sans-serif',
+                fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
+                fontWeight: 900,
+                color: '#FFFFFF',
+                letterSpacing: '-0.02em',
+                lineHeight: 1,
+                margin: 0,
+                textTransform: 'uppercase',
+              }}
+            >
+              DOMÓTICA <span style={{ color: '#00FF66' }}>LOXONE 100% LOCAL</span>
+            </h2>
+          </div>
+
+          <div
+            style={{
+              fontFamily: 'monospace',
+              fontSize: '11px',
+              color: '#666666',
+              textAlign: 'right',
+            }}
+          >
+            <div>TOPOLOGY: [TREE + AIR + DALI]</div>
+            <div style={{ color: '#00F0FF' }}>LATENCY: &lt; 2ms LOCAL BUS</div>
+          </div>
+        </div>
+
+        {/* ESQUEMA SVG ANIMADO DE ARQUITECTURA LOXONE */}
+        <div
+          style={{
+            backgroundColor: '#050505',
+            border: '1px solid #222222',
+            padding: '20px',
+            marginBottom: '28px',
+            position: 'relative',
+          }}
+        >
+          <span style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+          <span style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+          <span style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+          <span style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', borderBottom: '1px solid #1A1A1A', paddingBottom: '8px' }}>
+            <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888', letterSpacing: '1.5px' }}>
+              CAD SCHEMATIC // LOXONE MINISERVER V2 BUS TOPOLOGY
+            </span>
+            <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00FF66' }}>
+              ● LIVE DATA TRANSMISSION
             </span>
           </div>
 
-          <h2
-            style={{
-              fontFamily: 'var(--fuente-titulos)',
-              fontSize: 'clamp(1.8rem, 3.2vw, 2.8rem)',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              lineHeight: 1.05,
-              marginBottom: '10px',
-            }}
+          {/* SVG ANIMADO DE BUS Y NODOS */}
+          <svg
+            viewBox="0 0 900 120"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
           >
-            Domótica Avanzada <span style={{ color: 'var(--color-electrico)' }}>Loxone</span>
-          </h2>
+            {/* LÍNEAS DE BUS (FONDO FIJO) */}
+            <line x1="200" y1="60" x2="850" y2="60" stroke="#1F1F1F" strokeWidth="2" />
+            <line x1="360" y1="60" x2="360" y2="20" stroke="#1F1F1F" strokeWidth="1" />
+            <line x1="520" y1="60" x2="520" y2="100" stroke="#1F1F1F" strokeWidth="1" />
+            <line x1="680" y1="60" x2="680" y2="20" stroke="#1F1F1F" strokeWidth="1" />
+            <line x1="840" y1="60" x2="840" y2="100" stroke="#1F1F1F" strokeWidth="1" />
 
-          <p
-            style={{
-              fontFamily: 'var(--fuente-cuerpo)',
-              fontSize: 'clamp(0.88rem, 1vw, 1rem)',
-              color: '#94A3B8',
-              maxWidth: '780px',
-              margin: '0 auto',
-              lineHeight: '1.5',
-            }}
-          >
-            Como <strong>Partner Loxone</strong>, ofrecemos soluciones integrales que conectan iluminación, climatización, persianas, seguridad, audio y gestión energética en un único sistema inteligente. Todo funciona de forma automática.
-          </p>
+            {/* LÍNEAS ANIMADAS CON IMPULSOS DE CORRIENTE */}
+            <line
+              x1="200"
+              y1="60"
+              x2="850"
+              y2="60"
+              stroke="#00FF66"
+              strokeWidth="2"
+              strokeDasharray="20 60"
+              style={{ animation: 'svgCurrentDash 1.6s linear infinite' }}
+            />
+            <line
+              x1="360"
+              y1="60"
+              x2="360"
+              y2="20"
+              stroke="#00F0FF"
+              strokeWidth="1.5"
+              strokeDasharray="10 30"
+              style={{ animation: 'svgCurrentDash 1.2s linear infinite' }}
+            />
+            <line
+              x1="520"
+              y1="60"
+              x2="520"
+              y2="100"
+              stroke="#FFE600"
+              strokeWidth="1.5"
+              strokeDasharray="10 30"
+              style={{ animation: 'svgCurrentDash 1.4s linear infinite' }}
+            />
+
+            {/* NODO CENTRAL: MINISERVER */}
+            <rect x="20" y="25" width="180" height="70" fill="#000000" stroke="#00FF66" strokeWidth="1.5" />
+            <text x="35" y="52" fill="#FFFFFF" fontFamily="monospace" fontSize="12" fontWeight="bold">LOXONE MINISERVER</text>
+            <text x="35" y="72" fill="#00FF66" fontFamily="monospace" fontSize="9">CORE PROCESSOR V2</text>
+            <rect x="175" y="32" width="12" height="12" fill="#00FF66" style={{ animation: 'svgPulseSignal 1s infinite' }} />
+
+            {/* NODOS DE EXTENSIÓN */}
+            <g transform="translate(300, 10)">
+              <rect x="0" y="0" width="120" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <text x="12" y="19" fill="#00F0FF" fontFamily="monospace" fontSize="9">TREE EXTENSION</text>
+              <rect x="105" y="9" width="6" height="6" fill="#00F0FF" />
+            </g>
+
+            <g transform="translate(460, 80)">
+              <rect x="0" y="0" width="120" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <text x="12" y="19" fill="#FFE600" fontFamily="monospace" fontSize="9">AIR BASE 868MHz</text>
+              <rect x="105" y="9" width="6" height="6" fill="#FFE600" />
+            </g>
+
+            <g transform="translate(620, 10)">
+              <rect x="0" y="0" width="120" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <text x="12" y="19" fill="#00FF66" fontFamily="monospace" fontSize="9">DALI-2 GATEWAY</text>
+              <rect x="105" y="9" width="6" height="6" fill="#00FF66" />
+            </g>
+
+            <g transform="translate(780, 80)">
+              <rect x="0" y="0" width="110" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <text x="12" y="19" fill="#FFFFFF" fontFamily="monospace" fontSize="9">RELAY MATRIX</text>
+              <rect x="95" y="9" width="6" height="6" fill="#00F0FF" />
+            </g>
+          </svg>
         </div>
 
-        {/* REJILLA DE LOS 4 PILARES LOXONE */}
+        {/* CUADRÍCULA DE LOS 4 PILARES LOXONE 100% CUADRADOS */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '16px',
-            marginBottom: '24px',
+            marginBottom: '28px',
           }}
         >
-          {pilares.map((pilar, idx) => (
+          {pilares.map((p, idx) => (
             <div
               key={idx}
               style={{
-                backgroundColor: '#0E1B2E',
-                border: '1px solid var(--color-electrico-borde)',
-                borderRadius: '18px',
-                padding: '20px 18px',
+                backgroundColor: '#050505',
+                border: '1px solid #1F1F1F',
+                padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                transition: 'all 0.3s ease',
+                position: 'relative',
+                transition: 'border-color 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-electrico)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 163, 255, 0.15)';
+                e.currentTarget.style.borderColor = '#00FF66';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-electrico-borde)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.borderColor = '#1F1F1F';
               }}
             >
               <div>
-                <div style={{ fontSize: '28px', marginBottom: '10px' }}>{pilar.icon}</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00FF66', fontWeight: 700 }}>
+                    [NODE: {p.nodo}]
+                  </span>
+                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: '#666666' }}>
+                    {p.bus}
+                  </span>
+                </div>
+
+                <div style={{ marginBottom: '12px' }}>{p.icon}</div>
+
                 <h3
                   style={{
-                    fontFamily: 'var(--fuente-titulos)',
-                    fontSize: '15px',
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    fontSize: '17px',
+                    fontWeight: 800,
                     color: '#FFFFFF',
-                    fontWeight: 700,
-                    marginBottom: '8px',
+                    margin: '0 0 8px 0',
+                    textTransform: 'uppercase',
                   }}
                 >
-                  {pilar.titulo}
+                  {p.titulo}
                 </h3>
+
                 <p
                   style={{
-                    fontFamily: 'var(--fuente-cuerpo)',
-                    fontSize: '11.5px',
-                    color: '#94A3B8',
-                    lineHeight: '1.45',
-                    marginBottom: '12px',
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    fontSize: '12.5px',
+                    color: '#888888',
+                    lineHeight: 1.5,
+                    margin: '0 0 16px 0',
                   }}
                 >
-                  {pilar.desc}
+                  {p.desc}
                 </p>
               </div>
 
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {pilar.caracteristicas.map((c, i) => (
-                  <li
-                    key={i}
-                    style={{
-                      fontFamily: 'var(--fuente-cuerpo)',
-                      fontSize: '11px',
-                      color: '#CBD5E1',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      marginBottom: '4px',
-                    }}
-                  >
-                    <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
+              <div style={{ borderTop: '1px solid #1A1A1A', paddingTop: '12px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  {p.caracteristicas.map((c, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '6px',
+                        fontFamily: 'system-ui, -apple-system, sans-serif',
+                        fontSize: '11.5px',
+                        color: '#CCCCCC',
+                        lineHeight: 1.35,
+                      }}
+                    >
+                      <span style={{ color: '#00FF66', fontFamily: 'monospace', fontSize: '10px' }}>■</span>
+                      <span>{c}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* BANNER DESTACADO DE CONSULTA LOXONE */}
+        {/* CONSOLA INFERIOR DE SOLICITUD LOXONE (100% CUADRADA) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, #0A1628 0%, #0E223D 100%)',
-            border: '1px solid var(--color-electrico-borde)',
-            borderRadius: '18px',
-            padding: '20px 24px',
+            backgroundColor: '#080808',
+            border: '1px solid #222222',
+            padding: '24px 28px',
             display: 'flex',
-            alignItems: 'center',
             justifyContent: 'space-between',
+            alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '16px',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+            gap: '20px',
+            position: 'relative',
           }}
         >
-          <div style={{ maxWidth: '650px' }}>
-            <span
-              style={{
-                fontFamily: 'var(--fuente-tecnica)',
-                fontSize: '11px',
-                color: 'var(--color-electrico)',
-                letterSpacing: '2px',
-                fontWeight: 700,
-                display: 'block',
-                marginBottom: '8px',
-              }}
-            >
-              TECNOLOGÍA LOXONE SMART HOME
-            </span>
+          <span style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+          <span style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+
+          <div style={{ maxWidth: '750px' }}>
+            <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00FF66', letterSpacing: '2px', fontWeight: 700, marginBottom: '6px' }}>
+              [LOXONE PROJECT DISPATCH // PROYECTO A MEDIDA]
+            </div>
             <h3
               style={{
-                fontFamily: 'var(--fuente-titulos)',
-                fontSize: '24px',
+                fontFamily: 'system-ui, -apple-system, sans-serif',
+                fontSize: '22px',
+                fontWeight: 900,
                 color: '#FFFFFF',
-                fontWeight: 800,
-                marginBottom: '10px',
+                margin: '0 0 6px 0',
+                textTransform: 'uppercase',
               }}
             >
-              Viviendas preparadas para el futuro
+              VIVIENDAS & NEGOCIOS INTELIGENTES SIN DEPENDER DE LA NUBE
             </h3>
-            <p style={{ fontFamily: 'var(--fuente-cuerpo)', fontSize: '14px', color: '#94A3B8', margin: 0, lineHeight: '1.6' }}>
-              Instalación y programación de casas inteligentes con tecnología Loxone. Te asesoramos y diseñamos tu proyecto a medida. Instalación limpia, profesional y totalmente personalizada.
+            <p
+              style={{
+                fontFamily: 'system-ui, -apple-system, sans-serif',
+                fontSize: '13px',
+                color: '#888888',
+                lineHeight: 1.5,
+                margin: 0,
+              }}
+            >
+              Diseñamos, cableamos y programamos cuadros Loxone completos con topología Tree para máxima estabilidad y cumplimiento estricto de baja tensión.
             </p>
           </div>
 
-          <a
-            href="https://wa.me/34682178499?text=Hola,%20me%20interesa%20un%20proyecto%20de%20dom%C3%B3tica%20Loxone."
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              backgroundColor: 'var(--color-electrico)',
-              color: '#FFFFFF',
-              fontFamily: 'var(--fuente-tecnica)',
-              fontSize: '12px',
-              fontWeight: 800,
-              padding: '16px 36px',
-              borderRadius: '100px',
-              textDecoration: 'none',
-              letterSpacing: '1.5px',
-              boxShadow: '0 0 25px var(--color-electrico-glow)',
-              transition: 'transform 0.3s ease',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          >
-            SOLICITAR PROYECTO LOXONE →
-          </a>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <button
+              onClick={onOpenQuote}
+              style={{
+                backgroundColor: '#00FF66',
+                color: '#000000',
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                fontWeight: 800,
+                letterSpacing: '1.5px',
+                padding: '14px 28px',
+                border: '1px solid #00FF66',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#000000';
+                e.currentTarget.style.color = '#00FF66';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#00FF66';
+                e.currentTarget.style.color = '#000000';
+              }}
+            >
+              CONFIGURAR PROYECTO LOXONE →
+            </button>
+
+            <a
+              href="https://wa.me/34682178499?text=Hola%20Kerling,%20me%20interesa%20un%20proyecto%20de%20domótica%20Loxone%20en%20mi%20inmueble."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                backgroundColor: '#000000',
+                color: '#00FF66',
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                fontWeight: 700,
+                letterSpacing: '1.5px',
+                padding: '14px 24px',
+                border: '1px solid #222222',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+              }}
+            >
+              CONSULTA WHATSAPP ⚡
+            </a>
+          </div>
         </div>
       </div>
     </section>

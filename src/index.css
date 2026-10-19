@@ -1,76 +1,79 @@
 /* ==========================================================================
-   DYNAMIC ELECTRIC NATALE (DEN) — SISTEMA DE DISEÑO Y ESTILOS GLOBALES
-   Ingeniería Eléctrica, Automatización & Eficiencia Energética en Madrid
+   DYNAMIC ELECTRIC NATALE (DEN) — SISTEMA BRUTALISTA DE CUADRÍCULA TÉCNICA
+   Paleta Negro Plano, Animaciones SVG & Arquitectura 100% Cuadrada
    ========================================================================== */
 
 :root {
-    /* Paleta Oficial - "DEEP ELECTRIC NAVY" */
-    --fondo-base: #030712;
-    --fondo-obsidiana: #030712;
-    --fondo-superficie: #030712;
-    --tarjeta-base: #0E1B2E;
-    --tarjeta-cristal: rgba(14, 27, 46, 0.9);
+    /* Paleta Oficial - FLAT PURE BLACK BRUTALIST GRID */
+    --fondo-base: #000000;
+    --fondo-obsidiana: #000000;
+    --fondo-superficie: #050505;
+    --tarjeta-base: #0A0A0A;
+    --tarjeta-cristal: #0E0E0E;
     
-    /* Color Principal Dominante (AZUL CELESTE / CELESTE ELÉCTRICO) */
-    --color-electrico: #00A3FF;
-    --color-electrico-glow: rgba(0, 163, 255, 0.45);
-    --color-electrico-borde: rgba(0, 163, 255, 0.25);
+    /* Strict 100% Square Policy */
+    --radio-cuadrado: 0px !important;
+    
+    /* Technical Precision Colors */
+    --color-electrico: #00F0FF;
+    --color-electrico-glow: rgba(0, 240, 255, 0.35);
+    --color-electrico-borde: rgba(0, 240, 255, 0.5);
 
-    --cian-tecnico: var(--color-electrico);
-    --cian-glow: var(--color-electrico-glow);
-    --azul-tecnico: var(--color-electrico);
-    --azul-resplandor: var(--color-electrico-glow);
-    --dorado-real: #FFEE00;
-    --dorado-resplandor: rgba(255, 238, 0, 0.45);
+    --cian-tecnico: #00F0FF;
+    --cian-glow: rgba(0, 240, 255, 0.35);
+    --azul-tecnico: #00F0FF;
+    --azul-resplandor: rgba(0, 240, 255, 0.35);
+    --dorado-real: #FFE600;
+    --dorado-resplandor: rgba(255, 230, 0, 0.4);
     
-    /* Acento Secundario: Amarillo Eléctrico #FFEE00 */
-    --amarillo-electrico: #FFEE00;
-    --amarillo-glow: rgba(255, 238, 0, 0.45);
+    /* Acentos Industriales de Alta Visibilidad */
+    --amarillo-electrico: #FFE600;
+    --amarillo-glow: rgba(255, 230, 0, 0.4);
+    --verde-volt: #00FF66;
+    --rojo-alerta: #FF3344;
     
     /* Texto & Jerarquía Editorial */
     --texto-principal: #FFFFFF;
     --texto-blanco: #FFFFFF;
-    --texto-secundario: #94A3B8;
-    --texto-atenuado: #475569;
+    --texto-secundario: #A0A0A0;
+    --texto-atenuado: #666666;
     
-    /* Bordes e Hilos de Corriente */
-    --borde-sutil: rgba(0, 163, 255, 0.15);
-    --borde-destacado: rgba(0, 163, 255, 0.6);
-    --borde-cristal: rgba(255, 255, 255, 0.08);
+    /* Bordes de Cuadrícula Técnica */
+    --borde-sutil: #1A1A1A;
+    --borde-destacado: #2E2E2E;
+    --borde-cristal: #222222;
+    --borde-laser: #00F0FF;
     
-    /* Tipografías Editoriales Awwwards */
-    --fuente-titulos: 'Syne', 'Outfit', sans-serif;
-    --fuente-subtitulos: 'Outfit', sans-serif;
+    /* Tipografías Editoriales */
+    --fuente-titulos: 'Syne', sans-serif;
+    --fuente-subtitulos: 'JetBrains Mono', monospace;
     --fuente-cuerpo: 'Plus Jakarta Sans', sans-serif;
     --fuente-tecnica: 'JetBrains Mono', monospace;
     
-    /* Gradientes */
-    --gradiente-dorado: linear-gradient(135deg, var(--amarillo-electrico) 0%, var(--color-electrico) 100%);
-    --gradiente-tecnico: linear-gradient(135deg, var(--color-electrico) 0%, var(--amarillo-electrico) 100%);
-    --gradiente-den-logo: linear-gradient(90deg, var(--color-electrico) 0%, #0055CC 50%, var(--amarillo-electrico) 100%);
-    
     /* Transiciones */
-    --transicion-rapida: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-    --transicion-suave: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    --transicion-rapida: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --transicion-suave: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     
-    --verde-whatsapp: #25D366;
+    --verde-whatsapp: #00FF66;
 }
 
-/* --- RESETEO GLOBAL Y COMPORTAMIENTO DE NAVEGACIÓN --- */
-* {
+/* --- POLÍTICA UNIVERSAL 100% CUADRADA --- */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border-radius: 0px !important;
 }
 
 html {
     scroll-behavior: auto;
     height: 100%;
     overflow-x: hidden;
+    background-color: #000000;
 }
 
 body {
-    background-color: var(--fondo-base);
+    background-color: #000000;
     color: var(--texto-principal);
     font-family: var(--fuente-cuerpo);
     overflow-x: hidden;
@@ -79,7 +82,32 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- SECCIONES DE PANTALLA COMPLETA ADAPTABLE --- */
+/* --- CUADRÍCULA TÉCNICA GLOBAL EN FONDO (CAD BLUEPRINT GRID) --- */
+.blueprint-grid-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-color: #000000;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Micro-cuadrícula secundaria */
+.blueprint-grid-sub {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+        linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+    background-size: 10px 10px;
+}
+
+/* --- SECCIONES DE PANTALLA COMPLETA EN CUADRÍCULA --- */
 .seccion-pantalla-completa {
     min-height: auto;
     width: 100%;
@@ -88,63 +116,161 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: clamp(50px, 7vh, 85px) 0;
-    scroll-margin-top: 100px;
+    padding: clamp(60px, 8vh, 100px) 0;
+    scroll-margin-top: 80px;
+    border-bottom: 1px solid var(--borde-sutil);
+    background-color: #000000;
 }
 
-/* --- CANVAS DE AMBIENTE ELÉCTRICO --- */
-#canvas-ambiente-electrico {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -2;
-    opacity: 0.55;
-}
-
-.capa-textura-suave {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 50% 15%, rgba(255, 230, 0, 0.05) 0%, transparent 65%),
-                radial-gradient(circle at 85% 75%, rgba(0, 102, 255, 0.05) 0%, transparent 65%),
-                radial-gradient(circle at 15% 85%, rgba(0, 64, 192, 0.06) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* --- CONTENEDOR ANCHO PROFESIONAL (1540PX) --- */
+/* --- CONTENEDOR TÉCNICO COMPLETO --- */
 .contenedor {
-    max-width: 1320px;
+    max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-    padding-left: clamp(24px, 4.5vw, 64px);
-    padding-right: clamp(24px, 4.5vw, 64px);
-}
-
-/* --- SEPARADOR TÉCNICO DE SECCIONES --- */
-.linea-separadora-tecnica {
-    max-width: 1320px;
-    margin: 0 auto;
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 238, 0, 0.3) 50%, transparent 100%);
+    padding-left: clamp(20px, 4vw, 60px);
+    padding-right: clamp(20px, 4vw, 60px);
     position: relative;
+    z-index: 2;
 }
 
-.linea-separadora-tecnica::after {
-    content: '';
+/* --- MÓDULO DE CUADRÍCULA BRUTALISTA --- */
+.bento-grid-module {
+    background: #050505;
+    border: 1px solid var(--borde-destacado);
+    position: relative;
+    transition: var(--transicion-rapida);
+}
+
+.bento-grid-module:hover {
+    border-color: var(--color-electrico);
+    background: #080808;
+}
+
+/* Cruces de esquina de plano técnico (+) */
+.corner-cross {
     position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--gradiente-dorado);
-    filter: blur(3px);
-    border-radius: 100px;
-    opacity: 0.85;
+    font-family: var(--fuente-tecnica);
+    font-size: 11px;
+    line-height: 1;
+    color: #444444;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 700;
+}
+.corner-cross.tl { top: -6px; left: -6px; }
+.corner-cross.tr { top: -6px; right: -6px; }
+.corner-cross.bl { bottom: -6px; left: -6px; }
+.corner-cross.br { bottom: -6px; right: -6px; }
+
+/* Barra superior técnica de cada módulo */
+.module-header-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--borde-sutil);
+    background: #080808;
+    font-family: var(--fuente-tecnica);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--texto-secundario);
+    text-transform: uppercase;
+}
+
+/* --- ANIMACIONES SVG DE MOVIMIENTO ELÉCTRICO --- */
+@keyframes svgCurrentDash {
+    0% { stroke-dashoffset: 1600; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes svgRotateRadar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes svgCounterRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes svgOscillate {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes svgPulseSignal {
+    0%, 100% { opacity: 0.25; filter: drop-shadow(0 0 2px var(--color-electrico)); }
+    50% { opacity: 1; filter: drop-shadow(0 0 12px var(--color-electrico)); }
+}
+
+.svg-animated-line {
+    animation: svgCurrentDash 6s linear infinite;
+}
+
+.svg-rotate-slow {
+    transform-origin: center;
+    animation: svgRotateRadar 24s linear infinite;
+}
+
+.svg-rotate-reverse {
+    transform-origin: center;
+    animation: svgCounterRotate 18s linear infinite;
+}
+
+.svg-pulse-active {
+    animation: svgPulseSignal 2.5s ease-in-out infinite;
+}
+
+/* --- BOTONES TÉCNICOS 100% CUADRADOS --- */
+.btn-square-terminal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #000000;
+    border: 1px solid var(--borde-destacado);
+    color: #FFFFFF;
+    font-family: var(--fuente-tecnica);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transicion-rapida);
+    border-radius: 0px !important;
+}
+
+.btn-square-terminal:hover {
+    background: var(--color-electrico);
+    border-color: var(--color-electrico);
+    color: #000000;
+    box-shadow: 0 0 24px rgba(0, 240, 255, 0.4);
+}
+
+.btn-square-terminal.primary {
+    background: var(--color-electrico);
+    border-color: var(--color-electrico);
+    color: #000000;
+}
+
+.btn-square-terminal.primary:hover {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #000000;
+}
+
+.btn-square-terminal.volt {
+    background: var(--amarillo-electrico);
+    border-color: var(--amarillo-electrico);
+    color: #000000;
+}
+
+.btn-square-terminal.volt:hover {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #000000;
 }
 
 /* --- CURSOR TÉCNICO ELEGANTE --- */
