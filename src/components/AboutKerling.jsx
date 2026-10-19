@@ -19,47 +19,19 @@ export default function AboutKerling({ onOpenQuote }) {
         },
       });
 
-      // Reveal card container
-      tl.fromTo(
-        portraitBoxRef.current,
-        { y: 35, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
-      );
-
       // Shutter curtain wipe open
       tl.fromTo(
         curtainRef.current,
         { scaleX: 1, transformOrigin: 'right center' },
-        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' },
-        '-=0.3'
+        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' }
       );
 
       // Image zoom settle from scale 1.25 to 1.0 with filter shift
       tl.fromTo(
         portraitImgRef.current,
-        { scale: 1.25, filter: 'contrast(1.3) brightness(0.7)' },
-        { scale: 1, filter: 'contrast(1.08) grayscale(10%)', duration: 1.1, ease: 'power3.out' },
+        { scale: 1.22, filter: 'contrast(1.25) brightness(0.7)' },
+        { scale: 1, filter: 'contrast(1.05) brightness(0.95)', duration: 1.0, ease: 'power3.out' },
         '<'
-      );
-
-      // Dimension tags and metadata pop in
-      tl.from(
-        '.badge-tag-snap',
-        { opacity: 0, scale: 0.85, y: -6, stagger: 0.1, ease: 'back.out(2)', duration: 0.4 },
-        '-=0.5'
-      );
-
-      // Text content and cards stagger in
-      tl.from(
-        '.cad-perfil-info > div:first-child > *',
-        { y: 25, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out' },
-        '-=0.5'
-      );
-
-      tl.from(
-        '.card-cad-credential',
-        { y: 20, opacity: 0, stagger: 0.08, duration: 0.5, ease: 'power2.out' },
-        '-=0.3'
       );
     }, sectionRef);
 
@@ -328,28 +300,28 @@ export default function AboutKerling({ onOpenQuote }) {
             >
               {[
                 {
-                  code: 'CERT//01',
-                  title: 'ELECTRICISTA ESPECIALISTA',
-                  sub: 'Comunidad de Madrid • DGI',
+                  code: 'CAM//INST-01',
+                  title: 'INSTALADOR AUTORIZADO BT',
+                  sub: 'Categoría Especialista Comunidad de Madrid',
                   color: '#00F0FF',
                 },
                 {
-                  code: 'CERT//02',
-                  title: 'CERTIFICACIÓN REBT & CIE',
-                  sub: 'Boletines Oficiales 24-48h',
-                  color: '#FFE600',
-                },
-                {
-                  code: 'CERT//03',
-                  title: 'INGENIERÍA FOTOVOLTAICA',
-                  sub: 'Autoconsumo, Inversores & LFP',
+                  code: 'LOX//PARTNER',
+                  title: 'LOXONE CERTIFIED PARTNER',
+                  sub: 'Integración Oficial y Programación Homologada',
                   color: '#00FF66',
                 },
                 {
-                  code: 'CERT//04',
-                  title: 'PARTNER OFICIAL LOXONE',
-                  sub: 'Domótica Local & Tree Bus',
-                  color: '#00F0FF',
+                  code: 'ITC-52//VE',
+                  title: 'RECARGA VEHÍCULO ELÉCTRICO',
+                  sub: 'Instalaciones Certificadas de Puntos de Carga',
+                  color: '#FFE600',
+                },
+                {
+                  code: 'FLIR//THERM',
+                  title: 'TERMOGRAFÍA INFRARROJA',
+                  sub: 'Inspección Preventiva de Cuadros y Redes',
+                  color: '#FF3344',
                 },
               ].map((c, idx) => (
                 <div

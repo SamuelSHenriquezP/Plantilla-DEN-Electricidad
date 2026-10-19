@@ -7,24 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function CertificationsSection() {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.cert-panel-item', {
-        y: 35,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const certificaciones = [
     {
       code: 'STD//CIE-CAM',

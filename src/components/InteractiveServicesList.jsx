@@ -22,16 +22,9 @@ export default function InteractiveServicesList() {
       });
 
       tl.fromTo(
-        showcaseBoxRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }
-      );
-
-      tl.fromTo(
         curtainRef.current,
         { scaleX: 1, transformOrigin: 'right center' },
-        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' },
-        '-=0.3'
+        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' }
       );
 
       tl.fromTo(
@@ -39,12 +32,6 @@ export default function InteractiveServicesList() {
         { scale: 1.25, filter: 'contrast(1.3) brightness(0.6)' },
         { scale: 1, filter: 'contrast(1.05) brightness(0.95)', duration: 1.1, ease: 'power3.out' },
         '<'
-      );
-
-      tl.from(
-        '.matrix-btn-item',
-        { y: 20, opacity: 0, stagger: 0.04, duration: 0.45, ease: 'power2.out' },
-        '-=0.4'
       );
     }, sectionRef);
 

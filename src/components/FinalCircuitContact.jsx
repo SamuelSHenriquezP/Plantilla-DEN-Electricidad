@@ -7,24 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function FinalCircuitContact({ onOpenQuote }) {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.contact-card-item', {
-        y: 25,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.5,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       id="contacto"

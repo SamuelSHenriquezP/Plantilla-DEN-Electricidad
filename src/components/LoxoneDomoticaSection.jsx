@@ -19,20 +19,8 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
 
       tl.fromTo(
         schematicRef.current,
-        { y: 35, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }
-      );
-
-      tl.from(
-        '.loxone-pillar-card',
-        { y: 30, opacity: 0, stagger: 0.1, duration: 0.55, ease: 'power2.out' },
-        '-=0.3'
-      );
-
-      tl.from(
-        '.loxone-console-box',
-        { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out' },
-        '-=0.2'
+        { scale: 0.98 },
+        { scale: 1, duration: 0.7, ease: 'power2.out' }
       );
     }, sectionRef);
 

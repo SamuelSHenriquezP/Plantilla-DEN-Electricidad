@@ -36,39 +36,10 @@ export default function SystemActivationHero({ onOpenQuote }) {
   // GSAP Power On Sequence al montar el Hero
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      tl.fromTo(
-        telemetryBarRef.current,
-        { y: -25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 }
-      );
-
-      tl.fromTo(
-        leftModuleRef.current,
-        { x: -35, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.75 },
-        '-=0.3'
-      );
-
-      tl.fromTo(
-        rightModuleRef.current,
-        { x: 35, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.75 },
-        '<0.1'
-      );
-
-      tl.fromTo(
+      gsap.fromTo(
         oscilloscopeRef.current,
-        { scaleY: 0.7, opacity: 0 },
-        { scaleY: 1, opacity: 1, duration: 0.6, ease: 'expo.out' },
-        '-=0.4'
-      );
-
-      tl.from(
-        '.hero-node-card',
-        { y: 20, opacity: 0, stagger: 0.08, duration: 0.5 },
-        '-=0.3'
+        { scaleY: 0.8 },
+        { scaleY: 1, duration: 0.7, ease: 'expo.out' }
       );
     }, heroRef);
 
