@@ -4,12 +4,12 @@
    ========================================================================== */
 
 :root {
-    /* Paleta Oficial - FLAT PURE BLACK BRUTALIST GRID */
-    --fondo-base: #000000;
-    --fondo-obsidiana: #000000;
-    --fondo-superficie: #050505;
-    --tarjeta-base: #0A0A0A;
-    --tarjeta-cristal: #0E0E0E;
+    /* Paleta Oficial - MIDNIGHT NAVY OBSIDIAN GRID (Negro Azulado Técnico Profundo) */
+    --fondo-base: #040812;
+    --fondo-obsidiana: #020409;
+    --fondo-superficie: #070e1c;
+    --tarjeta-base: #0a1326;
+    --tarjeta-cristal: #0e1a33;
     
     /* Strict 100% Square Policy */
     --radio-cuadrado: 0px !important;
@@ -35,13 +35,13 @@
     /* Texto & Jerarquía Editorial */
     --texto-principal: #FFFFFF;
     --texto-blanco: #FFFFFF;
-    --texto-secundario: #A0A0A0;
-    --texto-atenuado: #666666;
+    --texto-secundario: #94A3B8;
+    --texto-atenuado: #64748B;
     
     /* Bordes de Cuadrícula Técnica */
-    --borde-sutil: #1A1A1A;
-    --borde-destacado: #2E2E2E;
-    --borde-cristal: #222222;
+    --borde-sutil: #13223d;
+    --borde-destacado: #1d335a;
+    --borde-cristal: #192c4e;
     --borde-laser: #00F0FF;
     
     /* Tipografías Editoriales */
@@ -69,7 +69,7 @@ html {
     scroll-behavior: smooth;
     height: 100%;
     overflow-x: hidden;
-    background-color: #000000;
+    background-color: #040812;
 }
 
 section[id] {
@@ -77,7 +77,7 @@ section[id] {
 }
 
 body {
-    background-color: #000000;
+    background-color: #040812;
     color: var(--texto-principal);
     font-family: var(--fuente-cuerpo);
     overflow-x: hidden;
@@ -92,22 +92,22 @@ body {
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background-color: #000000;
+    background-color: #040812;
     background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        linear-gradient(to right, rgba(0, 240, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.045) 1px, transparent 1px);
     background-size: 50px 50px;
 }
 
-/* Micro-cuadrícula secundaria */
+/* Micro-cuadrícula secundaria con tono azul índigo técnico */
 .blueprint-grid-sub {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
     background-image: 
-        linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(30, 58, 138, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 58, 138, 0.12) 1px, transparent 1px);
     background-size: 10px 10px;
 }
 
@@ -123,7 +123,7 @@ body {
     padding: clamp(60px, 8vh, 100px) 0;
     scroll-margin-top: 80px;
     border-bottom: 1px solid var(--borde-sutil);
-    background-color: #000000;
+    background-color: #040812;
 }
 
 /* --- CONTENEDOR TÉCNICO COMPLETO --- */
@@ -139,7 +139,7 @@ body {
 
 /* --- MÓDULO DE CUADRÍCULA BRUTALISTA --- */
 .bento-grid-module {
-    background: #050505;
+    background: #070e1c;
     border: 1px solid var(--borde-destacado);
     position: relative;
     transition: var(--transicion-rapida);
@@ -147,7 +147,7 @@ body {
 
 .bento-grid-module:hover {
     border-color: var(--color-electrico);
-    background: #080808;
+    background: #0a1326;
 }
 
 /* Cruces de esquina de plano técnico (+) */
@@ -156,7 +156,7 @@ body {
     font-family: var(--fuente-tecnica);
     font-size: 11px;
     line-height: 1;
-    color: #444444;
+    color: #3b5278;
     pointer-events: none;
     user-select: none;
     font-weight: 700;
@@ -173,7 +173,7 @@ body {
     align-items: center;
     padding: 8px 16px;
     border-bottom: 1px solid var(--borde-sutil);
-    background: #080808;
+    background: #091224;
     font-family: var(--fuente-tecnica);
     font-size: 10px;
     letter-spacing: 0.15em;
@@ -347,13 +347,36 @@ body {
 
 .card-cad-interactive:hover {
     border-color: #00F0FF !important;
-    background: #0A0A0A !important;
+    background: #0d172e !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.12);
 }
 
 .card-cad-interactive:hover .corner-cross {
     color: #00F0FF !important;
+}
+
+/* --- GSAP APERTURE & IMAGE REVEAL STYLES --- */
+.gsap-reveal-container {
+    overflow: hidden;
+    position: relative;
+    background: #040812;
+}
+
+.gsap-curtain-overlay {
+    position: absolute;
+    inset: 0;
+    background: #091224;
+    border-right: 2px solid #00F0FF;
+    z-index: 20;
+    pointer-events: none;
+    transform-origin: right center;
+    box-shadow: 4px 0 24px rgba(0, 240, 255, 0.4);
+}
+
+.gsap-img-target {
+    will-change: transform, filter;
+    transform-origin: center center;
 }
 
 /* --- BOTONES TÉCNICOS 100% CUADRADOS --- */
@@ -362,7 +385,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    background: #000000;
+    background: #070e1c;
     border: 1px solid var(--borde-destacado);
     color: #FFFFFF;
     font-family: var(--fuente-tecnica);

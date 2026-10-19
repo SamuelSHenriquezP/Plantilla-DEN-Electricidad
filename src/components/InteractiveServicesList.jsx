@@ -1,7 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function InteractiveServicesList() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const sectionRef = useRef(null);
+  const showcaseBoxRef = useRef(null);
+  const imageRef = useRef(null);
+  const curtainRef = useRef(null);
+  const isInitialMount = useRef(true);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      });
+
+      tl.fromTo(
+        showcaseBoxRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }
+      );
+
+      tl.fromTo(
+        curtainRef.current,
+        { scaleX: 1, transformOrigin: 'right center' },
+        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' },
+        '-=0.3'
+      );
+
+      tl.fromTo(
+        imageRef.current,
+        { scale: 1.25, filter: 'contrast(1.3) brightness(0.6)' },
+        { scale: 1, filter: 'contrast(1.05) brightness(0.95)', duration: 1.1, ease: 'power3.out' },
+        '<'
+      );
+
+      tl.from(
+        '.matrix-btn-item',
+        { y: 20, opacity: 0, stagger: 0.04, duration: 0.45, ease: 'power2.out' },
+        '-=0.4'
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Animación GSAP al cambiar de servicio seleccionado
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    if (curtainRef.current && imageRef.current) {
+      gsap.fromTo(
+        curtainRef.current,
+        { scaleX: 1, transformOrigin: 'right center' },
+        { scaleX: 0, duration: 0.6, ease: 'expo.inOut' }
+      );
+      gsap.fromTo(
+        imageRef.current,
+        { scale: 1.18, filter: 'contrast(1.25) brightness(0.65)' },
+        { scale: 1, filter: 'contrast(1.05) brightness(0.95)', duration: 0.8, ease: 'power3.out' }
+      );
+    }
+  }, [activeIdx]);
 
   const servicios = [
     {
@@ -179,14 +248,15 @@ export default function InteractiveServicesList() {
   return (
     <section
       id="servicios"
+      ref={sectionRef}
       style={{
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        borderTop: '1px solid #1A1A1A',
-        borderBottom: '1px solid #1A1A1A',
+        borderTop: '1px solid #13223d',
+        borderBottom: '1px solid #13223d',
       }}
     >
       <div style={{ maxWidth: '1360px', margin: '0 auto', width: '100%', position: 'relative' }}>
@@ -199,7 +269,7 @@ export default function InteractiveServicesList() {
             flexWrap: 'wrap',
             gap: '16px',
             marginBottom: '32px',
-            borderBottom: '1px solid #1A1A1A',
+            borderBottom: '1px solid #13223d',
             paddingBottom: '20px',
           }}
         >
@@ -209,8 +279,8 @@ export default function InteractiveServicesList() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#050505',
-                border: '1px solid #222222',
+                backgroundColor: '#070e1c',
+                border: '1px solid #1d335a',
                 padding: '4px 12px',
                 marginBottom: '10px',
               }}
@@ -256,7 +326,7 @@ export default function InteractiveServicesList() {
             style={{
               fontFamily: 'monospace',
               fontSize: '11px',
-              color: '#666666',
+              color: '#64748B',
               textAlign: 'right',
             }}
           >
@@ -267,10 +337,11 @@ export default function InteractiveServicesList() {
 
         {/* CONTENEDOR SHOWCASE 100% CUADRADO CON ESQUINAS DE MIRA CAD */}
         <div
+          ref={showcaseBoxRef}
           style={{
             position: 'relative',
-            backgroundColor: '#050505',
-            border: '1px solid #222222',
+            backgroundColor: '#070e1c',
+            border: '1px solid #1d335a',
             padding: '28px',
             marginBottom: '24px',
           }}
@@ -290,30 +361,34 @@ export default function InteractiveServicesList() {
             }}
           >
             {/* COLUMNA IZQUIERDA: IMAGEN CAD CON MARCOS DE MEDIDAS TÉCNICAS */}
-            <div style={{ position: 'relative', backgroundColor: '#000000', border: '1px solid #1F1F1F' }}>
+            <div style={{ position: 'relative', backgroundColor: '#040812', border: '1px solid #1d335a' }}>
               <div
                 style={{
                   padding: '6px 12px',
-                  backgroundColor: '#0A0A0A',
-                  borderBottom: '1px solid #1F1F1F',
+                  backgroundColor: '#091224',
+                  borderBottom: '1px solid #13223d',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   fontFamily: 'monospace',
                   fontSize: '10px',
-                  color: '#888888',
+                  color: '#94A3B8',
                 }}
               >
                 <span>FEED: <span style={{ color: active.badgeColor }}>{active.code}</span></span>
                 <span style={{ color: active.badgeColor, fontWeight: 800 }}>[{active.badge}]</span>
               </div>
 
-              <div style={{ position: 'relative', overflow: 'hidden' }}>
+              <div className="gsap-reveal-container" style={{ position: 'relative', overflow: 'hidden' }}>
+                {/* CURTAIN GSAP DE APERTURA / CAMBIO */}
+                <div ref={curtainRef} className="gsap-curtain-overlay" />
                 {/* LÍNEA DE ESCANEO LÁSER ANIMADA */}
                 <div className="laser-scanner-line" />
                 <img
+                  ref={imageRef}
                   src={active.img}
                   alt={active.titulo}
+                  className="gsap-img-target"
                   style={{
                     width: '100%',
                     height: '360px',
@@ -359,14 +434,14 @@ export default function InteractiveServicesList() {
               <div
                 style={{
                   padding: '8px 12px',
-                  backgroundColor: '#0A0A0A',
-                  borderTop: '1px solid #1F1F1F',
+                  backgroundColor: '#091224',
+                  borderTop: '1px solid #13223d',
                   display: 'grid',
                   gridTemplateColumns: 'repeat(3, 1fr)',
                   gap: '8px',
                   fontFamily: 'monospace',
                   fontSize: '9.5px',
-                  color: '#666666',
+                  color: '#64748B',
                 }}
               >
                 <div>[PROCES: {active.specs.procesador || active.specs.eficiencia || active.specs.normativa || active.specs.entrega || 'OK'}]</div>
@@ -382,7 +457,7 @@ export default function InteractiveServicesList() {
                   <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#00F0FF', fontWeight: 700 }}>
                     [{active.num}]
                   </span>
-                  <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#888888', letterSpacing: '2px' }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#94A3B8', letterSpacing: '2px' }}>
                     // {active.categoria}
                   </span>
                 </div>
@@ -420,7 +495,7 @@ export default function InteractiveServicesList() {
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '13.5px',
-                    color: '#D1D5DB',
+                    color: '#94A3B8',
                     lineHeight: 1.55,
                     margin: 0,
                   }}
@@ -432,8 +507,8 @@ export default function InteractiveServicesList() {
               {/* BLOQUE REBT 100% CUADRADO */}
               <div
                 style={{
-                  backgroundColor: '#000000',
-                  border: '1px solid #1A1A1A',
+                  backgroundColor: '#091224',
+                  border: '1px solid #13223d',
                   borderLeft: `3px solid ${active.badgeColor}`,
                   padding: '12px 14px',
                   transition: 'border-color 0.3s ease',
@@ -442,14 +517,14 @@ export default function InteractiveServicesList() {
                 <div style={{ fontFamily: 'monospace', fontSize: '10px', color: active.badgeColor, fontWeight: 700, marginBottom: '4px', letterSpacing: '1px' }}>
                   [ESPECIFICACIÓN NORMATIVA REBT / DGI]
                 </div>
-                <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#9CA3AF', lineHeight: 1.45 }}>
+                <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#94A3B8', lineHeight: 1.45 }}>
                   {active.rebtDetail}
                 </div>
               </div>
 
               {/* PASOS DE EJECUCIÓN (CUADRADOS CAD INTERACTIVOS) */}
               <div>
-                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888', letterSpacing: '1.5px', fontWeight: 700, marginBottom: '8px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#64748B', letterSpacing: '1.5px', fontWeight: 700, marginBottom: '8px' }}>
                   [SECUENCIA DE EJECUCIÓN TÉCNICA]
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
@@ -458,8 +533,8 @@ export default function InteractiveServicesList() {
                       key={idx}
                       className="card-cad-interactive"
                       style={{
-                        backgroundColor: '#000000',
-                        border: '1px solid #1A1A1A',
+                        backgroundColor: '#091224',
+                        border: '1px solid #13223d',
                         padding: '8px 10px',
                         display: 'flex',
                         alignItems: 'flex-start',
@@ -469,7 +544,7 @@ export default function InteractiveServicesList() {
                       <span style={{ fontFamily: 'monospace', fontSize: '10px', color: active.badgeColor, fontWeight: 700 }}>
                         0{idx + 1}.
                       </span>
-                      <span style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11px', color: '#E5E7EB', lineHeight: 1.3 }}>
+                      <span style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11px', color: '#E2E8F0', lineHeight: 1.3 }}>
                         {paso}
                       </span>
                     </div>
@@ -479,7 +554,7 @@ export default function InteractiveServicesList() {
 
               {/* EQUIPOS TÉCNICOS */}
               <div>
-                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#666666', letterSpacing: '1.5px', fontWeight: 700, marginBottom: '6px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#64748B', letterSpacing: '1.5px', fontWeight: 700, marginBottom: '6px' }}>
                   [EQUIPAMIENTO & HARDWARE HOMOLOGADO]
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
@@ -489,9 +564,9 @@ export default function InteractiveServicesList() {
                       style={{
                         fontFamily: 'monospace',
                         fontSize: '10px',
-                        color: '#AAAAAA',
-                        backgroundColor: '#000000',
-                        border: '1px solid #222222',
+                        color: '#94A3B8',
+                        backgroundColor: '#070e1c',
+                        border: '1px solid #1d335a',
                         padding: '3px 8px',
                       }}
                     >
@@ -512,7 +587,7 @@ export default function InteractiveServicesList() {
                     width: '100%',
                     textAlign: 'center',
                     backgroundColor: '#00F0FF',
-                    color: '#000000',
+                    color: '#040812',
                     fontFamily: 'monospace',
                     fontSize: '12px',
                     fontWeight: 800,
@@ -524,12 +599,12 @@ export default function InteractiveServicesList() {
                     transition: 'all 0.2s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#000000';
+                    e.currentTarget.style.backgroundColor = '#040812';
                     e.currentTarget.style.color = '#00F0FF';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '#00F0FF';
-                    e.currentTarget.style.color = '#000000';
+                    e.currentTarget.style.color = '#040812';
                   }}
                 >
                   SOLICITAR INGENIERÍA PARA ESTE SERVICIO →
@@ -552,11 +627,12 @@ export default function InteractiveServicesList() {
             return (
               <button
                 key={i}
+                className="matrix-btn-item"
                 onClick={() => setActiveIdx(i)}
                 style={{
-                  backgroundColor: isSelected ? '#0A0A0A' : '#000000',
-                  border: isSelected ? `1px solid ${s.badgeColor}` : '1px solid #1A1A1A',
-                  borderTop: isSelected ? `2px solid ${s.badgeColor}` : '1px solid #1A1A1A',
+                  backgroundColor: isSelected ? '#0d172e' : '#070e1c',
+                  border: isSelected ? `1px solid ${s.badgeColor}` : '1px solid #13223d',
+                  borderTop: isSelected ? `2px solid ${s.badgeColor}` : '1px solid #13223d',
                   padding: '10px 10px',
                   cursor: 'pointer',
                   textAlign: 'left',
@@ -572,7 +648,7 @@ export default function InteractiveServicesList() {
                     style={{
                       fontFamily: 'monospace',
                       fontSize: '10px',
-                      color: isSelected ? s.badgeColor : '#555555',
+                      color: isSelected ? s.badgeColor : '#64748B',
                       fontWeight: 700,
                     }}
                   >
@@ -582,7 +658,7 @@ export default function InteractiveServicesList() {
                     style={{
                       width: '6px',
                       height: '6px',
-                      backgroundColor: isSelected ? s.badgeColor : '#222222',
+                      backgroundColor: isSelected ? s.badgeColor : '#1d335a',
                       boxShadow: isSelected ? `0 0 8px ${s.badgeColor}` : 'none',
                     }}
                   ></span>
@@ -591,7 +667,7 @@ export default function InteractiveServicesList() {
                   style={{
                     fontFamily: 'monospace',
                     fontSize: '10.5px',
-                    color: isSelected ? s.badgeColor : '#888888',
+                    color: isSelected ? s.badgeColor : '#94A3B8',
                     fontWeight: 700,
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',

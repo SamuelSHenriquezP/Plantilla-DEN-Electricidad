@@ -24,13 +24,14 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
     >
       <nav
         style={{
-          background: '#000000',
-          border: '1px solid #2E2E2E',
+          background: 'rgba(5, 10, 22, 0.94)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid #1d335a',
           padding: '6px 14px',
           display: 'flex',
           alignItems: 'center',
           gap: '14px',
-          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.95), 0 0 1px #00F0FF',
+          boxShadow: '0 8px 30px rgba(2, 6, 16, 0.95), 0 0 1px #00F0FF',
           position: 'relative',
         }}
       >
@@ -47,8 +48,8 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            background: '#080808',
-            border: '1px solid #333333',
+            background: '#0a1326',
+            border: '1px solid #1d335a',
             padding: '5px 10px',
             cursor: 'pointer',
           }}
@@ -78,7 +79,7 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
               fontFamily: 'var(--fuente-tecnica)',
               fontSize: '9px',
               color: '#FFE600',
-              borderLeft: '1px solid #333333',
+              borderLeft: '1px solid #1d335a',
               paddingLeft: '6px',
             }}
           >
@@ -98,7 +99,7 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
                   fontFamily: 'var(--fuente-tecnica)',
                   fontSize: '10px',
                   fontWeight: 700,
-                  color: isActive ? '#000000' : '#888888',
+                  color: isActive ? '#040812' : '#94A3B8',
                   background: isActive ? '#00F0FF' : 'transparent',
                   border: isActive ? '1px solid #00F0FF' : '1px solid transparent',
                   boxShadow: isActive ? '0 0 12px rgba(0, 240, 255, 0.4)' : 'none',
@@ -113,19 +114,19 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
                 onMouseEnter={(e) => {
                   if (!isActive) {
                     e.currentTarget.style.color = '#FFFFFF';
-                    e.currentTarget.style.borderColor = '#333333';
-                    e.currentTarget.style.background = '#0A0A0A';
+                    e.currentTarget.style.borderColor = '#1d335a';
+                    e.currentTarget.style.background = '#0d172e';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!isActive) {
-                    e.currentTarget.style.color = '#888888';
+                    e.currentTarget.style.color = '#94A3B8';
                     e.currentTarget.style.borderColor = 'transparent';
                     e.currentTarget.style.background = 'transparent';
                   }
                 }}
               >
-                <span style={{ color: isActive ? '#000000' : '#444444', fontSize: '8px' }}>{sec.num}</span>
+                <span style={{ color: isActive ? '#040812' : '#4b6082', fontSize: '8px' }}>{sec.num}</span>
                 {sec.label}
               </button>
             );

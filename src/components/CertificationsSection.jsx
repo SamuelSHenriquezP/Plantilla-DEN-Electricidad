@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CertificationsSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.cert-panel-item', {
+        y: 35,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const certificaciones = [
     {
       code: 'STD//CIE-CAM',
@@ -71,13 +95,14 @@ export default function CertificationsSection() {
   return (
     <section
       id="certificaciones"
+      ref={sectionRef}
       style={{
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        borderBottom: '1px solid #1A1A1A',
+        borderBottom: '1px solid #13223d',
       }}
     >
       <div style={{ maxWidth: '1360px', margin: '0 auto', width: '100%', position: 'relative' }}>
@@ -90,7 +115,7 @@ export default function CertificationsSection() {
             flexWrap: 'wrap',
             gap: '16px',
             marginBottom: '36px',
-            borderBottom: '1px solid #1A1A1A',
+            borderBottom: '1px solid #13223d',
             paddingBottom: '20px',
           }}
         >
@@ -100,8 +125,8 @@ export default function CertificationsSection() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#050505',
-                border: '1px solid #222222',
+                backgroundColor: '#070e1c',
+                border: '1px solid #1d335a',
                 padding: '4px 12px',
                 marginBottom: '10px',
               }}
@@ -147,7 +172,7 @@ export default function CertificationsSection() {
             style={{
               fontFamily: 'monospace',
               fontSize: '11px',
-              color: '#666666',
+              color: '#64748B',
               textAlign: 'right',
             }}
           >
@@ -167,10 +192,10 @@ export default function CertificationsSection() {
           {certificaciones.map((cert, idx) => (
             <div
               key={idx}
-              className="card-cad-interactive"
+              className="card-cad-interactive cert-panel-item"
               style={{
-                backgroundColor: '#050505',
-                border: '1px solid #1F1F1F',
+                backgroundColor: '#070e1c',
+                border: '1px solid #13223d',
                 borderLeft: `3px solid ${cert.color}`,
                 padding: '24px',
                 display: 'flex',
@@ -181,10 +206,10 @@ export default function CertificationsSection() {
               }}
             >
               {/* ESQUINAS CRUZ CAD (+) */}
-              <span className="corner-cross" style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
-              <span className="corner-cross" style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
-              <span className="corner-cross" style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
-              <span className="corner-cross" style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#3b5278', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#3b5278', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#3b5278', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#3b5278', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
 
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
@@ -198,7 +223,7 @@ export default function CertificationsSection() {
 
                 <div style={{ marginBottom: '10px' }}>{cert.icon}</div>
 
-                <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#888888', marginBottom: '4px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#64748B', marginBottom: '4px' }}>
                   NORMA: {cert.normativa}
                 </div>
 
@@ -220,7 +245,7 @@ export default function CertificationsSection() {
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '12.5px',
-                    color: '#9CA3AF',
+                    color: '#94A3B8',
                     lineHeight: 1.5,
                     margin: '0 0 16px 0',
                   }}
@@ -231,7 +256,7 @@ export default function CertificationsSection() {
 
               <div
                 style={{
-                  borderTop: '1px solid #1A1A1A',
+                  borderTop: '1px solid #13223d',
                   paddingTop: '12px',
                   display: 'flex',
                   alignItems: 'center',

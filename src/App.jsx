@@ -56,7 +56,7 @@ export default function App() {
   return (
     <div
       style={{
-        background: '#000000',
+        background: '#040812',
         color: '#FFFFFF',
         width: '100%',
         minHeight: '100vh',
@@ -112,9 +112,9 @@ export default function App() {
           <FinalCircuitContact onOpenQuote={() => setIsQuoteOpen(true)} />
           <footer
             style={{
-              borderTop: '1px solid #1A1A1A',
+              borderTop: '1px solid #13223d',
               padding: '28px 4vw',
-              backgroundColor: '#050505',
+              backgroundColor: '#070e1c',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -174,8 +174,8 @@ export default function App() {
           flexDirection: 'column',
           alignItems: 'center',
           gap: '8px',
-          backgroundColor: '#080808',
-          border: '1px solid #222222',
+          backgroundColor: '#091224',
+          border: '1px solid #1d335a',
           padding: '10px 6px',
           boxShadow: '0 8px 32px rgba(0,0,0,0.9)',
         }}
@@ -189,9 +189,9 @@ export default function App() {
             style={{
               width: '8px',
               height: activeSectionIdx === idx ? '22px' : '8px',
-              backgroundColor: activeSectionIdx === idx ? 'var(--color-electrico)' : '#1A1A1A',
+              backgroundColor: activeSectionIdx === idx ? 'var(--color-electrico)' : '#13223d',
               boxShadow: activeSectionIdx === idx ? '0 0 10px var(--color-electrico)' : 'none',
-              border: activeSectionIdx === idx ? '1px solid #FFFFFF' : '1px solid #333333',
+              border: activeSectionIdx === idx ? '1px solid #FFFFFF' : '1px solid #1d335a',
               cursor: 'pointer',
               transition: 'all 0.25s ease',
             }}

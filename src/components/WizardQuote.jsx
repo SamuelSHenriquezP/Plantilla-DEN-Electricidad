@@ -97,11 +97,11 @@ export default function WizardQuote() {
       id="cotizador"
       style={{
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        borderBottom: '1px solid #1A1A1A',
+        borderBottom: '1px solid #13223d',
       }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
@@ -114,7 +114,7 @@ export default function WizardQuote() {
             flexWrap: 'wrap',
             gap: '16px',
             marginBottom: '32px',
-            borderBottom: '1px solid #1A1A1A',
+            borderBottom: '1px solid #13223d',
             paddingBottom: '20px',
           }}
         >
@@ -124,8 +124,8 @@ export default function WizardQuote() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#050505',
-                border: '1px solid #222222',
+                backgroundColor: '#070e1c',
+                border: '1px solid #1d335a',
                 padding: '4px 12px',
                 marginBottom: '10px',
               }}
@@ -183,8 +183,8 @@ export default function WizardQuote() {
         {/* CONTENEDOR DEL WIZARD 100% CUADRADO */}
         <div
           style={{
-            backgroundColor: '#050505',
-            border: '1px solid #222222',
+            backgroundColor: '#070e1c',
+            border: '1px solid #1d335a',
             padding: '28px',
             position: 'relative',
           }}
@@ -216,13 +216,13 @@ export default function WizardQuote() {
                 <div
                   key={p.num}
                   style={{
-                    backgroundColor: isCurrent ? '#000000' : isPast ? '#0A0A0A' : '#000000',
-                    border: isCurrent ? '1px solid #00F0FF' : isPast ? '1px solid #00FF66' : '1px solid #1A1A1A',
-                    borderTop: isCurrent ? '2px solid #00F0FF' : isPast ? '2px solid #00FF66' : '1px solid #1A1A1A',
+                    backgroundColor: isCurrent ? '#040812' : isPast ? '#0a1326' : '#040812',
+                    border: isCurrent ? '1px solid #00F0FF' : isPast ? '1px solid #00FF66' : '1px solid #13223d',
+                    borderTop: isCurrent ? '2px solid #00F0FF' : isPast ? '2px solid #00FF66' : '1px solid #13223d',
                     padding: '8px 10px',
                     fontFamily: 'monospace',
                     fontSize: '10px',
-                    color: isCurrent ? '#00F0FF' : isPast ? '#00FF66' : '#555555',
+                    color: isCurrent ? '#00F0FF' : isPast ? '#00FF66' : '#64748b',
                     fontWeight: 700,
                   }}
                 >
@@ -246,23 +246,23 @@ export default function WizardQuote() {
                       key={opt.clave}
                       onClick={() => setTipoInmueble(opt.clave)}
                       style={{
-                        backgroundColor: sel ? '#0A0A0A' : '#000000',
-                        border: sel ? '1px solid #00F0FF' : '1px solid #1A1A1A',
+                        backgroundColor: sel ? '#0d172e' : '#040812',
+                        border: sel ? '1px solid #00F0FF' : '1px solid #13223d',
                         padding: '16px',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                        <span style={{ fontFamily: 'monospace', fontSize: '10px', color: sel ? '#00F0FF' : '#555555' }}>
+                        <span style={{ fontFamily: 'monospace', fontSize: '10px', color: sel ? '#00F0FF' : '#64748b' }}>
                           [{opt.code}]
                         </span>
-                        <span style={{ width: '8px', height: '8px', backgroundColor: sel ? '#00F0FF' : '#222222' }}></span>
+                        <span style={{ width: '8px', height: '8px', backgroundColor: sel ? '#00F0FF' : '#1d335a' }}></span>
                       </div>
                       <h4 style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '14px', fontWeight: 800, color: '#FFFFFF', margin: '0 0 6px 0', textTransform: 'uppercase' }}>
                         {opt.titulo}
                       </h4>
-                      <p style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11.5px', color: '#888888', lineHeight: 1.4, margin: 0 }}>
+                      <p style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11.5px', color: '#94a3b8', lineHeight: 1.4, margin: 0 }}>
                         {opt.descripcion}
                       </p>
                     </div>
@@ -275,7 +275,7 @@ export default function WizardQuote() {
                   onClick={() => setPasoActual(2)}
                   style={{
                     backgroundColor: '#00F0FF',
-                    color: '#000000',
+                    color: '#040812',
                     border: '1px solid #00F0FF',
                     fontFamily: 'monospace',
                     fontSize: '11px',
@@ -304,8 +304,8 @@ export default function WizardQuote() {
                       key={srv.valor}
                       onClick={() => toggleServicio(srv.valor)}
                       style={{
-                        backgroundColor: sel ? '#0A0A0A' : '#000000',
-                        border: sel ? '1px solid #00F0FF' : '1px solid #1A1A1A',
+                        backgroundColor: sel ? '#0d172e' : '#040812',
+                        border: sel ? '1px solid #00F0FF' : '1px solid #13223d',
                         padding: '12px 16px',
                         cursor: 'pointer',
                         display: 'flex',
@@ -315,14 +315,14 @@ export default function WizardQuote() {
                     >
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
-                          <span style={{ fontFamily: 'monospace', fontSize: '10px', color: sel ? '#00F0FF' : '#555555' }}>
+                          <span style={{ fontFamily: 'monospace', fontSize: '10px', color: sel ? '#00F0FF' : '#64748b' }}>
                             [{srv.code}]
                           </span>
                           <strong style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '13px', color: '#FFFFFF', textTransform: 'uppercase' }}>
                             {srv.titulo}
                           </strong>
                         </div>
-                        <p style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11.5px', color: '#888888', margin: 0 }}>
+                        <p style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11.5px', color: '#94a3b8', margin: 0 }}>
                           {srv.descripcion}
                         </p>
                       </div>
@@ -330,14 +330,14 @@ export default function WizardQuote() {
                         style={{
                           width: '18px',
                           height: '18px',
-                          backgroundColor: sel ? '#00F0FF' : '#111111',
-                          border: '1px solid #333333',
+                          backgroundColor: sel ? '#00F0FF' : '#070e1c',
+                          border: sel ? '1px solid #00F0FF' : '1px solid #1d335a',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           fontFamily: 'monospace',
                           fontSize: '11px',
-                          color: '#000000',
+                          color: '#040812',
                           fontWeight: 900,
                           flexShrink: 0,
                           marginLeft: '12px',
@@ -354,9 +354,9 @@ export default function WizardQuote() {
                 <button
                   onClick={() => setPasoActual(1)}
                   style={{
-                    backgroundColor: '#000000',
-                    color: '#888888',
-                    border: '1px solid #222222',
+                    backgroundColor: '#040812',
+                    color: '#94a3b8',
+                    border: '1px solid #1d335a',
                     fontFamily: 'monospace',
                     fontSize: '11px',
                     padding: '12px 20px',
@@ -369,7 +369,7 @@ export default function WizardQuote() {
                   onClick={() => setPasoActual(3)}
                   style={{
                     backgroundColor: '#00F0FF',
-                    color: '#000000',
+                    color: '#040812',
                     border: '1px solid #00F0FF',
                     fontFamily: 'monospace',
                     fontSize: '11px',
@@ -392,7 +392,7 @@ export default function WizardQuote() {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '24px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888' }}>
+                  <label style={{ fontFamily: 'monospace', fontSize: '10px', color: '#94a3b8' }}>
                     [01] UBICACIÓN / MUNICIPIO (MADRID)
                   </label>
                   <input
@@ -401,8 +401,8 @@ export default function WizardQuote() {
                     onChange={(e) => setUbicacion(e.target.value)}
                     placeholder="Ej: Guadarrama, Pozuelo, Las Rozas, Madrid..."
                     style={{
-                      backgroundColor: '#000000',
-                      border: '1px solid #222222',
+                      backgroundColor: '#040812',
+                      border: '1px solid #1d335a',
                       color: '#FFFFFF',
                       fontFamily: 'monospace',
                       fontSize: '12px',
@@ -413,7 +413,7 @@ export default function WizardQuote() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888' }}>
+                  <label style={{ fontFamily: 'monospace', fontSize: '10px', color: '#94a3b8' }}>
                     [02] SUPERFICIE APROXIMADA (M²)
                   </label>
                   <input
@@ -422,8 +422,8 @@ export default function WizardQuote() {
                     onChange={(e) => setSuperficieM2(e.target.value)}
                     placeholder="Ej: 180"
                     style={{
-                      backgroundColor: '#000000',
-                      border: '1px solid #222222',
+                      backgroundColor: '#040812',
+                      border: '1px solid #1d335a',
                       color: '#FFFFFF',
                       fontFamily: 'monospace',
                       fontSize: '12px',
@@ -434,15 +434,15 @@ export default function WizardQuote() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888' }}>
+                  <label style={{ fontFamily: 'monospace', fontSize: '10px', color: '#94a3b8' }}>
                     [03] PLAZO DE EJECUCIÓN PREVISTO
                   </label>
                   <select
                     value={plazo}
                     onChange={(e) => setPlazo(e.target.value)}
                     style={{
-                      backgroundColor: '#000000',
-                      border: '1px solid #222222',
+                      backgroundColor: '#040812',
+                      border: '1px solid #1d335a',
                       color: '#FFFFFF',
                       fontFamily: 'monospace',
                       fontSize: '12px',
@@ -462,9 +462,9 @@ export default function WizardQuote() {
                 <button
                   onClick={() => setPasoActual(2)}
                   style={{
-                    backgroundColor: '#000000',
-                    color: '#888888',
-                    border: '1px solid #222222',
+                    backgroundColor: '#040812',
+                    color: '#94a3b8',
+                    border: '1px solid #1d335a',
                     fontFamily: 'monospace',
                     fontSize: '11px',
                     padding: '12px 20px',
@@ -477,7 +477,7 @@ export default function WizardQuote() {
                   onClick={() => setPasoActual(4)}
                   style={{
                     backgroundColor: '#00F0FF',
-                    color: '#000000',
+                    color: '#040812',
                     border: '1px solid #00F0FF',
                     fontFamily: 'monospace',
                     fontSize: '11px',
@@ -501,8 +501,8 @@ export default function WizardQuote() {
 
               <div
                 style={{
-                  backgroundColor: '#000000',
-                  border: '1px solid #1F1F1F',
+                  backgroundColor: '#040812',
+                  border: '1px solid #1d335a',
                   padding: '16px',
                   marginBottom: '20px',
                   display: 'grid',
@@ -511,26 +511,26 @@ export default function WizardQuote() {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#666666' }}>[TIPO INMUEBLE]</div>
+                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#64748b' }}>[TIPO INMUEBLE]</div>
                   <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '13px', fontWeight: 800, color: '#FFFFFF' }}>{tipoInmueble}</div>
                 </div>
 
                 <div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#666666' }}>[SERVICIOS SELECCIONADOS]</div>
+                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#64748b' }}>[SERVICIOS SELECCIONADOS]</div>
                   <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#00F0FF' }}>
                     {serviciosSeleccionados.join(', ') || 'Consulta General'}
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#666666' }}>[UBICACIÓN Y SUPERFICIE]</div>
+                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#64748b' }}>[UBICACIÓN Y SUPERFICIE]</div>
                   <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '13px', color: '#FFFFFF' }}>
                     {ubicacion} ({superficieM2} m²)
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#666666' }}>[PLAZO ESTIMADO]</div>
+                  <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#64748b' }}>[PLAZO ESTIMADO]</div>
                   <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '13px', color: '#FFE600' }}>
                     {plazo}
                   </div>
@@ -544,7 +544,7 @@ export default function WizardQuote() {
                     flex: '1',
                     minWidth: '280px',
                     backgroundColor: '#00FF66',
-                    color: '#000000',
+                    color: '#040812',
                     fontFamily: 'monospace',
                     fontSize: '12px',
                     fontWeight: 800,
@@ -555,12 +555,12 @@ export default function WizardQuote() {
                     transition: 'all 0.2s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#000000';
+                    e.currentTarget.style.backgroundColor = '#040812';
                     e.currentTarget.style.color = '#00FF66';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '#00FF66';
-                    e.currentTarget.style.color = '#000000';
+                    e.currentTarget.style.color = '#040812';
                   }}
                 >
                   ENVIAR SOLICITUD A KERLING NATALE POR WHATSAPP →
@@ -569,9 +569,9 @@ export default function WizardQuote() {
                 <button
                   onClick={() => setPasoActual(3)}
                   style={{
-                    backgroundColor: '#000000',
-                    color: '#888888',
-                    border: '1px solid #222222',
+                    backgroundColor: '#040812',
+                    color: '#94a3b8',
+                    border: '1px solid #1d335a',
                     fontFamily: 'monospace',
                     fontSize: '11px',
                     padding: '14px 20px',

@@ -6,6 +6,12 @@ export default function SystemActivationHero({ onOpenQuote }) {
   const [sineOffset, setSineOffset] = useState(0);
   const [telemetry, setTelemetry] = useState({ volt: '230.4', freq: '50.00' });
 
+  const heroRef = useRef(null);
+  const telemetryBarRef = useRef(null);
+  const leftModuleRef = useRef(null);
+  const rightModuleRef = useRef(null);
+  const oscilloscopeRef = useRef(null);
+
   // Live fluctuating telemetry simulation
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,6 +31,48 @@ export default function SystemActivationHero({ onOpenQuote }) {
     };
     animId = requestAnimationFrame(animateWave);
     return () => cancelAnimationFrame(animId);
+  }, []);
+
+  // GSAP Power On Sequence al montar el Hero
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.fromTo(
+        telemetryBarRef.current,
+        { y: -25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 }
+      );
+
+      tl.fromTo(
+        leftModuleRef.current,
+        { x: -35, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.75 },
+        '-=0.3'
+      );
+
+      tl.fromTo(
+        rightModuleRef.current,
+        { x: 35, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.75 },
+        '<0.1'
+      );
+
+      tl.fromTo(
+        oscilloscopeRef.current,
+        { scaleY: 0.7, opacity: 0 },
+        { scaleY: 1, opacity: 1, duration: 0.6, ease: 'expo.out' },
+        '-=0.4'
+      );
+
+      tl.from(
+        '.hero-node-card',
+        { y: 20, opacity: 0, stagger: 0.08, duration: 0.5 },
+        '-=0.3'
+      );
+    }, heroRef);
+
+    return () => ctx.revert();
   }, []);
 
   const triggerCircuitPulse = () => {
@@ -54,10 +102,11 @@ export default function SystemActivationHero({ onOpenQuote }) {
   return (
     <section
       id="inicio"
+      ref={heroRef}
       style={{
         minHeight: '100vh',
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -66,7 +115,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
         padding: '110px 4vw 60px',
         overflow: 'hidden',
         boxSizing: 'border-box',
-        borderBottom: '1px solid #1A1A1A',
+        borderBottom: '1px solid #13223d',
       }}
     >
       {/* CUADRÍCULA TÉCNICA DE FONDO SVG */}
@@ -150,18 +199,19 @@ export default function SystemActivationHero({ onOpenQuote }) {
         
         {/* BARRA SUPERIOR DE TELEMETRÍA TÉCNICA */}
         <div
+          ref={telemetryBarRef}
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: '12px',
-            borderBottom: '1px solid #222222',
+            borderBottom: '1px solid #13223d',
             paddingBottom: '12px',
             marginBottom: '32px',
             fontFamily: 'var(--fuente-tecnica)',
             fontSize: '11px',
-            color: '#888888',
+            color: '#94A3B8',
             letterSpacing: '0.15em',
           }}
         >
@@ -169,7 +219,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
             <span style={{ width: '8px', height: '8px', backgroundColor: '#00FF66', display: 'inline-block', boxShadow: '0 0 10px #00FF66' }}></span>
             <span style={{ color: '#00FF66', fontWeight: 800 }}>[GRID ONLINE // 100% ACTIVO]</span>
           </div>
-          <div style={{ display: 'flex', gap: '18px', color: '#666666' }}>
+          <div style={{ display: 'flex', gap: '18px', color: '#64748B' }}>
             <span>VOLT: <strong style={{ color: '#00F0FF', textShadow: '0 0 8px rgba(0, 240, 255, 0.4)' }}>{telemetry.volt}V AC</strong></span>
             <span>FREQ: <strong style={{ color: '#00FF66', textShadow: '0 0 8px rgba(0, 255, 102, 0.4)' }}>{telemetry.freq} Hz</strong></span>
             <span>REBT: <strong style={{ color: '#FFE600', textShadow: '0 0 8px rgba(255, 230, 0, 0.4)' }}>ITC-BT CONFORME</strong></span>
@@ -188,6 +238,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
         >
           {/* MÓDULO IZQUIERDO: TITULAR MONUMENTAL Y MANIFIESTO */}
           <div
+            ref={leftModuleRef}
             className="bento-grid-module"
             style={{
               padding: 'clamp(28px, 4vw, 48px)',
@@ -287,6 +338,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
 
           {/* MÓDULO DERECHO: MONITOR OSCILOSCOPIO SVG Y TELEMETRÍA EN VIVO */}
           <div
+            ref={rightModuleRef}
             className="bento-grid-module"
             style={{
               padding: 'clamp(24px, 3.5vw, 36px)',
@@ -308,11 +360,12 @@ export default function SystemActivationHero({ onOpenQuote }) {
 
             {/* PANTALLA GRÁFICA DEL OSCILOSCOPIO SVG */}
             <div
+              ref={oscilloscopeRef}
               style={{
                 width: '100%',
                 height: '180px',
-                backgroundColor: '#000000',
-                border: '1px solid #1F1F1F',
+                backgroundColor: '#040812',
+                border: '1px solid #1d335a',
                 position: 'relative',
                 overflow: 'hidden',
                 marginBottom: '20px',
@@ -335,7 +388,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
               {/* Trazo senoidal animado en vivo */}
               <svg width="100%" height="100%" style={{ position: 'relative', zIndex: 2 }}>
                 {/* Eje central */}
-                <line x1="0" y1="90" x2="100%" y2="90" stroke="#333333" strokeDasharray="4 4" strokeWidth="1" />
+                <line x1="0" y1="90" x2="100%" y2="90" stroke="#1d335a" strokeDasharray="4 4" strokeWidth="1" />
 
                 {/* Onda senoidal principal (Cyan) */}
                 <path
@@ -365,9 +418,10 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   fontSize: '9px',
                   color: '#00F0FF',
                   zIndex: 3,
-                  background: 'rgba(0,0,0,0.8)',
+                  background: 'rgba(4, 8, 18, 0.92)',
+                  backdropFilter: 'blur(4px)',
                   padding: '2px 6px',
-                  border: '1px solid #1F1F1F',
+                  border: '1px solid #1d335a',
                 }}
               >
                 V_RMS: <span style={{ color: '#FFFFFF', fontWeight: 800 }}>{telemetry.volt}V</span> | FREQ: <span style={{ color: '#00FF66', fontWeight: 800 }}>{telemetry.freq}Hz</span> | Δt: 20ms
@@ -383,28 +437,28 @@ export default function SystemActivationHero({ onOpenQuote }) {
                 fontFamily: 'var(--fuente-tecnica)',
               }}
             >
-              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #00FF66' }}>
-                <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 01 // LOXONE]</span>
+              <div className="hero-node-card card-cad-interactive" style={{ padding: '12px', background: '#070e1c', border: '1px solid #13223d', borderLeft: '3px solid #00FF66' }}>
+                <span style={{ fontSize: '9px', color: '#64748B', display: 'block' }}>[NODO 01 // LOXONE]</span>
                 <span style={{ fontSize: '13px', color: '#00FF66', fontWeight: 800 }}>PARTNER OFICIAL</span>
                 <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>100% LOCAL NO CLOUD</span>
               </div>
 
-              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #FFE600' }}>
-                <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 02 // SOLAR]</span>
+              <div className="hero-node-card card-cad-interactive" style={{ padding: '12px', background: '#070e1c', border: '1px solid #13223d', borderLeft: '3px solid #FFE600' }}>
+                <span style={{ fontSize: '9px', color: '#64748B', display: 'block' }}>[NODO 02 // SOLAR]</span>
                 <span style={{ fontSize: '13px', color: '#FFE600', fontWeight: 800 }}>AUTOCONSUMO 95%</span>
                 <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>BATERÍAS LITIO LFP</span>
               </div>
 
-              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #00F0FF' }}>
-                <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 03 // CERTIFICACIÓN]</span>
+              <div className="hero-node-card card-cad-interactive" style={{ padding: '12px', background: '#070e1c', border: '1px solid #13223d', borderLeft: '3px solid #00F0FF' }}>
+                <span style={{ fontSize: '9px', color: '#64748B', display: 'block' }}>[NODO 03 // CERTIFICACIÓN]</span>
                 <span style={{ fontSize: '13px', color: '#00F0FF', fontWeight: 800 }}>BOLETÍN OFICIAL CIE</span>
                 <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>INSTALADOR AUTORIZADO</span>
               </div>
 
-              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #FFFFFF' }}>
-                <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 04 // VEHÍCULO]</span>
+              <div className="hero-node-card card-cad-interactive" style={{ padding: '12px', background: '#070e1c', border: '1px solid #13223d', borderLeft: '3px solid #FFFFFF' }}>
+                <span style={{ fontSize: '9px', color: '#64748B', display: 'block' }}>[NODO 04 // VEHÍCULO]</span>
                 <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 800 }}>WALLBOX EV</span>
-                <span style={{ fontSize: '10px', color: '#888888', display: 'block', marginTop: '2px' }}>MODO BALANCEO DINÁMICO</span>
+                <span style={{ fontSize: '10px', color: '#94A3B8', display: 'block', marginTop: '2px' }}>MODO BALANCEO DINÁMICO</span>
               </div>
             </div>
 
@@ -412,12 +466,12 @@ export default function SystemActivationHero({ onOpenQuote }) {
               style={{
                 marginTop: '16px',
                 paddingTop: '12px',
-                borderTop: '1px solid #1F1F1F',
+                borderTop: '1px solid #13223d',
                 display: 'flex',
                 justifyContent: 'space-between',
                 fontFamily: 'var(--fuente-tecnica)',
                 fontSize: '10px',
-                color: '#666666',
+                color: '#64748B',
               }}
             >
               <span>ING. KERLING NATALE</span>

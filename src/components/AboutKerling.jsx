@@ -6,30 +6,61 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutKerling({ onOpenQuote }) {
   const sectionRef = useRef(null);
+  const portraitBoxRef = useRef(null);
+  const curtainRef = useRef(null);
+  const portraitImgRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.cad-perfil-img', {
-        x: -30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 75%',
         },
       });
 
-      gsap.from('.cad-perfil-info', {
-        x: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
-      });
+      // Reveal card container
+      tl.fromTo(
+        portraitBoxRef.current,
+        { y: 35, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
+      );
+
+      // Shutter curtain wipe open
+      tl.fromTo(
+        curtainRef.current,
+        { scaleX: 1, transformOrigin: 'right center' },
+        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' },
+        '-=0.3'
+      );
+
+      // Image zoom settle from scale 1.25 to 1.0 with filter shift
+      tl.fromTo(
+        portraitImgRef.current,
+        { scale: 1.25, filter: 'contrast(1.3) brightness(0.7)' },
+        { scale: 1, filter: 'contrast(1.08) grayscale(10%)', duration: 1.1, ease: 'power3.out' },
+        '<'
+      );
+
+      // Dimension tags and metadata pop in
+      tl.from(
+        '.badge-tag-snap',
+        { opacity: 0, scale: 0.85, y: -6, stagger: 0.1, ease: 'back.out(2)', duration: 0.4 },
+        '-=0.5'
+      );
+
+      // Text content and cards stagger in
+      tl.from(
+        '.cad-perfil-info > div:first-child > *',
+        { y: 25, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out' },
+        '-=0.5'
+      );
+
+      tl.from(
+        '.card-cad-credential',
+        { y: 20, opacity: 0, stagger: 0.08, duration: 0.5, ease: 'power2.out' },
+        '-=0.3'
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -41,11 +72,11 @@ export default function AboutKerling({ onOpenQuote }) {
       ref={sectionRef}
       style={{
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        borderBottom: '1px solid #1A1A1A',
+        borderBottom: '1px solid #13223d',
       }}
     >
       <div
@@ -74,8 +105,8 @@ export default function AboutKerling({ onOpenQuote }) {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#050505',
-                border: '1px solid #222222',
+                backgroundColor: '#070e1c',
+                border: '1px solid #1d335a',
                 padding: '4px 12px',
                 marginBottom: '10px',
               }}
@@ -121,7 +152,7 @@ export default function AboutKerling({ onOpenQuote }) {
             style={{
               fontFamily: 'monospace',
               fontSize: '11px',
-              color: '#666666',
+              color: '#64748B',
               textAlign: 'right',
             }}
           >
@@ -139,13 +170,14 @@ export default function AboutKerling({ onOpenQuote }) {
             alignItems: 'start',
           }}
         >
-          {/* COLUMNA IZQUIERDA: RETRATO CAD CON OVERLAY DE DIMENSIONES TÉCNICAS */}
+          {/* COLUMNA IZQUIERDA: RETRATO CAD CON GSAP APERTURE & CURTAIN REVEAL */}
           <div
+            ref={portraitBoxRef}
             className="cad-perfil-img"
             style={{
               position: 'relative',
-              backgroundColor: '#050505',
-              border: '1px solid #222222',
+              backgroundColor: '#070e1c',
+              border: '1px solid #1d335a',
               padding: '16px',
             }}
           >
@@ -161,23 +193,26 @@ export default function AboutKerling({ onOpenQuote }) {
                 justifyContent: 'space-between',
                 fontFamily: 'monospace',
                 fontSize: '9.5px',
-                color: '#666666',
+                color: '#64748B',
                 paddingBottom: '8px',
-                borderBottom: '1px solid #1A1A1A',
+                borderBottom: '1px solid #13223d',
                 marginBottom: '10px',
               }}
             >
-              <span style={{ color: '#FFE600' }}>[DIM: 420x540mm]</span>
-              <span style={{ color: '#888888' }}>[CALIB: ISO-9001]</span>
-              <span style={{ color: '#00FF66', fontWeight: 800 }}>[VERIFIED]</span>
+              <span className="badge-tag-snap" style={{ color: '#FFE600' }}>[DIM: 420x540mm]</span>
+              <span className="badge-tag-snap" style={{ color: '#94A3B8' }}>[CALIB: ISO-9001]</span>
+              <span className="badge-tag-snap" style={{ color: '#00FF66', fontWeight: 800 }}>[VERIFIED]</span>
             </div>
 
-            {/* IMAGEN DE KERLING CON LÁSER SCANNER */}
-            <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid #1F1F1F' }}>
+            {/* IMAGEN DE KERLING CON GSAP CURTAIN & LÁSER SCANNER */}
+            <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid #1d335a', backgroundColor: '#040812' }}>
+              <div ref={curtainRef} className="gsap-curtain-overlay" />
               <div className="laser-scanner-line" />
               <img
+                ref={portraitImgRef}
                 src="/images/kerling_portrait.png"
                 alt="Kerling Abraham Natale Hidalgo — Dirección Técnica DEN"
+                className="gsap-img-target"
                 style={{
                   width: '100%',
                   height: '380px',
@@ -217,7 +252,8 @@ export default function AboutKerling({ onOpenQuote }) {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  backgroundColor: 'rgba(0, 0, 0, 0.92)',
+                  backgroundColor: 'rgba(4, 8, 18, 0.94)',
+                  backdropFilter: 'blur(8px)',
                   borderTop: '1px solid #00F0FF',
                   padding: '12px 14px',
                 }}
@@ -238,7 +274,7 @@ export default function AboutKerling({ onOpenQuote }) {
                 justifyContent: 'space-between',
                 fontFamily: 'monospace',
                 fontSize: '9px',
-                color: '#555555',
+                color: '#64748B',
                 paddingTop: '10px',
               }}
             >
@@ -273,7 +309,7 @@ export default function AboutKerling({ onOpenQuote }) {
                 style={{
                   fontFamily: 'system-ui, -apple-system, sans-serif',
                   fontSize: '14px',
-                  color: '#A0A0A0',
+                  color: '#94A3B8',
                   lineHeight: 1.6,
                   margin: 0,
                 }}
@@ -318,16 +354,16 @@ export default function AboutKerling({ onOpenQuote }) {
               ].map((c, idx) => (
                 <div
                   key={idx}
-                  className="card-cad-interactive"
+                  className="card-cad-interactive card-cad-credential"
                   style={{
-                    backgroundColor: '#050505',
-                    border: '1px solid #1F1F1F',
+                    backgroundColor: '#070e1c',
+                    border: '1px solid #13223d',
                     borderLeft: `3px solid ${c.color}`,
                     padding: '12px 14px',
                     position: 'relative',
                   }}
                 >
-                  <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#888888', marginBottom: '2px' }}>
+                  <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#64748B', marginBottom: '2px' }}>
                     [{c.code}]
                   </div>
                   <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', fontWeight: 900, color: '#FFFFFF', textTransform: 'uppercase' }}>
@@ -343,15 +379,15 @@ export default function AboutKerling({ onOpenQuote }) {
             {/* PROTOCOLO DE INTERVENCIÓN */}
             <div
               style={{
-                backgroundColor: '#050505',
-                border: '1px solid #1F1F1F',
+                backgroundColor: '#070e1c',
+                border: '1px solid #13223d',
                 padding: '14px 18px',
               }}
             >
               <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#FFE600', fontWeight: 700, marginBottom: '6px', letterSpacing: '1px' }}>
                 [PROTOCOLO DE CONTROL DE CALIDAD DEN]
               </div>
-              <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#888888', lineHeight: 1.5 }}>
+              <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#94A3B8', lineHeight: 1.5 }}>
                 Toda instalación finaliza con comprobación de disparo de diferenciales con analizador de redes calibrado, medición de aislamiento a 1000V e inspección infrarroja con cámara termográfica FLIR para asegurar ausencia total de sobrecalentamientos.
               </div>
             </div>
@@ -362,7 +398,7 @@ export default function AboutKerling({ onOpenQuote }) {
                 onClick={onOpenQuote}
                 style={{
                   backgroundColor: '#00F0FF',
-                  color: '#000000',
+                  color: '#040812',
                   fontFamily: 'monospace',
                   fontSize: '11px',
                   fontWeight: 800,
@@ -373,12 +409,12 @@ export default function AboutKerling({ onOpenQuote }) {
                   transition: 'all 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#000000';
+                  e.currentTarget.style.backgroundColor = '#040812';
                   e.currentTarget.style.color = '#00F0FF';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = '#00F0FF';
-                  e.currentTarget.style.color = '#000000';
+                  e.currentTarget.style.color = '#040812';
                 }}
               >
                 AGENDAR CONSULTA TÉCNICA →
@@ -389,14 +425,14 @@ export default function AboutKerling({ onOpenQuote }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  backgroundColor: '#000000',
+                  backgroundColor: '#040812',
                   color: '#00FF66',
                   fontFamily: 'monospace',
                   fontSize: '11px',
                   fontWeight: 700,
                   letterSpacing: '1.5px',
                   padding: '14px 24px',
-                  border: '1px solid #222222',
+                  border: '1px solid #1d335a',
                   textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',

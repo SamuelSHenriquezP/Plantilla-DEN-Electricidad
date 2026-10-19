@@ -85,7 +85,7 @@ export default function FollowTheCurrentCursor() {
         <span
           id="cursor-etiqueta-contextual"
           style={{
-            background: '#000000',
+            background: '#040812',
             border: '1px solid #00F0FF',
             color: '#00F0FF',
             fontFamily: 'monospace',
@@ -94,6 +94,7 @@ export default function FollowTheCurrentCursor() {
             letterSpacing: '1px',
             padding: '2px 6px',
             whiteSpace: 'nowrap',
+            boxShadow: '0 2px 10px rgba(0, 240, 255, 0.25)',
           }}
         >
           [{cursorText}]

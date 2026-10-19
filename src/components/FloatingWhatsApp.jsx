@@ -20,12 +20,12 @@ export default function FloatingWhatsApp() {
       {isOpen && (
         <div
           style={{
-            backgroundColor: '#000000',
+            backgroundColor: '#070e1c',
             border: '1px solid #00FF66',
             padding: '16px 18px',
             maxWidth: '320px',
             position: 'relative',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.95)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 255, 102, 0.15)',
           }}
         >
           {/* ESQUINAS CRUZ CAD (+) */}
@@ -34,7 +34,7 @@ export default function FloatingWhatsApp() {
           <span style={{ position: 'absolute', bottom: '-8px', left: '-8px', color: '#00FF66', fontFamily: 'monospace', fontSize: '14px' }}>+</span>
           <span style={{ position: 'absolute', bottom: '-8px', right: '-8px', color: '#00FF66', fontFamily: 'monospace', fontSize: '14px' }}>+</span>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', borderBottom: '1px solid #1A1A1A', paddingBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', borderBottom: '1px solid #13223d', paddingBottom: '6px' }}>
             <span
               style={{
                 fontFamily: 'monospace',
@@ -117,7 +117,7 @@ export default function FloatingWhatsApp() {
         style={{
           height: '46px',
           padding: '0 16px',
-          backgroundColor: '#000000',
+          backgroundColor: '#070e1c',
           border: '1px solid #00FF66',
           color: '#00FF66',
           fontFamily: 'monospace',
@@ -136,7 +136,7 @@ export default function FloatingWhatsApp() {
           e.currentTarget.style.color = '#000000';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = '#000000';
+          e.currentTarget.style.backgroundColor = '#070e1c';
           e.currentTarget.style.color = '#00FF66';
         }}
       >

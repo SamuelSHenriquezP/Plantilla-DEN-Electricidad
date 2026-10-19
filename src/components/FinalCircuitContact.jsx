@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function FinalCircuitContact({ onOpenQuote }) {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.contact-card-item', {
+        y: 25,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="contacto"
+      ref={sectionRef}
       style={{
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        borderBottom: '1px solid #1A1A1A',
+        borderBottom: '1px solid #13223d',
       }}
     >
       <div
@@ -23,8 +48,8 @@ export default function FinalCircuitContact({ onOpenQuote }) {
         {/* TERMINAL BOX 100% CUADRADO */}
         <div
           style={{
-            backgroundColor: '#050505',
-            border: '1px solid #222222',
+            backgroundColor: '#070e1c',
+            border: '1px solid #1d335a',
             padding: '40px 32px',
             position: 'relative',
             textAlign: 'center',
@@ -41,8 +66,8 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              backgroundColor: '#000000',
-              border: '1px solid #222222',
+              backgroundColor: '#040812',
+              border: '1px solid #1d335a',
               padding: '4px 14px',
               marginBottom: '16px',
             }}
@@ -88,7 +113,7 @@ export default function FinalCircuitContact({ onOpenQuote }) {
             style={{
               fontFamily: 'system-ui, -apple-system, sans-serif',
               fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
-              color: '#9CA3AF',
+              color: '#94A3B8',
               maxWidth: '700px',
               margin: '0 auto 28px',
               lineHeight: 1.55,
@@ -103,7 +128,7 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               onClick={onOpenQuote}
               style={{
                 backgroundColor: '#00F0FF',
-                color: '#000000',
+                color: '#040812',
                 fontFamily: 'monospace',
                 fontSize: '12px',
                 fontWeight: 800,
@@ -114,12 +139,12 @@ export default function FinalCircuitContact({ onOpenQuote }) {
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#000000';
+                e.currentTarget.style.backgroundColor = '#040812';
                 e.currentTarget.style.color = '#00F0FF';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = '#00F0FF';
-                e.currentTarget.style.color = '#000000';
+                e.currentTarget.style.color = '#040812';
               }}
             >
               SOLICITAR PRESUPUESTO ONLINE →
@@ -130,7 +155,7 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                backgroundColor: '#000000',
+                backgroundColor: '#040812',
                 color: '#00FF66',
                 fontFamily: 'monospace',
                 fontSize: '12px',
@@ -145,10 +170,10 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#00FF66';
-                e.currentTarget.style.color = '#000000';
+                e.currentTarget.style.color = '#040812';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#000000';
+                e.currentTarget.style.backgroundColor = '#040812';
                 e.currentTarget.style.color = '#00FF66';
               }}
             >
@@ -164,32 +189,32 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               gap: '12px',
               fontFamily: 'monospace',
               fontSize: '10px',
-              color: '#888888',
-              borderTop: '1px solid #1A1A1A',
+              color: '#94A3B8',
+              borderTop: '1px solid #13223d',
               paddingTop: '20px',
               marginBottom: '20px',
               textAlign: 'left',
             }}
           >
-            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #00F0FF' }}>
+            <div className="card-cad-interactive contact-card-item" style={{ backgroundColor: '#091224', padding: '12px', border: '1px solid #13223d', borderLeft: '3px solid #00F0FF' }}>
               <div style={{ color: '#00F0FF', fontWeight: 800, marginBottom: '4px' }}>[LÍNEA PRINCIPAL]</div>
               <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700 }}>+34 682 17 84 99</div>
-              <div style={{ color: '#888888' }}>+34 722 76 74 02</div>
+              <div style={{ color: '#64748B' }}>+34 722 76 74 02</div>
             </div>
 
-            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #FFE600' }}>
+            <div className="card-cad-interactive contact-card-item" style={{ backgroundColor: '#091224', padding: '12px', border: '1px solid #13223d', borderLeft: '3px solid #FFE600' }}>
               <div style={{ color: '#FFE600', fontWeight: 800, marginBottom: '4px' }}>[CORREO ELECTRÓNICO]</div>
               <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700, wordBreak: 'break-all' }}>DEN.INFORMACION@GMAIL.COM</div>
-              <div style={{ color: '#888888' }}>Respuesta en &lt; 24h</div>
+              <div style={{ color: '#64748B' }}>Respuesta en &lt; 24h</div>
             </div>
 
-            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #00FF66' }}>
+            <div className="card-cad-interactive contact-card-item" style={{ backgroundColor: '#091224', padding: '12px', border: '1px solid #13223d', borderLeft: '3px solid #00FF66' }}>
               <div style={{ color: '#00FF66', fontWeight: 800, marginBottom: '4px' }}>[BASE OPERATIVA]</div>
               <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700 }}>GUADARRAMA, MADRID</div>
-              <div style={{ color: '#888888' }}>Toda la Comunidad & Sierra</div>
+              <div style={{ color: '#64748B' }}>Toda la Comunidad & Sierra</div>
             </div>
 
-            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #FF3344' }}>
+            <div className="card-cad-interactive contact-card-item" style={{ backgroundColor: '#091224', padding: '12px', border: '1px solid #13223d', borderLeft: '3px solid #FF3344' }}>
               <div style={{ color: '#FF3344', fontWeight: 800, marginBottom: '4px' }}>[DISPONIBILIDAD]</div>
               <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700 }}>L-V 8:00 - 20:00</div>
               <div style={{ color: '#FF3344', fontWeight: 700 }}>URGENCIAS 24H ACTIVAS</div>
@@ -203,9 +228,9 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                backgroundColor: '#000000',
-                border: '1px solid #222222',
-                color: '#888888',
+                backgroundColor: '#040812',
+                border: '1px solid #1d335a',
+                color: '#94A3B8',
                 padding: '8px 18px',
                 fontFamily: 'monospace',
                 fontSize: '10px',
@@ -220,9 +245,9 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                backgroundColor: '#000000',
-                border: '1px solid #222222',
-                color: '#888888',
+                backgroundColor: '#040812',
+                border: '1px solid #1d335a',
+                color: '#94A3B8',
                 padding: '8px 18px',
                 fontFamily: 'monospace',
                 fontSize: '10px',

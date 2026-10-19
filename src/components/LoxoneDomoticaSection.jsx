@@ -1,6 +1,44 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function LoxoneDomoticaSection({ onOpenQuote }) {
+  const sectionRef = useRef(null);
+  const schematicRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+      });
+
+      tl.fromTo(
+        schematicRef.current,
+        { y: 35, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }
+      );
+
+      tl.from(
+        '.loxone-pillar-card',
+        { y: 30, opacity: 0, stagger: 0.1, duration: 0.55, ease: 'power2.out' },
+        '-=0.3'
+      );
+
+      tl.from(
+        '.loxone-console-box',
+        { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out' },
+        '-=0.2'
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const pilares = [
     {
       nodo: '01',
@@ -85,13 +123,14 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
   return (
     <section
       id="domotica-loxone"
+      ref={sectionRef}
       style={{
         width: '100%',
-        backgroundColor: '#000000',
+        backgroundColor: '#040812',
         padding: '70px 4vw',
         position: 'relative',
         boxSizing: 'border-box',
-        borderBottom: '1px solid #1A1A1A',
+        borderBottom: '1px solid #13223d',
       }}
     >
       <div style={{ maxWidth: '1360px', margin: '0 auto', width: '100%', position: 'relative' }}>
@@ -104,7 +143,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
             flexWrap: 'wrap',
             gap: '16px',
             marginBottom: '32px',
-            borderBottom: '1px solid #1A1A1A',
+            borderBottom: '1px solid #13223d',
             paddingBottom: '20px',
           }}
         >
@@ -114,8 +153,8 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#050505',
-                border: '1px solid #222222',
+                backgroundColor: '#070e1c',
+                border: '1px solid #1d335a',
                 padding: '4px 12px',
                 marginBottom: '10px',
               }}
@@ -161,7 +200,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
             style={{
               fontFamily: 'monospace',
               fontSize: '11px',
-              color: '#666666',
+              color: '#64748B',
               textAlign: 'right',
             }}
           >
@@ -172,9 +211,10 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
 
         {/* ESQUEMA SVG ANIMADO DE ARQUITECTURA LOXONE */}
         <div
+          ref={schematicRef}
           style={{
-            backgroundColor: '#050505',
-            border: '1px solid #222222',
+            backgroundColor: '#070e1c',
+            border: '1px solid #1d335a',
             padding: '20px',
             marginBottom: '28px',
             position: 'relative',
@@ -185,8 +225,8 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
           <span style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
           <span style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#00FF66', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', borderBottom: '1px solid #1A1A1A', paddingBottom: '8px' }}>
-            <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888', letterSpacing: '1.5px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', borderBottom: '1px solid #13223d', paddingBottom: '8px' }}>
+            <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#94A3B8', letterSpacing: '1.5px' }}>
               CAD SCHEMATIC // LOXONE MINISERVER V2 BUS TOPOLOGY
             </span>
             <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00FF66' }}>
@@ -200,11 +240,11 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
             style={{ width: '100%', height: 'auto', display: 'block' }}
           >
             {/* LÍNEAS DE BUS (FONDO FIJO) */}
-            <line x1="200" y1="60" x2="850" y2="60" stroke="#1F1F1F" strokeWidth="2" />
-            <line x1="360" y1="60" x2="360" y2="20" stroke="#1F1F1F" strokeWidth="1" />
-            <line x1="520" y1="60" x2="520" y2="100" stroke="#1F1F1F" strokeWidth="1" />
-            <line x1="680" y1="60" x2="680" y2="20" stroke="#1F1F1F" strokeWidth="1" />
-            <line x1="840" y1="60" x2="840" y2="100" stroke="#1F1F1F" strokeWidth="1" />
+            <line x1="200" y1="60" x2="850" y2="60" stroke="#13223d" strokeWidth="2" />
+            <line x1="360" y1="60" x2="360" y2="20" stroke="#13223d" strokeWidth="1" />
+            <line x1="520" y1="60" x2="520" y2="100" stroke="#13223d" strokeWidth="1" />
+            <line x1="680" y1="60" x2="680" y2="20" stroke="#13223d" strokeWidth="1" />
+            <line x1="840" y1="60" x2="840" y2="100" stroke="#13223d" strokeWidth="1" />
 
             {/* LÍNEAS ANIMADAS CON IMPULSOS DE CORRIENTE */}
             <line
@@ -239,32 +279,32 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
             />
 
             {/* NODO CENTRAL: MINISERVER */}
-            <rect x="20" y="25" width="180" height="70" fill="#000000" stroke="#00FF66" strokeWidth="1.5" />
+            <rect x="20" y="25" width="180" height="70" fill="#040812" stroke="#00FF66" strokeWidth="1.5" />
             <text x="35" y="52" fill="#FFFFFF" fontFamily="monospace" fontSize="12" fontWeight="bold">LOXONE MINISERVER</text>
             <text x="35" y="72" fill="#00FF66" fontFamily="monospace" fontSize="9">CORE PROCESSOR V2</text>
             <rect x="175" y="32" width="12" height="12" fill="#00FF66" style={{ animation: 'svgPulseSignal 1s infinite' }} />
 
             {/* NODOS DE EXTENSIÓN */}
             <g transform="translate(300, 10)">
-              <rect x="0" y="0" width="120" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <rect x="0" y="0" width="120" height="30" fill="#091224" stroke="#1d335a" strokeWidth="1" />
               <text x="12" y="19" fill="#00F0FF" fontFamily="monospace" fontSize="9">TREE EXTENSION</text>
               <rect x="105" y="9" width="6" height="6" fill="#00F0FF" />
             </g>
 
             <g transform="translate(460, 80)">
-              <rect x="0" y="0" width="120" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <rect x="0" y="0" width="120" height="30" fill="#091224" stroke="#1d335a" strokeWidth="1" />
               <text x="12" y="19" fill="#FFE600" fontFamily="monospace" fontSize="9">AIR BASE 868MHz</text>
               <rect x="105" y="9" width="6" height="6" fill="#FFE600" />
             </g>
 
             <g transform="translate(620, 10)">
-              <rect x="0" y="0" width="120" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <rect x="0" y="0" width="120" height="30" fill="#091224" stroke="#1d335a" strokeWidth="1" />
               <text x="12" y="19" fill="#00FF66" fontFamily="monospace" fontSize="9">DALI-2 GATEWAY</text>
               <rect x="105" y="9" width="6" height="6" fill="#00FF66" />
             </g>
 
             <g transform="translate(780, 80)">
-              <rect x="0" y="0" width="110" height="30" fill="#000000" stroke="#1F1F1F" strokeWidth="1" />
+              <rect x="0" y="0" width="110" height="30" fill="#091224" stroke="#1d335a" strokeWidth="1" />
               <text x="12" y="19" fill="#FFFFFF" fontFamily="monospace" fontSize="9">RELAY MATRIX</text>
               <rect x="95" y="9" width="6" height="6" fill="#00F0FF" />
             </g>
@@ -283,10 +323,10 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
           {pilares.map((p, idx) => (
             <div
               key={idx}
-              className="card-cad-interactive"
+              className="loxone-pillar-card card-cad-interactive"
               style={{
-                backgroundColor: '#050505',
-                border: '1px solid #1F1F1F',
+                backgroundColor: '#070e1c',
+                border: '1px solid #13223d',
                 borderLeft: `3px solid ${p.color}`,
                 padding: '24px',
                 display: 'flex',
@@ -301,7 +341,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                   <span style={{ fontFamily: 'monospace', fontSize: '10px', color: p.color, fontWeight: 700 }}>
                     [NODE: {p.nodo}]
                   </span>
-                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: '#888888' }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: '#94A3B8' }}>
                     {p.bus}
                   </span>
                 </div>
@@ -326,7 +366,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '12.5px',
-                    color: '#888888',
+                    color: '#94A3B8',
                     lineHeight: 1.5,
                     margin: '0 0 16px 0',
                   }}
@@ -335,7 +375,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                 </p>
               </div>
 
-              <div style={{ borderTop: '1px solid #1A1A1A', paddingTop: '12px' }}>
+              <div style={{ borderTop: '1px solid #13223d', paddingTop: '12px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {p.caracteristicas.map((c, i) => (
                     <div
@@ -346,7 +386,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                         gap: '6px',
                         fontFamily: 'system-ui, -apple-system, sans-serif',
                         fontSize: '11.5px',
-                        color: '#CCCCCC',
+                        color: '#E2E8F0',
                         lineHeight: 1.35,
                       }}
                     >
@@ -362,9 +402,10 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
 
         {/* CONSOLA INFERIOR DE SOLICITUD LOXONE (100% CUADRADA) */}
         <div
+          className="loxone-console-box"
           style={{
-            backgroundColor: '#080808',
-            border: '1px solid #222222',
+            backgroundColor: '#070e1c',
+            border: '1px solid #1d335a',
             padding: '24px 28px',
             display: 'flex',
             justifyContent: 'space-between',
@@ -397,7 +438,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               style={{
                 fontFamily: 'system-ui, -apple-system, sans-serif',
                 fontSize: '13px',
-                color: '#888888',
+                color: '#94A3B8',
                 lineHeight: 1.5,
                 margin: 0,
               }}
@@ -411,7 +452,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               onClick={onOpenQuote}
               style={{
                 backgroundColor: '#00FF66',
-                color: '#000000',
+                color: '#040812',
                 fontFamily: 'monospace',
                 fontSize: '12px',
                 fontWeight: 800,
@@ -422,12 +463,12 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#000000';
+                e.currentTarget.style.backgroundColor = '#040812';
                 e.currentTarget.style.color = '#00FF66';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = '#00FF66';
-                e.currentTarget.style.color = '#000000';
+                e.currentTarget.style.color = '#040812';
               }}
             >
               CONFIGURAR PROYECTO LOXONE →
@@ -438,14 +479,14 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                backgroundColor: '#000000',
+                backgroundColor: '#040812',
                 color: '#00FF66',
                 fontFamily: 'monospace',
                 fontSize: '12px',
                 fontWeight: 700,
                 letterSpacing: '1.5px',
                 padding: '14px 24px',
-                border: '1px solid #222222',
+                border: '1px solid #1d335a',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
