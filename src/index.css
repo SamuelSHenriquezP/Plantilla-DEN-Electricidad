@@ -66,10 +66,14 @@
 }
 
 html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
     height: 100%;
     overflow-x: hidden;
     background-color: #000000;
+}
+
+section[id] {
+    scroll-margin-top: 88px;
 }
 
 body {

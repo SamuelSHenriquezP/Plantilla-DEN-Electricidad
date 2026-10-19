@@ -225,7 +225,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
               <h1
                 style={{
                   fontFamily: 'var(--fuente-titulos)',
-                  fontSize: 'clamp(2.4rem, 5.5vw, 4.4rem)',
+                  fontSize: 'clamp(2rem, 4.2vw, 3.6rem)',
                   fontWeight: 900,
                   lineHeight: 1.05,
                   letterSpacing: '-0.02em',
