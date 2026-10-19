@@ -1,63 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState, useRef } from 'react';
+import DragToRevealCAD from './DragToRevealCAD';
 
 export default function InteractiveServicesList() {
   const [activeIdx, setActiveIdx] = useState(0);
   const sectionRef = useRef(null);
   const showcaseBoxRef = useRef(null);
-  const imageRef = useRef(null);
-  const curtainRef = useRef(null);
-  const isInitialMount = useRef(true);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-        },
-      });
-
-      tl.fromTo(
-        curtainRef.current,
-        { scaleX: 1, transformOrigin: 'right center' },
-        { scaleX: 0, duration: 0.85, ease: 'expo.inOut' }
-      );
-
-      tl.fromTo(
-        imageRef.current,
-        { scale: 1.25, filter: 'contrast(1.3) brightness(0.6)' },
-        { scale: 1, filter: 'contrast(1.05) brightness(0.95)', duration: 1.1, ease: 'power3.out' },
-        '<'
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Animación GSAP al cambiar de servicio seleccionado
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
-
-    if (curtainRef.current && imageRef.current) {
-      gsap.fromTo(
-        curtainRef.current,
-        { scaleX: 1, transformOrigin: 'right center' },
-        { scaleX: 0, duration: 0.6, ease: 'expo.inOut' }
-      );
-      gsap.fromTo(
-        imageRef.current,
-        { scale: 1.18, filter: 'contrast(1.25) brightness(0.65)' },
-        { scale: 1, filter: 'contrast(1.05) brightness(0.95)', duration: 0.8, ease: 'power3.out' }
-      );
-    }
-  }, [activeIdx]);
 
   const servicios = [
     {
@@ -348,12 +295,14 @@ export default function InteractiveServicesList() {
             }}
           >
             {/* COLUMNA IZQUIERDA: IMAGEN CAD CON MARCOS DE MEDIDAS TÉCNICAS */}
-            <div style={{ position: 'relative', backgroundColor: '#040812', border: '1px solid #1d335a' }}>
+            {/* COLUMNA IZQUIERDA: COMPARADOR DRAG-TO-REVEAL CAD */}
+            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
               <div
                 style={{
                   padding: '6px 12px',
                   backgroundColor: '#091224',
-                  borderBottom: '1px solid #13223d',
+                  border: '1px solid #1d335a',
+                  borderBottom: 'none',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
@@ -365,74 +314,7 @@ export default function InteractiveServicesList() {
                 <span>FEED: <span style={{ color: active.badgeColor }}>{active.code}</span></span>
                 <span style={{ color: active.badgeColor, fontWeight: 800 }}>[{active.badge}]</span>
               </div>
-
-              <div className="gsap-reveal-container" style={{ position: 'relative', overflow: 'hidden' }}>
-                {/* CURTAIN GSAP DE APERTURA / CAMBIO */}
-                <div ref={curtainRef} className="gsap-curtain-overlay" />
-                <img
-                  ref={imageRef}
-                  src={active.img}
-                  alt={active.titulo}
-                  className="gsap-img-target"
-                  style={{
-                    width: '100%',
-                    height: '360px',
-                    objectFit: 'cover',
-                    display: 'block',
-                    filter: 'contrast(1.05) brightness(0.95)',
-                  }}
-                />
-
-                {/* OVERLAY SVG DE CIRCUITO SUTIL EN LA BASE DE LA FOTO */}
-                <svg
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '24px',
-                    backgroundColor: 'rgba(4, 8, 18, 0.85)',
-                  }}
-                >
-                  <line
-                    x1="0"
-                    y1="12"
-                    x2="100%"
-                    y2="12"
-                    stroke="#13223d"
-                    strokeWidth="1"
-                  />
-                  <line
-                    x1="0"
-                    y1="12"
-                    x2="100%"
-                    y2="12"
-                    stroke="#00F0FF"
-                    strokeWidth="1.5"
-                    strokeDasharray="40 200"
-                    style={{ animation: 'svgCurrentDash 12s linear infinite' }}
-                  />
-                </svg>
-              </div>
-
-              {/* BARRA DE TELEMETRÍA INFERIOR DE LA FOTO */}
-              <div
-                style={{
-                  padding: '8px 12px',
-                  backgroundColor: '#091224',
-                  borderTop: '1px solid #13223d',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: '8px',
-                  fontFamily: 'monospace',
-                  fontSize: '9.5px',
-                  color: '#64748B',
-                }}
-              >
-                <div>[PROCES: {active.specs.procesador || active.specs.eficiencia || active.specs.normativa || active.specs.entrega || 'OK'}]</div>
-                <div>[RES: 1080P_CAD]</div>
-                <div style={{ textAlign: 'right', color: '#00FF66' }}>[STATUS: ACTIVE]</div>
-              </div>
+              <DragToRevealCAD service={active} />
             </div>
 
             {/* COLUMNA DERECHA: ESPECIFICACIONES TÉCNICAS */}
