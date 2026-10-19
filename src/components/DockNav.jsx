@@ -63,11 +63,11 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
             }}
           ></span>
           <span
+            className="text-shimmer-cyan"
             style={{
               fontFamily: 'var(--fuente-tecnica)',
               fontSize: '12px',
-              fontWeight: 800,
-              color: '#FFFFFF',
+              fontWeight: 900,
               letterSpacing: '0.15em',
             }}
           >
@@ -77,7 +77,7 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
             style={{
               fontFamily: 'var(--fuente-tecnica)',
               fontSize: '9px',
-              color: '#666666',
+              color: '#FFE600',
               borderLeft: '1px solid #333333',
               paddingLeft: '6px',
             }}
@@ -101,6 +101,7 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
                   color: isActive ? '#000000' : '#888888',
                   background: isActive ? '#00F0FF' : 'transparent',
                   border: isActive ? '1px solid #00F0FF' : '1px solid transparent',
+                  boxShadow: isActive ? '0 0 12px rgba(0, 240, 255, 0.4)' : 'none',
                   cursor: 'pointer',
                   letterSpacing: '0.12em',
                   padding: '5px 10px',
@@ -148,18 +149,21 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
+            boxShadow: '0 0 14px rgba(255, 230, 0, 0.35)',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = '#FFFFFF';
             e.currentTarget.style.borderColor = '#FFFFFF';
+            e.currentTarget.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.6)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = '#FFE600';
             e.currentTarget.style.borderColor = '#FFE600';
+            e.currentTarget.style.boxShadow = '0 0 14px rgba(255, 230, 0, 0.35)';
           }}
         >
           <span>[PRESUPUESTO]</span>
-          <span style={{ color: '#000000', fontSize: '11px' }}>→</span>
+          <span style={{ color: '#000000', fontSize: '11px', fontWeight: 900 }}>→</span>
         </button>
       </nav>
     </header>

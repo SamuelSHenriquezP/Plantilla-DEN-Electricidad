@@ -221,6 +221,137 @@ body {
     animation: svgPulseSignal 2.5s ease-in-out infinite;
 }
 
+/* --- ANIMACIONES DE TEXTO & RESPLANDOR TÉCNICO --- */
+@keyframes textShimmerSweep {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes laserScanner {
+    0% { top: 0%; opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes neonTextPulse {
+    0%, 100% {
+        text-shadow: 0 0 8px rgba(0, 240, 255, 0.4), 0 0 16px rgba(0, 240, 255, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 16px rgba(0, 240, 255, 0.85), 0 0 32px rgba(0, 240, 255, 0.45);
+    }
+}
+
+@keyframes voltTextPulse {
+    0%, 100% {
+        text-shadow: 0 0 8px rgba(255, 230, 0, 0.35);
+    }
+    50% {
+        text-shadow: 0 0 16px rgba(255, 230, 0, 0.75), 0 0 28px rgba(255, 230, 0, 0.35);
+    }
+}
+
+@keyframes emeraldTextPulse {
+    0%, 100% {
+        text-shadow: 0 0 8px rgba(0, 255, 102, 0.35);
+    }
+    50% {
+        text-shadow: 0 0 16px rgba(0, 255, 102, 0.75), 0 0 28px rgba(0, 255, 102, 0.35);
+    }
+}
+
+@keyframes radarSweepCone {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Clases de Gradiente Shimmer en Letras */
+.text-shimmer-cyan {
+    background: linear-gradient(90deg, #FFFFFF 0%, #00F0FF 25%, #FFFFFF 50%, #00F0FF 75%, #FFFFFF 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmerSweep 5s linear infinite;
+    display: inline-block;
+}
+
+.text-shimmer-volt {
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFE600 25%, #FFAA00 50%, #FFE600 75%, #FFFFFF 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmerSweep 4.5s linear infinite;
+    display: inline-block;
+}
+
+.text-shimmer-emerald {
+    background: linear-gradient(90deg, #FFFFFF 0%, #00FF66 25%, #00F0FF 50%, #00FF66 75%, #FFFFFF 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmerSweep 4.8s linear infinite;
+    display: inline-block;
+}
+
+/* Resplandores de Letras Específicas */
+.text-glow-cyan {
+    color: #00F0FF !important;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.text-glow-volt {
+    color: #FFE600 !important;
+    text-shadow: 0 0 12px rgba(255, 230, 0, 0.6);
+}
+
+.text-glow-emerald {
+    color: #00FF66 !important;
+    text-shadow: 0 0 12px rgba(0, 255, 102, 0.6);
+}
+
+.text-glow-pulse-cyan {
+    animation: neonTextPulse 3s ease-in-out infinite;
+}
+
+.text-glow-pulse-volt {
+    animation: voltTextPulse 3.2s ease-in-out infinite;
+}
+
+.text-glow-pulse-emerald {
+    animation: emeraldTextPulse 2.8s ease-in-out infinite;
+}
+
+/* Escáner Láser Vertical */
+.laser-scanner-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #00F0FF 50%, transparent 100%);
+    box-shadow: 0 0 12px #00F0FF, 0 0 24px #00F0FF;
+    animation: laserScanner 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Tarjeta interactiva CAD con animación al hover */
+.card-cad-interactive {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.card-cad-interactive:hover {
+    border-color: #00F0FF !important;
+    background: #0A0A0A !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.1);
+}
+
+.card-cad-interactive:hover .corner-cross {
+    color: #00F0FF !important;
+}
+
 /* --- BOTONES TÉCNICOS 100% CUADRADOS --- */
 .btn-square-terminal {
     display: inline-flex;

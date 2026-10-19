@@ -248,7 +248,7 @@ export default function InteractiveServicesList() {
                 textTransform: 'uppercase',
               }}
             >
-              INGENIERÍA <span style={{ color: '#00F0FF' }}>ELÉCTRICA & DOMÓTICA</span>
+              INGENIERÍA <span className="text-shimmer-cyan">ELÉCTRICA & DOMÓTICA</span>
             </h2>
           </div>
 
@@ -260,8 +260,8 @@ export default function InteractiveServicesList() {
               textAlign: 'right',
             }}
           >
-            <div>SELECT: [{active.code}]</div>
-            <div style={{ color: '#00FF66' }}>ACTIVE_LOAD: 100% OK</div>
+            <div>SELECT: <span style={{ color: active.badgeColor }}>[{active.code}]</span></div>
+            <div style={{ color: '#00FF66', textShadow: '0 0 8px rgba(0,255,102,0.4)' }}>ACTIVE_LOAD: 100% OK</div>
           </div>
         </div>
 
@@ -276,10 +276,10 @@ export default function InteractiveServicesList() {
           }}
         >
           {/* ESQUINAS CRUZ CAD (+) */}
-          <span style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
-          <span style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
-          <span style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
-          <span style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#00F0FF', fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
+          <span style={{ position: 'absolute', top: '-10px', left: '-10px', color: active.badgeColor, fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
+          <span style={{ position: 'absolute', top: '-10px', right: '-10px', color: active.badgeColor, fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
+          <span style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: active.badgeColor, fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
+          <span style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: active.badgeColor, fontFamily: 'monospace', fontSize: '18px', lineHeight: 1 }}>+</span>
 
           <div
             style={{
@@ -304,11 +304,13 @@ export default function InteractiveServicesList() {
                   color: '#888888',
                 }}
               >
-                <span>FEED: {active.code}</span>
-                <span style={{ color: active.badgeColor }}>[{active.badge}]</span>
+                <span>FEED: <span style={{ color: active.badgeColor }}>{active.code}</span></span>
+                <span style={{ color: active.badgeColor, fontWeight: 800 }}>[{active.badge}]</span>
               </div>
 
               <div style={{ position: 'relative', overflow: 'hidden' }}>
+                {/* LÍNEA DE ESCANEO LÁSER ANIMADA */}
+                <div className="laser-scanner-line" />
                 <img
                   src={active.img}
                   alt={active.titulo}
@@ -390,10 +392,12 @@ export default function InteractiveServicesList() {
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
                     fontWeight: 900,
-                    color: '#FFFFFF',
+                    color: active.badgeColor,
+                    textShadow: `0 0 16px ${active.badgeColor}44`,
                     margin: '0 0 6px 0',
                     lineHeight: 1.1,
                     textTransform: 'uppercase',
+                    transition: 'color 0.3s ease',
                   }}
                 >
                   {active.titulo}
@@ -409,14 +413,14 @@ export default function InteractiveServicesList() {
                     fontWeight: 700,
                   }}
                 >
-                  &gt; {active.subtitulo}
+                  → {active.subtitulo}
                 </p>
 
                 <p
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '13.5px',
-                    color: '#A0A0A0',
+                    color: '#D1D5DB',
                     lineHeight: 1.55,
                     margin: 0,
                   }}
@@ -430,40 +434,42 @@ export default function InteractiveServicesList() {
                 style={{
                   backgroundColor: '#000000',
                   border: '1px solid #1A1A1A',
-                  borderLeft: '3px solid #00F0FF',
+                  borderLeft: `3px solid ${active.badgeColor}`,
                   padding: '12px 14px',
+                  transition: 'border-color 0.3s ease',
                 }}
               >
-                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00F0FF', fontWeight: 700, marginBottom: '4px', letterSpacing: '1px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: active.badgeColor, fontWeight: 700, marginBottom: '4px', letterSpacing: '1px' }}>
                   [ESPECIFICACIÓN NORMATIVA REBT / DGI]
                 </div>
-                <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#888888', lineHeight: 1.45 }}>
+                <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', color: '#9CA3AF', lineHeight: 1.45 }}>
                   {active.rebtDetail}
                 </div>
               </div>
 
-              {/* PASOS DE EJECUCIÓN (CUADRADOS CAD) */}
+              {/* PASOS DE EJECUCIÓN (CUADRADOS CAD INTERACTIVOS) */}
               <div>
-                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#666666', letterSpacing: '1.5px', fontWeight: 700, marginBottom: '8px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#888888', letterSpacing: '1.5px', fontWeight: 700, marginBottom: '8px' }}>
                   [SECUENCIA DE EJECUCIÓN TÉCNICA]
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
                   {active.pasos.map((paso, idx) => (
                     <div
                       key={idx}
+                      className="card-cad-interactive"
                       style={{
                         backgroundColor: '#000000',
                         border: '1px solid #1A1A1A',
-                        padding: '6px 10px',
+                        padding: '8px 10px',
                         display: 'flex',
                         alignItems: 'flex-start',
                         gap: '6px',
                       }}
                     >
-                      <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00F0FF', fontWeight: 700 }}>
+                      <span style={{ fontFamily: 'monospace', fontSize: '10px', color: active.badgeColor, fontWeight: 700 }}>
                         0{idx + 1}.
                       </span>
-                      <span style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11px', color: '#CCCCCC', lineHeight: 1.3 }}>
+                      <span style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '11px', color: '#E5E7EB', lineHeight: 1.3 }}>
                         {paso}
                       </span>
                     </div>
@@ -549,8 +555,8 @@ export default function InteractiveServicesList() {
                 onClick={() => setActiveIdx(i)}
                 style={{
                   backgroundColor: isSelected ? '#0A0A0A' : '#000000',
-                  border: isSelected ? '1px solid #00F0FF' : '1px solid #1A1A1A',
-                  borderTop: isSelected ? '2px solid #00F0FF' : '1px solid #1A1A1A',
+                  border: isSelected ? `1px solid ${s.badgeColor}` : '1px solid #1A1A1A',
+                  borderTop: isSelected ? `2px solid ${s.badgeColor}` : '1px solid #1A1A1A',
                   padding: '10px 10px',
                   cursor: 'pointer',
                   textAlign: 'left',
@@ -558,6 +564,7 @@ export default function InteractiveServicesList() {
                   flexDirection: 'column',
                   gap: '4px',
                   transition: 'all 0.15s ease',
+                  boxShadow: isSelected ? `0 0 15px ${s.badgeColor}22` : 'none',
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -565,7 +572,7 @@ export default function InteractiveServicesList() {
                     style={{
                       fontFamily: 'monospace',
                       fontSize: '10px',
-                      color: isSelected ? '#00F0FF' : '#555555',
+                      color: isSelected ? s.badgeColor : '#555555',
                       fontWeight: 700,
                     }}
                   >
@@ -575,7 +582,8 @@ export default function InteractiveServicesList() {
                     style={{
                       width: '6px',
                       height: '6px',
-                      backgroundColor: isSelected ? '#00FF66' : '#222222',
+                      backgroundColor: isSelected ? s.badgeColor : '#222222',
+                      boxShadow: isSelected ? `0 0 8px ${s.badgeColor}` : 'none',
                     }}
                   ></span>
                 </div>
@@ -583,7 +591,7 @@ export default function InteractiveServicesList() {
                   style={{
                     fontFamily: 'monospace',
                     fontSize: '10.5px',
-                    color: isSelected ? '#FFFFFF' : '#888888',
+                    color: isSelected ? s.badgeColor : '#888888',
                     fontWeight: 700,
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',

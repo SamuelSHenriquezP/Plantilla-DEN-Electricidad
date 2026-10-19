@@ -163,7 +163,7 @@ export default function WizardQuote() {
                 textTransform: 'uppercase',
               }}
             >
-              SOLICITUD DE <span style={{ color: '#00F0FF' }}>PRESUPUESTO ORIENTATIVO</span>
+              SOLICITUD DE <span className="text-shimmer-cyan text-glow-pulse-cyan">PRESUPUESTO ORIENTATIVO</span>
             </h2>
           </div>
 

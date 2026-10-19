@@ -5,6 +5,7 @@ export default function CertificationsSection() {
     {
       code: 'STD//CIE-CAM',
       normativa: 'REBT 2002 • ITC-BT-04',
+      color: '#FFE600',
       titulo: 'Boletín Oficial de Instalación (CIE)',
       desc: 'Emisión, firma y registro telemático de Certificados de Instalación Eléctrica ante la Dirección General de Industria de la Comunidad de Madrid en 24-48 horas laborables.',
       icon: (
@@ -21,6 +22,7 @@ export default function CertificationsSection() {
     {
       code: 'STD//SOL-RD244',
       normativa: 'RD 244/2019 • ITC-BT-40',
+      color: '#00FF66',
       titulo: 'Legalización Solar Fotovoltaica',
       desc: 'Memoria técnica, tramitación de CIE de generación, registro de autoconsumo en distribuidora (Iberdrola / UFD) y gestión de excedentes y bonificaciones IBI.',
       icon: (
@@ -38,6 +40,7 @@ export default function CertificationsSection() {
     {
       code: 'STD//LOX-CERT',
       normativa: 'EN-50090 • SMART BUS',
+      color: '#00F0FF',
       titulo: 'Partner Certificado Loxone',
       desc: 'Homologación oficial como instalador e integrador de domótica avanzada Loxone. Programación lógica en Loxone Config y cableado de bus Tree bajo normativa SELV.',
       icon: (
@@ -52,6 +55,7 @@ export default function CertificationsSection() {
     {
       code: 'STD//VE-ITC52',
       normativa: 'ITC-BT-52 • CARGA V.E.',
+      color: '#00F0FF',
       titulo: 'Recarga Vehículo Eléctrico & Acometidas',
       desc: 'Certificación de líneas dedicadas para cargadores de coche eléctrico con protecciones tipo B y balanceo dinámico de carga, además de acometidas directas.',
       icon: (
@@ -135,7 +139,7 @@ export default function CertificationsSection() {
                 textTransform: 'uppercase',
               }}
             >
-              SEGURIDAD <span style={{ color: '#FFE600' }}>& CERTIFICACIONES OFICIALES</span>
+              SEGURIDAD <span className="text-shimmer-volt text-glow-pulse-volt">& CERTIFICACIONES OFICIALES</span>
             </h2>
           </div>
 
@@ -147,12 +151,12 @@ export default function CertificationsSection() {
               textAlign: 'right',
             }}
           >
-            <div>COMPLIANCE: [REBT 2002 / CAM]</div>
-            <div style={{ color: '#00FF66' }}>LEGAL_AUDIT: 100% CONFORMIDAD</div>
+            <div>COMPLIANCE: <span style={{ color: '#FFE600' }}>[REBT 2002 / CAM]</span></div>
+            <div style={{ color: '#00FF66', textShadow: '0 0 8px rgba(0,255,102,0.4)' }}>LEGAL_AUDIT: 100% CONFORMIDAD</div>
           </div>
         </div>
 
-        {/* MATRIZ DE 4 PANELES 100% CUADRADOS */}
+        {/* MATRIZ DE 4 PANELES 100% CUADRADOS INTERACTIVOS */}
         <div
           style={{
             display: 'grid',
@@ -163,42 +167,38 @@ export default function CertificationsSection() {
           {certificaciones.map((cert, idx) => (
             <div
               key={idx}
+              className="card-cad-interactive"
               style={{
                 backgroundColor: '#050505',
                 border: '1px solid #1F1F1F',
+                borderLeft: `3px solid ${cert.color}`,
                 padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 position: 'relative',
-                transition: 'border-color 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#FFE600';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#1F1F1F';
+                transition: 'all 0.25s ease',
               }}
             >
               {/* ESQUINAS CRUZ CAD (+) */}
-              <span style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
-              <span style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
-              <span style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
-              <span style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', top: '-10px', left: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', top: '-10px', right: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', bottom: '-10px', left: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
+              <span className="corner-cross" style={{ position: 'absolute', bottom: '-10px', right: '-10px', color: '#333333', fontFamily: 'monospace', fontSize: '18px' }}>+</span>
 
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                  <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#FFE600', fontWeight: 700 }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '10px', color: cert.color, fontWeight: 700 }}>
                     [{cert.code}]
                   </span>
-                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: '#00FF66', border: '1px solid #00FF6633', padding: '2px 6px' }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: cert.color, border: `1px solid ${cert.color}44`, backgroundColor: `${cert.color}11`, padding: '2px 6px' }}>
                     {cert.status}
                   </span>
                 </div>
 
                 <div style={{ marginBottom: '10px' }}>{cert.icon}</div>
 
-                <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#666666', marginBottom: '4px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#888888', marginBottom: '4px' }}>
                   NORMA: {cert.normativa}
                 </div>
 
@@ -206,8 +206,9 @@ export default function CertificationsSection() {
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '16px',
-                    fontWeight: 800,
-                    color: '#FFFFFF',
+                    fontWeight: 900,
+                    color: cert.color,
+                    textShadow: `0 0 12px ${cert.color}33`,
                     margin: '0 0 10px 0',
                     textTransform: 'uppercase',
                   }}
@@ -219,7 +220,7 @@ export default function CertificationsSection() {
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '12.5px',
-                    color: '#888888',
+                    color: '#9CA3AF',
                     lineHeight: 1.5,
                     margin: '0 0 16px 0',
                   }}
@@ -237,8 +238,8 @@ export default function CertificationsSection() {
                   gap: '6px',
                 }}
               >
-                <span style={{ width: '6px', height: '6px', backgroundColor: '#FFE600' }}></span>
-                <span style={{ fontFamily: 'monospace', fontSize: '9.5px', color: '#FFE600', fontWeight: 700 }}>
+                <span style={{ width: '6px', height: '6px', backgroundColor: cert.color }}></span>
+                <span style={{ fontFamily: 'monospace', fontSize: '9.5px', color: cert.color, fontWeight: 700 }}>
                   {cert.tag}
                 </span>
               </div>

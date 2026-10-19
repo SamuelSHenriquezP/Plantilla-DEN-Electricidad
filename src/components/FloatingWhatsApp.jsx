@@ -128,7 +128,7 @@ export default function FloatingWhatsApp() {
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.8)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 255, 102, 0.2)',
           transition: 'all 0.2s ease',
         }}
         onMouseEnter={(e) => {
@@ -146,9 +146,11 @@ export default function FloatingWhatsApp() {
             height: '6px',
             backgroundColor: '#00FF66',
             display: 'inline-block',
+            boxShadow: '0 0 8px #00FF66',
+            animation: 'svgPulseSignal 1.5s infinite',
           }}
         ></span>
-        [WHATSAPP DIRECT]
+        <span className="text-glow-emerald">[WHATSAPP DIRECT]</span>
       </button>
     </div>
   );

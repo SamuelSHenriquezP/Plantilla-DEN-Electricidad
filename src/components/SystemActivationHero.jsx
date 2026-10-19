@@ -4,6 +4,17 @@ import gsap from 'gsap';
 export default function SystemActivationHero({ onOpenQuote }) {
   const [pulseActive, setPulseActive] = useState(false);
   const [sineOffset, setSineOffset] = useState(0);
+  const [telemetry, setTelemetry] = useState({ volt: '230.4', freq: '50.00' });
+
+  // Live fluctuating telemetry simulation
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const v = (230.1 + Math.random() * 0.7).toFixed(1);
+      const f = (49.98 + Math.random() * 0.04).toFixed(2);
+      setTelemetry({ volt: v, freq: f });
+    }, 1600);
+    return () => clearInterval(timer);
+  }, []);
 
   // Animación continua del osciloscopio 50Hz
   useEffect(() => {
@@ -155,13 +166,13 @@ export default function SystemActivationHero({ onOpenQuote }) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ width: '8px', height: '8px', backgroundColor: '#00FF66', display: 'inline-block' }}></span>
-            <span style={{ color: '#FFFFFF', fontWeight: 700 }}>[GRID ONLINE // 100% ACTIVO]</span>
+            <span style={{ width: '8px', height: '8px', backgroundColor: '#00FF66', display: 'inline-block', boxShadow: '0 0 10px #00FF66' }}></span>
+            <span style={{ color: '#00FF66', fontWeight: 800 }}>[GRID ONLINE // 100% ACTIVO]</span>
           </div>
           <div style={{ display: 'flex', gap: '18px', color: '#666666' }}>
-            <span>VOLT: <strong style={{ color: '#00F0FF' }}>230V AC</strong></span>
-            <span>FREQ: <strong style={{ color: '#00FF66' }}>50.00 Hz</strong></span>
-            <span>REBT: <strong style={{ color: '#FFE600' }}>ITC-BT CONFORME</strong></span>
+            <span>VOLT: <strong style={{ color: '#00F0FF', textShadow: '0 0 8px rgba(0, 240, 255, 0.4)' }}>{telemetry.volt}V AC</strong></span>
+            <span>FREQ: <strong style={{ color: '#00FF66', textShadow: '0 0 8px rgba(0, 255, 102, 0.4)' }}>{telemetry.freq} Hz</strong></span>
+            <span>REBT: <strong style={{ color: '#FFE600', textShadow: '0 0 8px rgba(255, 230, 0, 0.4)' }}>ITC-BT CONFORME</strong></span>
             <span>LOC: <strong style={{ color: '#FFFFFF' }}>MADRID ES</strong></span>
           </div>
         </div>
@@ -200,7 +211,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
               <span
                 style={{
                   fontFamily: 'var(--fuente-tecnica)',
-                  fontSize: '12px',
+                  fontSize: '11px',
                   color: 'var(--color-electrico)',
                   letterSpacing: '0.2em',
                   display: 'block',
@@ -208,14 +219,14 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   fontWeight: 700,
                 }}
               >
-                // INGENIERÍA ELÉCTRICA • DOMÓTICA • ENERGÍA SOLAR
+                // <span style={{ color: '#00F0FF' }}>INGENIERÍA ELÉCTRICA</span> • <span style={{ color: '#00FF66' }}>DOMÓTICA</span> • <span style={{ color: '#FFE600' }}>ENERGÍA SOLAR</span>
               </span>
 
               <h1
                 style={{
                   fontFamily: 'var(--fuente-titulos)',
                   fontSize: 'clamp(2.4rem, 5.5vw, 4.4rem)',
-                  fontWeight: 800,
+                  fontWeight: 900,
                   lineHeight: 1.05,
                   letterSpacing: '-0.02em',
                   color: '#FFFFFF',
@@ -223,9 +234,9 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   marginBottom: '20px',
                 }}
               >
-                DYNAMIC <br />
-                ELECTRIC <br />
-                <span style={{ color: 'var(--color-electrico)' }}>NATALE.</span>
+                <span className="text-shimmer-cyan">DYNAMIC</span> <br />
+                <span style={{ color: '#FFFFFF', letterSpacing: '-0.01em' }}>ELECTRIC</span> <br />
+                <span className="text-shimmer-volt text-glow-pulse-volt">NATALE.</span>
               </h1>
 
               <p
@@ -238,8 +249,8 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   marginBottom: '32px',
                 }}
               >
-                Ingeniería eléctrica de alta fidelidad, integración oficial <strong>Loxone Partner</strong>,
-                sistemas solares fotovoltaicos con acumulación de baterías y legalización oficial CIE en Madrid.
+                Ingeniería eléctrica de alta fidelidad, integración oficial <strong style={{ color: '#00FF66', fontWeight: 800 }}>Loxone Certified Partner</strong>,
+                sistemas solares fotovoltaicos con <strong style={{ color: '#FFE600' }}>baterías de litio LFP</strong> y legalización oficial <strong style={{ color: '#00F0FF' }}>CIE en 24-48h</strong> en la Comunidad de Madrid.
               </p>
             </div>
 
@@ -318,6 +329,9 @@ export default function SystemActivationHero({ onOpenQuote }) {
                 }}
               />
 
+              {/* Línea de escaneo láser vertical animada */}
+              <div className="laser-scanner-line" />
+
               {/* Trazo senoidal animado en vivo */}
               <svg width="100%" height="100%" style={{ position: 'relative', zIndex: 2 }}>
                 {/* Eje central */}
@@ -329,14 +343,14 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   fill="none"
                   stroke="#00F0FF"
                   strokeWidth="2"
-                  filter="drop-shadow(0 0 6px #00F0FF)"
+                  filter="drop-shadow(0 0 8px #00F0FF)"
                 />
 
                 {/* Onda secundaria de fase (Amarillo) */}
                 <path
                   d={generateSineWavePath(600, 180, sineOffset + 60)}
                   fill="none"
-                  stroke="rgba(255, 230, 0, 0.45)"
+                  stroke="rgba(255, 230, 0, 0.55)"
                   strokeWidth="1.2"
                   strokeDasharray="6 3"
                 />
@@ -351,9 +365,12 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   fontSize: '9px',
                   color: '#00F0FF',
                   zIndex: 3,
+                  background: 'rgba(0,0,0,0.8)',
+                  padding: '2px 6px',
+                  border: '1px solid #1F1F1F',
                 }}
               >
-                V_RMS: 230.4 V | Δt: 20ms
+                V_RMS: <span style={{ color: '#FFFFFF', fontWeight: 800 }}>{telemetry.volt}V</span> | FREQ: <span style={{ color: '#00FF66', fontWeight: 800 }}>{telemetry.freq}Hz</span> | Δt: 20ms
               </div>
             </div>
 
@@ -366,28 +383,28 @@ export default function SystemActivationHero({ onOpenQuote }) {
                 fontFamily: 'var(--fuente-tecnica)',
               }}
             >
-              <div style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E' }}>
+              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #00FF66' }}>
                 <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 01 // LOXONE]</span>
-                <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 700 }}>PARTNER OFICIAL</span>
-                <span style={{ fontSize: '10px', color: '#00FF66', display: 'block', marginTop: '2px' }}>100% LOCAL NO CLOUD</span>
+                <span style={{ fontSize: '13px', color: '#00FF66', fontWeight: 800 }}>PARTNER OFICIAL</span>
+                <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>100% LOCAL NO CLOUD</span>
               </div>
 
-              <div style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E' }}>
+              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #FFE600' }}>
                 <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 02 // SOLAR]</span>
-                <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 700 }}>AUTOCONSUMO 95%</span>
-                <span style={{ fontSize: '10px', color: '#FFE600', display: 'block', marginTop: '2px' }}>BATERÍAS LITIO LFP</span>
+                <span style={{ fontSize: '13px', color: '#FFE600', fontWeight: 800 }}>AUTOCONSUMO 95%</span>
+                <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>BATERÍAS LITIO LFP</span>
               </div>
 
-              <div style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E' }}>
+              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #00F0FF' }}>
                 <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 03 // CERTIFICACIÓN]</span>
-                <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 700 }}>BOLETÍN OFICIAL CIE</span>
-                <span style={{ fontSize: '10px', color: '#00F0FF', display: 'block', marginTop: '2px' }}>INSTALADOR AUTORIZADO</span>
+                <span style={{ fontSize: '13px', color: '#00F0FF', fontWeight: 800 }}>BOLETÍN OFICIAL CIE</span>
+                <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>INSTALADOR AUTORIZADO</span>
               </div>
 
-              <div style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E' }}>
+              <div className="card-cad-interactive" style={{ padding: '12px', background: '#000000', border: '1px solid #1E1E1E', borderLeft: '3px solid #FFFFFF' }}>
                 <span style={{ fontSize: '9px', color: '#666666', display: 'block' }}>[NODO 04 // VEHÍCULO]</span>
-                <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 700 }}>WALLBOX EV</span>
-                <span style={{ fontSize: '10px', color: '#FFFFFF', display: 'block', marginTop: '2px' }}>MODO BALANCEO DINÁMICO</span>
+                <span style={{ fontSize: '13px', color: '#FFFFFF', fontWeight: 800 }}>WALLBOX EV</span>
+                <span style={{ fontSize: '10px', color: '#888888', display: 'block', marginTop: '2px' }}>MODO BALANCEO DINÁMICO</span>
               </div>
             </div>
 

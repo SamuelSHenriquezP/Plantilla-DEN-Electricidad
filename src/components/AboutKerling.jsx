@@ -113,7 +113,7 @@ export default function AboutKerling({ onOpenQuote }) {
                 textTransform: 'uppercase',
               }}
             >
-              DIRECCIÓN TÉCNICA <span style={{ color: '#00F0FF' }}>& PERFIL PROFESIONAL</span>
+              DIRECCIÓN TÉCNICA <span className="text-shimmer-cyan">& PERFIL PROFESIONAL</span>
             </h2>
           </div>
 
@@ -125,7 +125,7 @@ export default function AboutKerling({ onOpenQuote }) {
               textAlign: 'right',
             }}
           >
-            <div>REGISTRATION: [CAM//DGI-ESPECIALISTA]</div>
+            <div>REGISTRATION: <span style={{ color: '#00F0FF' }}>[CAM//DGI-ESPECIALISTA]</span></div>
             <div style={{ color: '#FFE600' }}>HQ: GUADARRAMA, MADRID</div>
           </div>
         </div>
@@ -167,13 +167,14 @@ export default function AboutKerling({ onOpenQuote }) {
                 marginBottom: '10px',
               }}
             >
-              <span>[DIM: 420x540mm]</span>
-              <span>[CALIB: ISO-9001]</span>
-              <span style={{ color: '#00FF66' }}>[VERIFIED]</span>
+              <span style={{ color: '#FFE600' }}>[DIM: 420x540mm]</span>
+              <span style={{ color: '#888888' }}>[CALIB: ISO-9001]</span>
+              <span style={{ color: '#00FF66', fontWeight: 800 }}>[VERIFIED]</span>
             </div>
 
-            {/* IMAGEN DE KERLING */}
+            {/* IMAGEN DE KERLING CON LÁSER SCANNER */}
             <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid #1F1F1F' }}>
+              <div className="laser-scanner-line" />
               <img
                 src="/images/kerling_portrait.png"
                 alt="Kerling Abraham Natale Hidalgo — Dirección Técnica DEN"
@@ -182,7 +183,7 @@ export default function AboutKerling({ onOpenQuote }) {
                   height: '380px',
                   objectFit: 'cover',
                   display: 'block',
-                  filter: 'contrast(1.08) grayscale(20%)',
+                  filter: 'contrast(1.08) grayscale(15%)',
                 }}
               />
 
@@ -260,12 +261,12 @@ export default function AboutKerling({ onOpenQuote }) {
                   fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)',
                   fontWeight: 900,
                   color: '#FFFFFF',
-                  lineHeight: 1.1,
+                  lineHeight: 1.15,
                   margin: '0 0 12px 0',
                   textTransform: 'uppercase',
                 }}
               >
-                RIGOR TÉCNICO, CERTIFICACIÓN OFICIAL Y ATENCIÓN DIRECTA
+                RIGOR TÉCNICO, <span style={{ color: '#00F0FF' }}>CERTIFICACIÓN OFICIAL</span> Y <span style={{ color: '#FFE600' }}>ATENCIÓN DIRECTA</span>
               </h3>
 
               <p
@@ -281,7 +282,7 @@ export default function AboutKerling({ onOpenQuote }) {
               </p>
             </div>
 
-            {/* MATRIZ DE QUALIFICACIONES TÉCNICAS (100% CUADRADAS) */}
+            {/* MATRIZ DE QUALIFICACIONES TÉCNICAS (100% CUADRADAS INTERACTIVAS) */}
             <div
               style={{
                 display: 'grid',
@@ -317,21 +318,22 @@ export default function AboutKerling({ onOpenQuote }) {
               ].map((c, idx) => (
                 <div
                   key={idx}
+                  className="card-cad-interactive"
                   style={{
                     backgroundColor: '#050505',
                     border: '1px solid #1F1F1F',
-                    borderLeft: `2px solid ${c.color}`,
+                    borderLeft: `3px solid ${c.color}`,
                     padding: '12px 14px',
                     position: 'relative',
                   }}
                 >
-                  <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#666666', marginBottom: '2px' }}>
+                  <div style={{ fontFamily: 'monospace', fontSize: '9px', color: '#888888', marginBottom: '2px' }}>
                     [{c.code}]
                   </div>
-                  <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', fontWeight: 800, color: '#FFFFFF', textTransform: 'uppercase' }}>
+                  <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '12px', fontWeight: 900, color: '#FFFFFF', textTransform: 'uppercase' }}>
                     {c.title}
                   </div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '10px', color: c.color, marginTop: '2px' }}>
+                  <div style={{ fontFamily: 'monospace', fontSize: '10px', color: c.color, textShadow: `0 0 8px ${c.color}44`, marginTop: '3px', fontWeight: 700 }}>
                     {c.sub}
                   </div>
                 </div>

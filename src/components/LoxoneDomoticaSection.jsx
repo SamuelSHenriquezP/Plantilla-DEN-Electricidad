@@ -5,6 +5,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
     {
       nodo: '01',
       bus: 'TREE BUS • 100kbps',
+      color: '#00FF66',
       titulo: 'Automatización Integral',
       desc: 'El Miniserver procesa de forma 100% local cada sensor, pulsador y actuador de la vivienda. Cero latencia de nube, privacidad total y respuesta instantánea.',
       icon: (
@@ -26,6 +27,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
     {
       nodo: '02',
       bus: 'MODBUS / SOL-INV',
+      color: '#FFE600',
       titulo: 'Gestión Energética Solar',
       desc: 'Orquestación inteligente entre la generación solar fotovoltaica, la batería de litio LFP, la climatización por aerotermia y el punto de recarga de vehículo.',
       icon: (
@@ -43,6 +45,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
     {
       nodo: '03',
       bus: 'DALI-2 / TREE LIGHT',
+      color: '#00F0FF',
       titulo: 'Iluminación & Clima Inteligente',
       desc: 'Control de hasta 64 luminarias DALI-2 por rama, regulación de temperatura por estancia con micro-zonificación y control de estores según azimut solar.',
       icon: (
@@ -61,6 +64,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
     {
       nodo: '04',
       bus: 'IP INTERCOM / AIR',
+      color: '#00F0FF',
       titulo: 'Seguridad & Acceso Biométrico',
       desc: 'Intercomunicador de vídeo IP con NFC/Code Touch, simulación de presencia hiperrealista y corte de agua de emergencia ante fugas detectadas.',
       icon: (
@@ -149,7 +153,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                 textTransform: 'uppercase',
               }}
             >
-              DOMÓTICA <span style={{ color: '#00FF66' }}>LOXONE 100% LOCAL</span>
+              DOMÓTICA <span className="text-shimmer-emerald text-glow-pulse-emerald">LOXONE 100% LOCAL</span>
             </h2>
           </div>
 
@@ -161,8 +165,8 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               textAlign: 'right',
             }}
           >
-            <div>TOPOLOGY: [TREE + AIR + DALI]</div>
-            <div style={{ color: '#00F0FF' }}>LATENCY: &lt; 2ms LOCAL BUS</div>
+            <div>TOPOLOGY: <span style={{ color: '#00FF66' }}>[TREE + AIR + DALI]</span></div>
+            <div style={{ color: '#00F0FF', textShadow: '0 0 8px rgba(0,240,255,0.4)' }}>LATENCY: &lt; 2ms LOCAL BUS</div>
           </div>
         </div>
 
@@ -279,29 +283,25 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
           {pilares.map((p, idx) => (
             <div
               key={idx}
+              className="card-cad-interactive"
               style={{
                 backgroundColor: '#050505',
                 border: '1px solid #1F1F1F',
+                borderLeft: `3px solid ${p.color}`,
                 padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 position: 'relative',
-                transition: 'border-color 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#00FF66';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#1F1F1F';
+                transition: 'all 0.25s ease',
               }}
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                  <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00FF66', fontWeight: 700 }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '10px', color: p.color, fontWeight: 700 }}>
                     [NODE: {p.nodo}]
                   </span>
-                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: '#666666' }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '9px', color: '#888888' }}>
                     {p.bus}
                   </span>
                 </div>
@@ -312,8 +312,9 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                   style={{
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                     fontSize: '17px',
-                    fontWeight: 800,
-                    color: '#FFFFFF',
+                    fontWeight: 900,
+                    color: p.color,
+                    textShadow: `0 0 12px ${p.color}33`,
                     margin: '0 0 8px 0',
                     textTransform: 'uppercase',
                   }}

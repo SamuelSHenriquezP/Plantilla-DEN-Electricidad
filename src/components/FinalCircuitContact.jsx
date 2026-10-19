@@ -81,20 +81,20 @@ export default function FinalCircuitContact({ onOpenQuote }) {
             }}
           >
             ¿TIENES UN PROYECTO? <br />
-            <span style={{ color: '#00F0FF' }}>HABLA CON EL INGENIERO DIRECTO.</span>
+            <span className="text-shimmer-cyan text-glow-pulse-cyan">HABLA CON EL INGENIERO DIRECTO.</span>
           </h2>
 
           <p
             style={{
               fontFamily: 'system-ui, -apple-system, sans-serif',
               fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
-              color: '#888888',
+              color: '#9CA3AF',
               maxWidth: '700px',
               margin: '0 auto 28px',
               lineHeight: 1.55,
             }}
           >
-            Asesoramiento técnico directo con <strong>Kerling Abraham Natale Hidalgo</strong> (Electricista Especialista Autorizado). Evaluamos tu reforma de cuadro eléctrico, instalación domótica Loxone o proyecto fotovoltaico sin compromiso ni intermediarios.
+            Asesoramiento técnico directo con <strong style={{ color: '#FFFFFF' }}>Kerling Abraham Natale Hidalgo</strong> (<span style={{ color: '#00F0FF' }}>Electricista Especialista Autorizado</span>). Evaluamos tu reforma de cuadro eléctrico, instalación domótica <span style={{ color: '#00FF66' }}>Loxone</span> o proyecto fotovoltaico sin compromiso ni intermediarios.
           </p>
 
           {/* BOTONES TERMINALES CUADRADOS */}
@@ -171,28 +171,28 @@ export default function FinalCircuitContact({ onOpenQuote }) {
               textAlign: 'left',
             }}
           >
-            <div style={{ backgroundColor: '#000000', padding: '10px', border: '1px solid #1A1A1A' }}>
-              <div style={{ color: '#00F0FF', marginBottom: '2px' }}>[LÍNEA PRINCIPAL]</div>
-              <div style={{ color: '#FFFFFF' }}>+34 682 17 84 99</div>
-              <div style={{ color: '#666666' }}>+34 722 76 74 02</div>
+            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #00F0FF' }}>
+              <div style={{ color: '#00F0FF', fontWeight: 800, marginBottom: '4px' }}>[LÍNEA PRINCIPAL]</div>
+              <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700 }}>+34 682 17 84 99</div>
+              <div style={{ color: '#888888' }}>+34 722 76 74 02</div>
             </div>
 
-            <div style={{ backgroundColor: '#000000', padding: '10px', border: '1px solid #1A1A1A' }}>
-              <div style={{ color: '#FFE600', marginBottom: '2px' }}>[CORREO ELECTRÓNICO]</div>
-              <div style={{ color: '#FFFFFF', wordBreak: 'break-all' }}>DEN.INFORMACION@GMAIL.COM</div>
-              <div style={{ color: '#666666' }}>Respuesta en &lt; 24h</div>
+            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #FFE600' }}>
+              <div style={{ color: '#FFE600', fontWeight: 800, marginBottom: '4px' }}>[CORREO ELECTRÓNICO]</div>
+              <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700, wordBreak: 'break-all' }}>DEN.INFORMACION@GMAIL.COM</div>
+              <div style={{ color: '#888888' }}>Respuesta en &lt; 24h</div>
             </div>
 
-            <div style={{ backgroundColor: '#000000', padding: '10px', border: '1px solid #1A1A1A' }}>
-              <div style={{ color: '#00FF66', marginBottom: '2px' }}>[BASE OPERATIVA]</div>
-              <div style={{ color: '#FFFFFF' }}>GUADARRAMA, MADRID</div>
-              <div style={{ color: '#666666' }}>Toda la Comunidad & Sierra</div>
+            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #00FF66' }}>
+              <div style={{ color: '#00FF66', fontWeight: 800, marginBottom: '4px' }}>[BASE OPERATIVA]</div>
+              <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700 }}>GUADARRAMA, MADRID</div>
+              <div style={{ color: '#888888' }}>Toda la Comunidad & Sierra</div>
             </div>
 
-            <div style={{ backgroundColor: '#000000', padding: '10px', border: '1px solid #1A1A1A' }}>
-              <div style={{ color: '#FF3333', marginBottom: '2px' }}>[DISPONIBILIDAD]</div>
-              <div style={{ color: '#FFFFFF' }}>L-V 8:00 - 20:00</div>
-              <div style={{ color: '#FF3333' }}>URGENCIAS 24H ACTIVAS</div>
+            <div className="card-cad-interactive" style={{ backgroundColor: '#000000', padding: '12px', border: '1px solid #1A1A1A', borderLeft: '3px solid #FF3344' }}>
+              <div style={{ color: '#FF3344', fontWeight: 800, marginBottom: '4px' }}>[DISPONIBILIDAD]</div>
+              <div style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700 }}>L-V 8:00 - 20:00</div>
+              <div style={{ color: '#FF3344', fontWeight: 700 }}>URGENCIAS 24H ACTIVAS</div>
             </div>
           </div>
 
