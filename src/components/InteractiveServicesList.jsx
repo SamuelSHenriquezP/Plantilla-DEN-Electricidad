@@ -305,7 +305,7 @@ export default function InteractiveServicesList() {
                 }}
               >
                 <span>FEED: {active.code}</span>
-                <span style={{ color: active.badgeColor }}>● {active.badge}</span>
+                <span style={{ color: active.badgeColor }}>[{active.badge}]</span>
               </div>
 
               <div style={{ position: 'relative', overflow: 'hidden' }}>
@@ -526,7 +526,7 @@ export default function InteractiveServicesList() {
                     e.currentTarget.style.color = '#000000';
                   }}
                 >
-                  SOLICITAR INGENIERÍA PARA ESTE SERVICIO ⚡
+                  SOLICITAR INGENIERÍA PARA ESTE SERVICIO →
                 </a>
               </div>
             </div>

@@ -186,7 +186,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               CAD SCHEMATIC // LOXONE MINISERVER V2 BUS TOPOLOGY
             </span>
             <span style={{ fontFamily: 'monospace', fontSize: '10px', color: '#00FF66' }}>
-              ● LIVE DATA TRANSMISSION
+              [ONLINE] LIVE DATA TRANSMISSION
             </span>
           </div>
 
@@ -349,7 +349,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                         lineHeight: 1.35,
                       }}
                     >
-                      <span style={{ color: '#00FF66', fontFamily: 'monospace', fontSize: '10px' }}>■</span>
+                      <span style={{ color: '#00FF66', fontFamily: 'monospace', fontSize: '10px' }}>[+]</span>
                       <span>{c}</span>
                     </div>
                   ))}
@@ -450,7 +450,7 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
                 alignItems: 'center',
               }}
             >
-              CONSULTA WHATSAPP ⚡
+              CONSULTA WHATSAPP →
             </a>
           </div>
         </div>

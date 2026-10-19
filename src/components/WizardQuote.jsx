@@ -82,7 +82,7 @@ export default function WizardQuote() {
 
   const handleEnviarWhatsApp = () => {
     const mensaje =
-      `⚡ *SOLICITUD DE PRESUPUESTO TÉCNICO DEN*\n\n` +
+      `*SOLICITUD DE PRESUPUESTO TÉCNICO DEN*\n\n` +
       `• *Inmueble:* ${tipoInmueble}\n` +
       `• *Servicios:* ${serviciosSeleccionados.join(', ') || 'Consulta General'}\n` +
       `• *Ubicación:* ${ubicacion || 'Madrid'} (${superficieM2 || '180'} m²)\n` +
@@ -563,7 +563,7 @@ export default function WizardQuote() {
                     e.currentTarget.style.color = '#000000';
                   }}
                 >
-                  ENVIAR SOLICITUD A KERLING NATALE POR WHATSAPP ⚡
+                  ENVIAR SOLICITUD A KERLING NATALE POR WHATSAPP →
                 </button>
 
                 <button

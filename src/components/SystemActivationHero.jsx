@@ -269,7 +269,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
                 }}
                 title="Probar pulso de red eléctrica"
               >
-                <span>⚡ TEST DE PULSO</span>
+                <span>[TEST DE PULSO]</span>
               </button>
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function SystemActivationHero({ onOpenQuote }) {
 
             <div className="module-header-strip" style={{ margin: '-24px -24px 20px -24px' }}>
               <span>OSCILLOSCOPE // AC HARMONIC 50.0Hz</span>
-              <span style={{ color: '#00FF66' }}>● REALTIME SIGNAL</span>
+              <span style={{ color: '#00FF66' }}>[ONLINE] REALTIME SIGNAL</span>
             </div>
 
             {/* PANTALLA GRÁFICA DEL OSCILOSCOPIO SVG */}

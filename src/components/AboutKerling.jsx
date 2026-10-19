@@ -400,7 +400,7 @@ export default function AboutKerling({ onOpenQuote }) {
                   alignItems: 'center',
                 }}
               >
-                WHATSAPP DIRECTO CON KERLING ⚡
+                WHATSAPP DIRECTO CON KERLING →
               </a>
             </div>
           </div>

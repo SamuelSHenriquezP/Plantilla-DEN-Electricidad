@@ -148,7 +148,7 @@ export default function FloatingWhatsApp() {
             display: 'inline-block',
           }}
         ></span>
-        [⚡ COMMS WA]
+        [WHATSAPP DIRECT]
       </button>
     </div>
   );

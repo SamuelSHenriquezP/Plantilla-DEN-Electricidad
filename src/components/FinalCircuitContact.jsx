@@ -122,7 +122,7 @@ export default function FinalCircuitContact({ onOpenQuote }) {
                 e.currentTarget.style.color = '#000000';
               }}
             >
-              SOLICITAR PRESUPUESTO ONLINE ⚡
+              SOLICITAR PRESUPUESTO ONLINE →
             </button>
 
             <a

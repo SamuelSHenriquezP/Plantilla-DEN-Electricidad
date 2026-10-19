@@ -159,7 +159,7 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
           }}
         >
           <span>[PRESUPUESTO]</span>
-          <span style={{ color: '#000000' }}>⚡</span>
+          <span style={{ color: '#000000', fontSize: '11px' }}>→</span>
         </button>
       </nav>
     </header>
