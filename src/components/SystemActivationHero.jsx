@@ -22,11 +22,11 @@ export default function SystemActivationHero({ onOpenQuote }) {
     return () => clearInterval(timer);
   }, []);
 
-  // Animación continua del osciloscopio 50Hz
+  // Animación continua y calmada del osciloscopio
   useEffect(() => {
     let animId;
     const animateWave = () => {
-      setSineOffset((prev) => (prev + 1.8) % 360);
+      setSineOffset((prev) => (prev + 0.35) % 360);
       animId = requestAnimationFrame(animateWave);
     };
     animId = requestAnimationFrame(animateWave);
@@ -366,8 +366,8 @@ export default function SystemActivationHero({ onOpenQuote }) {
                   d={generateSineWavePath(600, 180, sineOffset)}
                   fill="none"
                   stroke="#00F0FF"
-                  strokeWidth="2"
-                  filter="drop-shadow(0 0 8px #00F0FF)"
+                  strokeWidth="1.8"
+                  filter="drop-shadow(0 0 3px #00F0FF)"
                 />
 
                 {/* Onda secundaria de fase (Amarillo) */}

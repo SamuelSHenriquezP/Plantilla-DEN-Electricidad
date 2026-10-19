@@ -53,7 +53,7 @@ export default function FloatingWhatsApp() {
                   height: '6px',
                   backgroundColor: '#00FF66',
                   display: 'inline-block',
-                  animation: 'svgPulseSignal 1.2s infinite',
+                  animation: 'svgPulseSignal 4s infinite',
                 }}
               ></span>
               [COMMS: KERLING NATALE // ON]
@@ -146,8 +146,8 @@ export default function FloatingWhatsApp() {
             height: '6px',
             backgroundColor: '#00FF66',
             display: 'inline-block',
-            boxShadow: '0 0 8px #00FF66',
-            animation: 'svgPulseSignal 1.5s infinite',
+            boxShadow: '0 0 4px #00FF66',
+            animation: 'svgPulseSignal 4s infinite',
           }}
         ></span>
         <span className="text-glow-emerald">[WHATSAPP DIRECT]</span>

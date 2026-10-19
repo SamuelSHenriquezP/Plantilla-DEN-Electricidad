@@ -369,8 +369,6 @@ export default function InteractiveServicesList() {
               <div className="gsap-reveal-container" style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* CURTAIN GSAP DE APERTURA / CAMBIO */}
                 <div ref={curtainRef} className="gsap-curtain-overlay" />
-                {/* LÍNEA DE ESCANEO LÁSER ANIMADA */}
-                <div className="laser-scanner-line" />
                 <img
                   ref={imageRef}
                   src={active.img}
@@ -385,7 +383,7 @@ export default function InteractiveServicesList() {
                   }}
                 />
 
-                {/* OVERLAY SVG DE CIRCUITO ANIMADO EN LA BASE DE LA FOTO */}
+                {/* OVERLAY SVG DE CIRCUITO SUTIL EN LA BASE DE LA FOTO */}
                 <svg
                   style={{
                     position: 'absolute',
@@ -393,7 +391,7 @@ export default function InteractiveServicesList() {
                     left: 0,
                     width: '100%',
                     height: '24px',
-                    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                    backgroundColor: 'rgba(4, 8, 18, 0.85)',
                   }}
                 >
                   <line
@@ -401,7 +399,7 @@ export default function InteractiveServicesList() {
                     y1="12"
                     x2="100%"
                     y2="12"
-                    stroke="#1F1F1F"
+                    stroke="#13223d"
                     strokeWidth="1"
                   />
                   <line
@@ -410,9 +408,9 @@ export default function InteractiveServicesList() {
                     x2="100%"
                     y2="12"
                     stroke="#00F0FF"
-                    strokeWidth="2"
-                    strokeDasharray="40 160"
-                    style={{ animation: 'svgCurrentDash 2s linear infinite' }}
+                    strokeWidth="1.5"
+                    strokeDasharray="40 200"
+                    style={{ animation: 'svgCurrentDash 12s linear infinite' }}
                   />
                 </svg>
               </div>

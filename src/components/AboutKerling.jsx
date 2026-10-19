@@ -176,10 +176,9 @@ export default function AboutKerling({ onOpenQuote }) {
               <span className="badge-tag-snap" style={{ color: '#00FF66', fontWeight: 800 }}>[VERIFIED]</span>
             </div>
 
-            {/* IMAGEN DE KERLING CON GSAP CURTAIN & LÁSER SCANNER */}
+            {/* IMAGEN DE KERLING CON APERTURA GSAP */}
             <div style={{ position: 'relative', overflow: 'hidden', border: '1px solid #1d335a', backgroundColor: '#040812' }}>
               <div ref={curtainRef} className="gsap-curtain-overlay" />
-              <div className="laser-scanner-line" />
               <img
                 ref={portraitImgRef}
                 src="/images/kerling_portrait.png"
@@ -193,29 +192,6 @@ export default function AboutKerling({ onOpenQuote }) {
                   filter: 'contrast(1.08) grayscale(15%)',
                 }}
               />
-
-              {/* LÍNEA DE ESCANEO SVG ANIMADA */}
-              <svg
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  pointerEvents: 'none',
-                }}
-              >
-                <line
-                  x1="0"
-                  y1="50%"
-                  x2="100%"
-                  y2="50%"
-                  stroke="#00F0FF"
-                  strokeWidth="1.5"
-                  strokeDasharray="4 8"
-                  style={{ opacity: 0.6 }}
-                />
-              </svg>
 
               {/* CAJÓN DE IDENTIFICACIÓN INFERIOR */}
               <div

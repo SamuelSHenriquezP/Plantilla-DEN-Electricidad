@@ -234,16 +234,16 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
             <line x1="680" y1="60" x2="680" y2="20" stroke="#13223d" strokeWidth="1" />
             <line x1="840" y1="60" x2="840" y2="100" stroke="#13223d" strokeWidth="1" />
 
-            {/* LÍNEAS ANIMADAS CON IMPULSOS DE CORRIENTE */}
+            {/* LÍNEAS CON IMPULSOS DE CORRIENTE CALMADOS */}
             <line
               x1="200"
               y1="60"
               x2="850"
               y2="60"
               stroke="#00FF66"
-              strokeWidth="2"
-              strokeDasharray="20 60"
-              style={{ animation: 'svgCurrentDash 1.6s linear infinite' }}
+              strokeWidth="1.5"
+              strokeDasharray="20 100"
+              style={{ animation: 'svgCurrentDash 12s linear infinite', opacity: 0.85 }}
             />
             <line
               x1="360"
@@ -251,9 +251,9 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               x2="360"
               y2="20"
               stroke="#00F0FF"
-              strokeWidth="1.5"
-              strokeDasharray="10 30"
-              style={{ animation: 'svgCurrentDash 1.2s linear infinite' }}
+              strokeWidth="1.2"
+              strokeDasharray="10 60"
+              style={{ animation: 'svgCurrentDash 10s linear infinite', opacity: 0.85 }}
             />
             <line
               x1="520"
@@ -261,16 +261,16 @@ export default function LoxoneDomoticaSection({ onOpenQuote }) {
               x2="520"
               y2="100"
               stroke="#FFE600"
-              strokeWidth="1.5"
-              strokeDasharray="10 30"
-              style={{ animation: 'svgCurrentDash 1.4s linear infinite' }}
+              strokeWidth="1.2"
+              strokeDasharray="10 60"
+              style={{ animation: 'svgCurrentDash 11s linear infinite', opacity: 0.85 }}
             />
 
             {/* NODO CENTRAL: MINISERVER */}
             <rect x="20" y="25" width="180" height="70" fill="#040812" stroke="#00FF66" strokeWidth="1.5" />
             <text x="35" y="52" fill="#FFFFFF" fontFamily="monospace" fontSize="12" fontWeight="bold">LOXONE MINISERVER</text>
             <text x="35" y="72" fill="#00FF66" fontFamily="monospace" fontSize="9">CORE PROCESSOR V2</text>
-            <rect x="175" y="32" width="12" height="12" fill="#00FF66" style={{ animation: 'svgPulseSignal 1s infinite' }} />
+            <rect x="175" y="32" width="12" height="12" fill="#00FF66" style={{ animation: 'svgPulseSignal 3.5s infinite' }} />
 
             {/* NODOS DE EXTENSIÓN */}
             <g transform="translate(300, 10)">
