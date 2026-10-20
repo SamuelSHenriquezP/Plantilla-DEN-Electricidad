@@ -14,14 +14,39 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
     <header
       style={{
         position: 'fixed',
-        top: '16px',
+        top: '12px',
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 1000,
         width: 'auto',
         maxWidth: '96vw',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '4px',
       }}
     >
+      {/* Micro-etiqueta sutil en el header */}
+      <div
+        style={{
+          fontFamily: 'var(--fuente-tecnica)',
+          fontSize: '8px',
+          color: '#64748B',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          background: 'rgba(4, 8, 18, 0.88)',
+          padding: '2px 8px',
+          border: '1px solid #13223d',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.6)',
+        }}
+      >
+        <span style={{ width: '4px', height: '4px', backgroundColor: '#00F0FF', display: 'inline-block' }} />
+        <span>Desarrollado por Inventus Tech Studio</span>
+      </div>
+
       <nav
         style={{
           background: 'rgba(5, 10, 22, 0.94)',

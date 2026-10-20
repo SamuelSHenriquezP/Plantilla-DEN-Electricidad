@@ -132,9 +132,14 @@ export default function App() {
               <span style={{ color: 'var(--color-electrico)', letterSpacing: '0.15em' }}>[SYS_STATUS: ONLINE 230V]</span>
             </div>
 
-            <span style={{ textAlign: 'center', maxWidth: '600px', letterSpacing: '0.05em' }}>
-              © {new Date().getFullYear()} DYNAMIC ELECTRIC NATALE — ING. KERLING A. NATALE H. // GUADARRAMA, MADRID.
-            </span>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+              <span style={{ maxWidth: '600px', letterSpacing: '0.05em' }}>
+                © {new Date().getFullYear()} DYNAMIC ELECTRIC NATALE — ING. KERLING A. NATALE H. // GUADARRAMA, MADRID.
+              </span>
+              <span style={{ color: '#00F0FF', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                Desarrollado por Inventus Tech Studio
+              </span>
+            </div>
 
             <div style={{ display: 'flex', gap: '16px' }}>
               <a
