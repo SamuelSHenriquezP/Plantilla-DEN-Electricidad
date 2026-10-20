@@ -14,39 +14,14 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
     <header
       style={{
         position: 'fixed',
-        top: '12px',
+        top: '16px',
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 1000,
         width: 'auto',
         maxWidth: '96vw',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '4px',
       }}
     >
-      {/* Micro-etiqueta sutil en el header */}
-      <div
-        style={{
-          fontFamily: 'var(--fuente-tecnica)',
-          fontSize: '8px',
-          color: '#64748B',
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-          background: 'rgba(4, 8, 18, 0.88)',
-          padding: '2px 8px',
-          border: '1px solid #13223d',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.6)',
-        }}
-      >
-        <span style={{ width: '4px', height: '4px', backgroundColor: '#00F0FF', display: 'inline-block' }} />
-        <span>Desarrollado por Inventus Tech Studio</span>
-      </div>
-
       <nav
         style={{
           background: 'rgba(5, 10, 22, 0.94)',
@@ -191,6 +166,25 @@ export default function DockNav({ activeIndex, onNavigate, onOpenQuote }) {
           <span>[PRESUPUESTO]</span>
           <span style={{ color: '#000000', fontSize: '11px', fontWeight: 900 }}>→</span>
         </button>
+        {/* CRÉDITO SUTIL EN HEADER */}
+        <span
+          style={{
+            fontFamily: 'var(--fuente-tecnica)',
+            fontSize: '8px',
+            color: '#475569',
+            letterSpacing: '0.12em',
+            borderLeft: '1px solid #1d335a',
+            paddingLeft: '10px',
+            whiteSpace: 'nowrap',
+            textTransform: 'uppercase',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          <span style={{ width: '3px', height: '3px', backgroundColor: '#00F0FF', display: 'inline-block' }} />
+          BY INVENTUS TECH STUDIO
+        </span>
       </nav>
     </header>
   );
